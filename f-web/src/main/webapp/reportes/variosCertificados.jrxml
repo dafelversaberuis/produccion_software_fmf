@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="variosCertificados" language="groovy" pageWidth="752" pageHeight="572" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pNombre" class="java.lang.String"/>
+	<parameter name="pLogo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pDocumento" class="java.lang.String"/>
+	<parameter name="pFechas" class="java.lang.String"/>
+	<parameter name="pCurso" class="java.lang.String"/>
+	<parameter name="pLeyenda" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\web\\WebContent\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="tipoDocumento" class="java.lang.String"/>
+	<field name="tipoCertificado" class="java.lang.String"/>
+	<field name="fechaFin" class="java.lang.String"/>
+	<field name="fechaDisponibilidad" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<group name="todos">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="1">
+				<subreport>
+					<reportElement x="0" y="0" width="752" height="1"/>
+					<subreportParameter name="pDocumento">
+						<subreportParameterExpression><![CDATA[$F{tipoDocumento}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="pLogo">
+						<subreportParameterExpression><![CDATA[$P{pLogo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="pCurso">
+						<subreportParameterExpression><![CDATA[$F{tipoCertificado}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="pLeyenda">
+						<subreportParameterExpression><![CDATA[$F{fechaDisponibilidad}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="pFechas">
+						<subreportParameterExpression><![CDATA[$F{fechaFin}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="pNombre">
+						<subreportParameterExpression><![CDATA[$F{nombre}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "certificado.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<noData>
+		<band height="31">
+			<staticText>
+				<reportElement x="0" y="7" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO EXISTEN CERTIFICADOS A MOSTRAR]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

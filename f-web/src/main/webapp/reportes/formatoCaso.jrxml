@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="formatoCaso" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="249"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="133" y="8" width="324" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUTA PACÍFICA DE LAS MUJERES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="43" width="417" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Registro y Documentación de violaciones a derechos de las mujeres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="25" width="397" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Muasoft - Software de apoyo para la dmón de DDHH mujeres Afrocolombianas]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement x="5" y="8" width="100" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="432" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="244" height="20"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORMACIÓN SOCIODEMOGRÁFICA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="25" width="144" height="20"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos generales de la mujer:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="133" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="48" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nombres:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="48" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="44" y="58" width="251" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="350" y="59" width="222" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="304" y="61" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[No. :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="61" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tipo de identificación:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="350" y="72" width="222" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="100" y="71" width="195" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="75" width="193" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[¿Cuál tipo de identificación ? (Si eligió otro):]]></text>
+			</staticText>
+			<line>
+				<reportElement x="193" y="85" width="102" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="304" y="87" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Municipio nacimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Departamento nacimiento:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="399" y="98" width="173" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="113" y="97" width="182" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="304" y="100" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Género:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="31" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="350" y="111" width="222" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="126" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Estado civil:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="126" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Etnia:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="102" y="136" width="195" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="352" y="137" width="222" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="146" y="148" width="151" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="138" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[¿Cuál estado civil? (Si eligió otro)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="162" y="160" width="135" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="150" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Fecha de nacimiento (año-mes-día):]]></text>
+			</staticText>
+			<line>
+				<reportElement x="352" y="161" width="222" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="306" y="150" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="102" y="172" width="195" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="445" y="173" width="129" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="162" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Régimen de salud:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="162" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[EPS/ARS (si no eligió ninguno):]]></text>
+			</staticText>
+			<line>
+				<reportElement x="102" y="184" width="195" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="174" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Profesión u oficio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="186" width="72" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Cabeza de hogar:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="186" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Subsidio recibido:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="195" y="226" width="102" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="216" width="193" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[¿Cuáles subsidios ? (Si no eligió ninguno):]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="238" width="182" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="383" y="239" width="191" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="228" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Número de hijas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="228" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Número de hijos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="240" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Edades hijos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="314" width="182" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="304" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Departamento residencia:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="401" y="315" width="173" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="306" y="304" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Municipio residencia:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="326" width="182" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="316" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Correo electrónico:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="509" y="339" width="65" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="306" y="328" width="203" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Años-meses liderazgo (Si eligió SI en liderazgo):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="328" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[¿Ha ejercido liderazgo ?:]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="36" y="100" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="61" y="99" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Masculino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="112" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Femenino]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="36" y="112" width="14" height="12"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="85" y="186" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="105" y="186" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Si]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="85" y="198" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="105" y="198" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="340" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="113" y="340" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="133" y="328" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Si]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="113" y="328" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="405" y="198" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Municipal]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="385" y="198" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="405" y="186" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nacional]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="385" y="186" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="405" y="210" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Ninguno]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="385" y="210" width="14" height="12"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="85" y="252" width="89" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[6   - 10 años]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="65" y="240" width="14" height="12"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="85" y="264" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[11 - 14 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="240" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[0   - 5 años]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="65" y="264" width="14" height="12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="65" y="252" width="14" height="12"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="85" y="276" width="52" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[15 - 21 años]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="65" y="276" width="14" height="12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="65" y="288" width="14" height="12"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="85" y="288" width="100" height="12"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Mayores de 21 años]]></text>
+			</staticText>
+			<line>
+				<reportElement x="198" y="154" width="7" height="1"/>
+			</line>
+			<line>
+				<reportElement x="237" y="154" width="7" height="1"/>
+			</line>
+			<line>
+				<reportElement x="537" y="332" width="7" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="357" width="144" height="20"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos complementarios:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="373" width="133" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="304" y="381" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ocupaciones actuales:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="381" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Niveles educativos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="394" width="174" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Organizaciones pertenecientes:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

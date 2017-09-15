@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listarEncuesta" language="groovy" pageWidth="556" pageHeight="736" whenNoDataType="AllSectionsNoDetail" columnWidth="556" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7c9396fa-dd83-41d7-91b4-e8e9abfba16a">
+	<property name="ireport.zoom" value="1.3995221406291998"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="variable" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="encuesta" class="java.lang.Object"/>
+	<field name="valor" class="java.lang.Object"/>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f9297c75-3623-4f30-9158-8719dadc4420" positionType="Float" x="22" y="2" width="534" height="12"/>
+				<textElement markup="html">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}[2]+( $F{valor}[3].equals("S") ? "Juestifique: ______________________________" : "" )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="03f5bec1-ec73-4964-8973-7dd0d71901c3" x="0" y="2" width="22" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[*]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<noData>
+		<band height="20">
+			<line>
+				<reportElement uuid="ea9cf00e-6500-4567-9cc5-2c2eb3219022" x="0" y="15" width="172" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</noData>
+</jasperReport>

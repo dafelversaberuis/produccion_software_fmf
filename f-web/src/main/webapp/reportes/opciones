@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listarEncuesta" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="556" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="7c9396fa-dd83-41d7-91b4-e8e9abfba16a">
+	<property name="ireport.zoom" value="1.3995221406291998"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="variable" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="encuesta" class="java.lang.Object"/>
+	<field name="valor" class="java.lang.Object"/>
+	<field name="hijos" class="java.util.List"/>
+	<pageHeader>
+		<band height="106" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement uuid="03c82b25-c878-453e-967c-7c02077c7e3a" x="354" y="0" width="157" height="103"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="0abf3aa7-7934-4bec-8d94-94225d515d80" x="80" y="34" width="169" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FUNDACIÓN MUJER Y FUTURO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ee05e262-a750-4417-a006-972e124f63d5" x="0" y="49" width="354" height="15"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENCUESTA: "+$P{encuesta}[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ee05e262-a750-4417-a006-972e124f63d5" x="0" y="65" width="354" height="15"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["VIGENCIA: "+$P{encuesta}[2]+" a "+$P{encuesta}[3]]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f9297c75-3623-4f30-9158-8719dadc4420" positionType="Float" x="25" y="2" width="531" height="12"/>
+				<textElement markup="html">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="04d89d02-eca1-4520-8b80-1c3b1efbd544" positionType="Float" x="2" y="2" width="21" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}+"."]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="3fde5544-86b1-487e-8767-3af84fc2dbf4" positionType="Float" x="0" y="16" width="556" height="1"/>
+			</line>
+			<subreport>
+				<reportElement uuid="f6d9267b-edbb-4dcf-adaa-2224ce561259" x="0" y="21" width="556" height="2"/>
+				<subreportParameter name="pNombre">
+					<subreportParameterExpression><![CDATA[$F{nombre}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.List)$F{hijos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "opciones.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54">
+			<staticText>
+				<reportElement uuid="99bfc87a-722a-4a86-8ba8-4f1f9bdf68c1" x="169" y="3" width="219" height="35"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Contacto: direccion@mujeryfuturo.org
+Teléfonos: (+57-7)6341589 - (+57)3105765181]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1f89eb67-317a-4071-a318-d4019c490739" x="205" y="30" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="f6d91619-ff76-4a9a-8e2e-9af6d0775396" x="285" y="30" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
