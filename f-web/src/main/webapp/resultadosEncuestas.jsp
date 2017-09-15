@@ -84,11 +84,11 @@ List<Object[]> cursos = bAdministrarPublicaciones.getEncuestas();
 		</td>
 		<td align="center" bgcolor="<%=color %>" ><%if(i[4].equals("No")){ %><a href="preguntas.jsp?encuesta=<%=i[0] %>&id=<%=i[0]%>&nc=<%=i[1] %>">Preguntas</a><%} %></td>
 		
-		<td align="center" bgcolor="<%=color %>" ><a href="#" onclick="window.open('/web/estructura.jsp?encuesta=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=600, height=400'); return false;" style="text-decoration:none">Ver Diseño</a></td>
-		<td align="center" bgcolor="<%=color %>" ><%if(!i[4].equals("No")){ %><a href="#" onclick="window.open('/web/resultado.jsp?encuesta=<%=i[0] %>', 'popup2', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=700, height=500'); return false;" style="text-decoration:none">Resultados</a><%} %></td>
+		<td align="center" bgcolor="<%=color %>" ><a href="#" onclick="window.open('/f-web/estructura.jsp?encuesta=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=600, height=400'); return false;" style="text-decoration:none">Ver Diseño</a></td>
+		<td align="center" bgcolor="<%=color %>" ><%if(!i[4].equals("No")){ %><a href="#" onclick="window.open('/f-web/resultado.jsp?encuesta=<%=i[0] %>', 'popup2', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=700, height=500'); return false;" style="text-decoration:none">Resultados</a><%} %></td>
 		<td align="center" bgcolor="<%=color %>"><%if(i[4].equals("No")){ %><a href="#" onclick="cargarEliminarEncuesta(<%=i[0]%>); return false;">Eliminar</a><%} %></td> 
 		
-		<td align="center" bgcolor="<%=color %>"><%if(i[4].equals("No")){ %><a href="#" onclick="window.open('/web/editarEncuesta.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Editar</a><%} %></td>
+		<td align="center" bgcolor="<%=color %>"><%if(i[4].equals("No")){ %><a href="#" onclick="window.open('/f-web/editarEncuesta.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Editar</a><%} %></td>
 		 
 		
 	</tr>

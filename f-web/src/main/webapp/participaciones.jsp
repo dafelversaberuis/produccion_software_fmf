@@ -170,7 +170,7 @@
 							<h4>Participación en organizaciones de: <%=nombreCurso %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearParticipacion.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">(Nueva participación)</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearParticipacion.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">(Nueva participación)</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

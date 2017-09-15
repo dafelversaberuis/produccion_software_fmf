@@ -41,7 +41,7 @@ function cargarCrearPortafolio() {
 	ajax = nuevoAjax();
 	parametros = "t=" + document.getElementById("txtTitulo").value + "&c="
 			+ document.getElementById("txtContenido").value;
-	url = "/web/nuevaCreacionPortafolio.jsp";
+	url = "/f-web/nuevaCreacionPortafolio.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -216,7 +216,7 @@ function nuevaLineaC(id) {
 	var mensaje = "";
 
 	if (document.getElementById('linea').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Seleccione la línea a agregar\n";
+		mensaje = mensaje + "* Seleccione la lï¿½nea a agregar\n";
 	}
 
 	if (mensaje.replace(/^\s*|\s*$/g, "") == "") {
@@ -233,7 +233,7 @@ function nuevaParticipacion(id) {
 	var mensaje = "";
 
 	if (document.getElementById('niveles').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Seleccione tipo de participación\n";
+		mensaje = mensaje + "* Seleccione tipo de participaciï¿½n\n";
 	} else {
 
 		datos = document.getElementById('niveles').value.split("-");
@@ -271,7 +271,7 @@ function nuevaCapacitacion(id) {
 	var mensaje = "";
 
 	if (document.getElementById('niveles').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Seleccione capacitación recibida\n";
+		mensaje = mensaje + "* Seleccione capacitaciï¿½n recibida\n";
 	} else {
 
 		datos = document.getElementById('niveles').value.split("-");
@@ -288,11 +288,11 @@ function nuevaCapacitacion(id) {
 	}
 
 	if (document.getElementById('percepcion').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Seleccione la percepción\n";
+		mensaje = mensaje + "* Seleccione la percepciï¿½n\n";
 	}
 
 	if (document.getElementById('institucion').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Escriba la institución\n";
+		mensaje = mensaje + "* Escriba la instituciï¿½n\n";
 	}
 
 	if (document.getElementById('tiempo').value.replace(/^\s*|\s*$/g, "") == "") {
@@ -617,7 +617,7 @@ function nuevoProyectoLinea() {
 	}
 
 	if (document.getElementById('linea').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Seleccione una línea estratégica\n";
+		mensaje = mensaje + "* Seleccione una lï¿½nea estratï¿½gica\n";
 	}
 
 	if (document.getElementById('financiador').value.replace(/^\s*|\s*$/g, "") == "") {
@@ -638,7 +638,7 @@ function nuevaLinea() {
 	var mensaje = "";
 
 	if (document.getElementById('txtCurso').value.replace(/^\s*|\s*$/g, "") == "") {
-		mensaje = mensaje + "* Escriba el nombre de la línea\n";
+		mensaje = mensaje + "* Escriba el nombre de la lï¿½nea\n";
 	}
 
 	if (mensaje.replace(/^\s*|\s*$/g, "") == "") {
@@ -737,7 +737,7 @@ function cargarEditarPregunta(pregunta) {
 					/^\s*|\s*$/g, "")) + "&tipo="
 			+ document.getElementById("tipo").value + "&parametro="
 			+ document.getElementById("parametro_asociado").value;
-	url = "/web/nuevaEdicionPregunta.jsp";
+	url = "/f-web/nuevaEdicionPregunta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -781,7 +781,7 @@ function cargarCrearPregunta(id) {
 			+ encodeURIComponent(tinyMCE.get('pregunta').getContent().replace(
 					/^\s*|\s*$/g, "")) + "&tipo="
 			+ document.getElementById("tipo").value;
-	url = "/web/nuevaCreacionPregunta.jsp";
+	url = "/f-web/nuevaCreacionPregunta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -826,7 +826,7 @@ function cargarEditarOpcion(id) {
 					/^\s*|\s*$/g, "")) + "&a="
 			+ document.getElementById('aclarar').value;
 
-	url = "/web/nuevaEdicionOpcion.jsp";
+	url = "/f-web/nuevaEdicionOpcion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -871,7 +871,7 @@ function cargarCrearOpcion(id) {
 					/^\s*|\s*$/g, "")) + "&a="
 			+ document.getElementById('aclarar').value;
 
-	url = "/web/nuevaCreacionOpcion.jsp";
+	url = "/f-web/nuevaCreacionOpcion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -911,7 +911,7 @@ function cargarEditarTema(id) {
 	ajax = nuevoAjax();
 	parametros = "id=" + id + "&c="
 			+ encodeURIComponent(document.getElementById("txtCurso").value);
-	url = "/web/nuevaEdicionTema.jsp";
+	url = "/f-web/nuevaEdicionTema.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -951,7 +951,7 @@ function cargarCrearFinanciadorC(id) {
 	ajax = nuevoAjax();
 	parametros = "id=" + id + "&c="
 			+ encodeURIComponent(document.getElementById("financiador").value);
-	url = "/web/nuevaCreacionFinanciadorC.jsp";
+	url = "/f-web/nuevaCreacionFinanciadorC.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -991,7 +991,7 @@ function cargarCrearLineaC(id) {
 	ajax = nuevoAjax();
 	parametros = "id=" + id + "&c="
 			+ encodeURIComponent(document.getElementById("linea").value);
-	url = "/web/nuevaCreacionLineaC.jsp";
+	url = "/f-web/nuevaCreacionLineaC.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1069,7 +1069,7 @@ function cargarCrearActividad(id) {
 			+ "&cual=" + document.getElementById("cual").value + "&rango="
 			+ document.getElementById("rango").value + "&minimo="
 			+ document.getElementById("minimo").value;
-	url = "/web/nuevaCreacionActividad.jsp";
+	url = "/f-web/nuevaCreacionActividad.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1113,7 +1113,7 @@ function cargarCrearCapacitacion(id) {
 			+ "&institucion=" + document.getElementById("institucion").value
 			+ "&percepcion=" + document.getElementById("percepcion").value
 			+ "&tiempo=" + document.getElementById("tiempo").value;
-	url = "/web/nuevaCreacionCapacitacion.jsp";
+	url = "/f-web/nuevaCreacionCapacitacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1154,7 +1154,7 @@ function cargarCrearNivel(id) {
 	parametros = "id=" + id + "&c="
 			+ encodeURIComponent(document.getElementById("niveles").value)
 			+ "&cual=" + document.getElementById("cual").value;
-	url = "/web/nuevaCreacionNivel.jsp";
+	url = "/f-web/nuevaCreacionNivel.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1197,7 +1197,7 @@ function cargarCrearParticipacion(id) {
 			+ "&cual=" + document.getElementById("cual").value + "&tipo="
 			+ document.getElementById("tipo").value + "&cargos="
 			+ document.getElementById("cargos").value;
-	url = "/web/nuevaCreacionParticipacion.jsp";
+	url = "/f-web/nuevaCreacionParticipacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1237,7 +1237,7 @@ function cargarCrearTema(id) {
 	ajax = nuevoAjax();
 	parametros = "id=" + id + "&c="
 			+ encodeURIComponent(document.getElementById("txtCurso").value);
-	url = "/web/nuevaCreacionTema.jsp";
+	url = "/f-web/nuevaCreacionTema.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1279,7 +1279,7 @@ function cargarEditarEncuesta(id) {
 			+ encodeURIComponent(document.getElementById("encuesta").value)
 			+ "&fecha_desde=" + document.getElementById("fecha_desde").value
 			+ "&fecha_hasta=" + document.getElementById("fecha_hasta").value;
-	url = "/web/nuevaEdicionEncuesta.jsp";
+	url = "/f-web/nuevaEdicionEncuesta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1321,7 +1321,7 @@ function cargarCrearEncuesta() {
 			+ encodeURIComponent(document.getElementById("encuesta").value)
 			+ "&fecha_desde=" + document.getElementById("fecha_desde").value
 			+ "&fecha_hasta=" + document.getElementById("fecha_hasta").value;
-	url = "/web/nuevaCreacionEncuesta.jsp";
+	url = "/f-web/nuevaCreacionEncuesta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1365,7 +1365,7 @@ function cargarCrearProyectoLinea() {
 			+ encodeURIComponent(document.getElementById("linea").value)
 			+ "&f="
 			+ encodeURIComponent(document.getElementById("financiador").value);
-	url = "/web/nuevaCreacionProyectoLinea.jsp";
+	url = "/f-web/nuevaCreacionProyectoLinea.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1405,7 +1405,7 @@ function cargarCrearLinea() {
 	ajax = nuevoAjax();
 	parametros = "c="
 			+ encodeURIComponent(document.getElementById("txtCurso").value);
-	url = "/web/nuevaCreacionLinea.jsp";
+	url = "/f-web/nuevaCreacionLinea.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1445,7 +1445,7 @@ function cargarCrearProyecto() {
 	ajax = nuevoAjax();
 	parametros = "c="
 			+ encodeURIComponent(document.getElementById("txtCurso").value);
-	url = "/web/nuevaCreacionProyecto.jsp";
+	url = "/f-web/nuevaCreacionProyecto.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1485,7 +1485,7 @@ function cargarCrearFinanciador() {
 	ajax = nuevoAjax();
 	parametros = "c="
 			+ encodeURIComponent(document.getElementById("txtCurso").value);
-	url = "/web/nuevaCreacionFinanciador.jsp";
+	url = "/f-web/nuevaCreacionFinanciador.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1527,7 +1527,7 @@ function cargarEditarCurso(id) {
 			+ encodeURIComponent(document.getElementById("txtCurso").value)
 			+ "&p="
 			+ encodeURIComponent(document.getElementById("proyecto").value);
-	url = "/web/nuevaEdicionCurso.jsp";
+	url = "/f-web/nuevaEdicionCurso.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1569,7 +1569,7 @@ function cargarCrearCurso() {
 			+ encodeURIComponent(document.getElementById("txtCurso").value)
 			+ "&p="
 			+ encodeURIComponent(document.getElementById("proyecto").value);
-	url = "/web/nuevaCreacionCurso.jsp";
+	url = "/f-web/nuevaCreacionCurso.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1662,7 +1662,7 @@ function nuevoAdmin() {
 function cargarCrearMC(id_mujer, id) {
 	ajax = nuevoAjax();
 	parametros = "id=" + id + "&id_mujer=" + id_mujer;
-	url = "/web/nuevaCreacionMC.jsp";
+	url = "/f-web/nuevaCreacionMC.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1707,7 +1707,7 @@ function cargarCrearAdmin() {
 			+ document.getElementById("txtCorreo").value + "&clave="
 			+ document.getElementById("txtClave").value + "&doc="
 			+ document.getElementById("txtDocumento").value;
-	url = "/web/nuevaCreacion.jsp";
+	url = "/f-web/nuevaCreacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -1753,7 +1753,7 @@ function cargarAjaxGuardar() {
 			+ document.getElementById('hdnFoto').value + "&tu="
 			+ document.getElementById('hdnTipoUs').value;
 
-	url = "/web/guardarPublicacion.jsp";
+	url = "/f-web/guardarPublicacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleGuardar').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -1799,7 +1799,7 @@ function cargarAjaxGuardarSeccion() {
 			+ document.getElementById('sltDirigido').value + "&pf="
 			+ document.getElementById('hdnFoto').value;
 
-	url = "/web/guardarSeccion.jsp";
+	url = "/f-web/guardarSeccion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleGuardar').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -1899,7 +1899,7 @@ function agregarFoto(foto) {
 	// alert(foto);
 	// temporalmente
 	// foto = "publicacion.jpg";
-	window.opener.document.getElementById('detalleFoto1').innerHTML = "<img src='/web/images/publicaciones/"
+	window.opener.document.getElementById('detalleFoto1').innerHTML = "<img src='/f-web/images/publicaciones/"
 			+ foto + "' width='317' height='187' />";
 	window.opener.document.getElementById('detalleFoto2').innerHTML = "<a class='current' href='#' onclick='removerFoto(); return false;'>(Remover imagen)</a><br>";
 	window.opener.document.getElementById('hdnFoto').value = foto;
@@ -1909,7 +1909,7 @@ function agregarFoto(foto) {
 
 function buscarFoto() {
 	window
-			.open('/web/subirFotoPublicacion.jsp', 'popup',
+			.open('/f-web/subirFotoPublicacion.jsp', 'popup',
 					'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=400, height=300');
 }
 
@@ -1943,7 +1943,7 @@ function aceptar() {
 						.getElementById('hdnNombreEgresado').value;
 				window.close();
 			} catch (e) {
-				alert('La ventana que abrió este buscador fue cerrada o se cambió la opción de egresado particular a otra, en la opción dirigido a: . Por favor verifique');
+				alert('La ventana que abriï¿½ este buscador fue cerrada o se cambiï¿½ la opciï¿½n de egresado particular a otra, en la opciï¿½n dirigido a: . Por favor verifique');
 			}
 
 		}
@@ -1961,7 +1961,7 @@ function aceptar2Sugerido() {
 function cargarAjaxInvitarSugerido() {
 	ajax = nuevoAjax();
 	var correoSugerido = prompt(
-			'Sugiéranos un correo del egresado a invitar y clic en aceptar, sino digita nada o cancela se enviará al predeterminado',
+			'Sugiï¿½ranos un correo del egresado a invitar y clic en aceptar, sino digita nada o cancela se enviarï¿½ al predeterminado',
 			'');
 	var ti = 0;
 	if (correoSugerido != null
@@ -1973,7 +1973,7 @@ function cargarAjaxInvitarSugerido() {
 	parametros = "us=" + document.getElementById('hdnUs').value + "&usd="
 			+ document.getElementById('hdnEgresado').value + "&ti=" + ti
 			+ "&correo=" + correoSugerido;
-	url = "/web/invitarEgresados/enviarInvitacion.jsp";
+	url = "/f-web/invitarEgresados/enviarInvitacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleInvitacion').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Invitando egresado...";
@@ -1983,9 +1983,9 @@ function cargarAjaxInvitarSugerido() {
 				document.getElementById('detalleInvitacion').style.background = "";
 				document.getElementById('detalleInvitacion').innerHTML = ajax.responseText;
 				if (parseInt(document.getElementById('hdnInvito').value) == 1) {
-					alert('Perfecto ya el egresado ha sido invitado o contactado. Para ello se le ha enviado un correo electrónico con el mensaje correspondiente (antes descrito)');
+					alert('Perfecto ya el egresado ha sido invitado o contactado. Para ello se le ha enviado un correo electrï¿½nico con el mensaje correspondiente (antes descrito)');
 				} else {
-					alert('Lamentablemente no se puede contactar el egresado ya que no posee un correo electrónico actualizado, donde pueda contactarse');
+					alert('Lamentablemente no se puede contactar el egresado ya que no posee un correo electrï¿½nico actualizado, donde pueda contactarse');
 				}
 
 			} else if (ajax.status == 404) {
@@ -2015,7 +2015,7 @@ function cargarAjaxInvitar() {
 	parametros = "us=" + document.getElementById('hdnUs').value + "&usd="
 			+ document.getElementById('hdnEgresado').value
 			+ "&ti=0&correo=vacio";
-	url = "/web/invitarEgresados/enviarInvitacion.jsp";
+	url = "/f-web/invitarEgresados/enviarInvitacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleInvitacion').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Invitando egresado...";
@@ -2025,9 +2025,9 @@ function cargarAjaxInvitar() {
 				document.getElementById('detalleInvitacion').style.background = "";
 				document.getElementById('detalleInvitacion').innerHTML = ajax.responseText;
 				if (parseInt(document.getElementById('hdnInvito').value) == 1) {
-					alert('Perfecto ya el egresado ha sido invitado o contactado. Para ello se le ha enviado un correo electrónico con el mensaje correspondiente (antes descrito)');
+					alert('Perfecto ya el egresado ha sido invitado o contactado. Para ello se le ha enviado un correo electrï¿½nico con el mensaje correspondiente (antes descrito)');
 				} else {
-					alert('Lamentablemente no se puede contactar el egresado ya que no posee un correo electrónico actualizado, donde pueda contactarse');
+					alert('Lamentablemente no se puede contactar el egresado ya que no posee un correo electrï¿½nico actualizado, donde pueda contactarse');
 				}
 
 			} else if (ajax.status == 404) {
@@ -2072,7 +2072,7 @@ function cargarAjaxEgresados() {
 			+ document.getElementById('txtNombre2').value + "&pa="
 			+ document.getElementById('txtApellido1').value + "&sa="
 			+ document.getElementById('txtApellido2').value;
-	url = "/web/buscadores/resultadosEgresados.jsp";
+	url = "/f-web/buscadores/resultadosEgresados.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleBusqueda').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Buscando...";
@@ -2102,7 +2102,7 @@ function cargarAjaxEgresados2() {
 			+ document.getElementById('txtNombre2').value + "&pa="
 			+ document.getElementById('txtApellido1').value + "&sa="
 			+ document.getElementById('txtApellido2').value;
-	url = "/web/buscadores/resultadosEgresados2.jsp";
+	url = "/f-web/buscadores/resultadosEgresados2.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleBusqueda').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Buscando...";
@@ -2138,7 +2138,7 @@ function cargarAjaxEgresados3() {
 			if (parseInt(document.getElementById('txtAno').value) > parseInt(document
 					.getElementById('txtAno2').value)) {
 				mensaje = mensaje
-						+ "* El año comienzo debe ser menor o igual al año fin\n";
+						+ "* El aï¿½o comienzo debe ser menor o igual al aï¿½o fin\n";
 			}
 
 		} catch (e) {
@@ -2177,7 +2177,7 @@ function cargarAjaxEgresados3() {
 				+ document.getElementById('lstPeriodo2').value + "&correo="
 				+ document.getElementById('lstCorreo').value + "&te="
 				+ document.getElementById('lstTipoEgresado').value;
-		url = "/web/buscadores/resultadosEgresados3.jsp";
+		url = "/f-web/buscadores/resultadosEgresados3.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleBusqueda').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Generando listado...";
@@ -2210,7 +2210,7 @@ function cambiarDirigido() {
 	document.getElementById('hdnEgresado').value = "0";
 	if (document.getElementById('sltDirigido').value == "3") {
 		document.getElementById('detalleEgresado').innerHTML = "<input name='txtEgresado' type='text' disabled='disabled' class='searchfield' id='txtEgresado' style='text-align: center' value='Busque un egresado en el logo(lupa)' />";
-		document.getElementById('detalleEgresado2').innerHTML = "<img src='/web/images/buscar.png' width='32' height='32' class='none' style='width: 27px; height: 26px; cursor: hand'	onclick='buscarEgresado(); return false;' />";
+		document.getElementById('detalleEgresado2').innerHTML = "<img src='/f-web/images/buscar.png' width='32' height='32' class='none' style='width: 27px; height: 26px; cursor: hand'	onclick='buscarEgresado(); return false;' />";
 
 	} else {
 		document.getElementById('detalleEgresado').innerHTML = "";
@@ -2221,14 +2221,14 @@ function cambiarDirigido() {
 
 function buscarEgresado() {
 	window
-			.open('/web/buscadores/buscarEgresado.jsp', 'popup',
+			.open('/f-web/buscadores/buscarEgresado.jsp', 'popup',
 					'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=800, height=500');
 }
 
 function cargarEliminarArchivos(archivo, idarchivo) {
 	ajax = nuevoAjax();
 	parametros = "archivo=" + archivo + "&idarchivo=" + idarchivo;
-	url = "/web/archivosPlanos/eliminarArchivoPlano.jsp";
+	url = "/f-web/archivosPlanos/eliminarArchivoPlano.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo espere un momento...";
@@ -2239,7 +2239,7 @@ function cargarEliminarArchivos(archivo, idarchivo) {
 				document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
 
 				if (parseInt(document.getElementById('hdnElimino').value) == 1) {
-					alert('archivo eliminado con éxito');
+					alert('archivo eliminado con ï¿½xito');
 					cargarPlanos();
 
 				}
@@ -2263,7 +2263,7 @@ function cargarEliminarPortafolio(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL SERVICIO DE SU PORTAFOLIO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarPortafolio.jsp";
+		url = "/f-web/eliminarPortafolio.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando servicio espere un momento...";
@@ -2303,7 +2303,7 @@ function cargarEliminarCertificado(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL CAPACITADO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarCertificado.jsp";
+		url = "/f-web/eliminarCertificado.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleLote').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2348,7 +2348,7 @@ function cargarEliminarMujer(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA HOJA DE VIDA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarMujer.jsp";
+		url = "/f-web/eliminarMujer.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando hoja de vida espere un momento...";
@@ -2388,7 +2388,7 @@ function cargarEliminarMC(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL LA MUJER DEL CURSO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarMC.jsp";
+		url = "/f-web/eliminarMC.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando tema del curso espere un momento...";
@@ -2428,7 +2428,7 @@ function cargarEliminarPregunta(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA PREGUNTA DE LA ENCUESTA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarPregunta.jsp";
+		url = "/f-web/eliminarPregunta.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando pregunta espere un momento...";
@@ -2468,7 +2468,7 @@ function cargarEliminarOpcion(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA OPCION DE RESPUESTA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarOpcion.jsp";
+		url = "/f-web/eliminarOpcion.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2508,7 +2508,7 @@ function cargarEliminarFinanciadorC(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL FINANCIADOR DEL CURSO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarFinanciadorC.jsp";
+		url = "/f-web/eliminarFinanciadorC.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2548,7 +2548,7 @@ function cargarEliminarLineaC(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA LINEA ESTRATEGICA DEL CURSO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarLineaC.jsp";
+		url = "/f-web/eliminarLineaC.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2563,7 +2563,7 @@ function cargarEliminarLineaC(admin, curso) {
 						cargarLineasC(curso);
 
 					} else {
-						alert('NO SE PUEDE ELIMINAR LINEA ESTRATÉGICA DEL CURSO PUES TIENE ASOCIADO CONTENIDO.');
+						alert('NO SE PUEDE ELIMINAR LINEA ESTRATï¿½GICA DEL CURSO PUES TIENE ASOCIADO CONTENIDO.');
 
 					}
 
@@ -2588,7 +2588,7 @@ function cargarEliminarArchivoTema(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL ARCHIVO DEL TEMA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarArchivoTema.jsp";
+		url = "/f-web/eliminarArchivoTema.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo espere un momento...";
@@ -2628,7 +2628,7 @@ function cargarEliminarActividad(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA ACTIVIDAD ECONOMICA REPORTADA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarActividad.jsp";
+		url = "/f-web/eliminarActividad.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2668,7 +2668,7 @@ function cargarEliminarParticipaciones(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA PARTICIPACION REGISTRADA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarParticipacion.jsp";
+		url = "/f-web/eliminarParticipacion.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2709,7 +2709,7 @@ function cargarEliminarCapacitacion(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA CAPACITACION RECIBIDA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarCapacitacion.jsp";
+		url = "/f-web/eliminarCapacitacion.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2749,7 +2749,7 @@ function cargarEliminarNivel(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL NIVEL EDUCATIVO DE LA MUJER?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarNivel.jsp";
+		url = "/f-web/eliminarNivel.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -2789,7 +2789,7 @@ function cargarEliminarTema(admin, curso) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL TEMA DEL CURSO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarTema.jsp";
+		url = "/f-web/eliminarTema.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando tema del curso espere un momento...";
@@ -2829,7 +2829,7 @@ function cargarEliminarAsistencia(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL REGISTRO DE ASISTENCIA DE LA MUJER ?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarAsistencia.jsp";
+		url = "/f-web/eliminarAsistencia.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleLote').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando asistencia espere un momento...";
@@ -2869,7 +2869,7 @@ function activarEncuesta(admin) {
 	if (confirm('REALMENTE DESEA ACTIVAR LA ENCUESTA?. LUEGO DE ACTIVA NO PODRA MODIFICARLA.')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/activarEncuesta.jsp";
+		url = "/f-web/activarEncuesta.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Activando encuesta espere un momento...";
@@ -3004,7 +3004,7 @@ function validarLleno(j) {
 
 	ajax = nuevoAjax();
 	parametros = parametro;
-	url = "/web/nuevaRespuesta.jsp";
+	url = "/f-web/nuevaRespuesta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle_respuesta').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -3042,7 +3042,7 @@ function contestarEncuesta(admin) {
 
 	ajax = nuevoAjax();
 	parametros = "id=" + admin;
-	url = "/web/contestarEncuesta.jsp";
+	url = "/f-web/contestarEncuesta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -3078,7 +3078,7 @@ function cargarEliminarEncuesta(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA ENCUESTA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarEncuesta.jsp";
+		url = "/f-web/eliminarEncuesta.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando encuesta espere un momento...";
@@ -3118,7 +3118,7 @@ function cargarEliminarProyectoLinea(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA RELACION PROYECTO-LINEA-FINANCIADOR?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarProyectoLinea.jsp";
+		url = "/f-web/eliminarProyectoLinea.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -3158,7 +3158,7 @@ function cargarEliminarLinea(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR LA LINEA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarLinea.jsp";
+		url = "/f-web/eliminarLinea.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -3198,7 +3198,7 @@ function cargarEliminarProyecto(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL PROYECTO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarProyecto.jsp";
+		url = "/f-web/eliminarProyecto.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -3238,7 +3238,7 @@ function cargarEliminarLogoFinanciador(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL LOGO DEL FINANCIADOR?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarLogo.jsp";
+		url = "/f-web/eliminarLogo.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando logo espere un momento...";
@@ -3280,7 +3280,7 @@ function cargarEliminarFinanciador(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR FINANCIADOR ?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarFinanciador.jsp";
+		url = "/f-web/eliminarFinanciador.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -3322,7 +3322,7 @@ function cargarEliminarCurso(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL CURSO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarCurso.jsp";
+		url = "/f-web/eliminarCurso.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando curso espere un momento...";
@@ -3362,7 +3362,7 @@ function cargarEliminarAdministrador(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL ADMINISTRADOR?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarAdministrador.jsp";
+		url = "/f-web/eliminarAdministrador.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando administrador espere un momento...";
@@ -3400,7 +3400,7 @@ function cargarEliminarAdministrador(admin) {
 function cargarMigrarPlanos(idarchivo) {
 	ajax = nuevoAjax();
 	parametros = "idarchivo=" + idarchivo;
-	url = "/web/archivosPlanos/migrarArchivoPlano.jsp";
+	url = "/f-web/archivosPlanos/migrarArchivoPlano.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Migrando egresados EISI UIS a la base de datos espere un momento...";
@@ -3416,7 +3416,7 @@ function cargarMigrarPlanos(idarchivo) {
 							+ " egresados EISI UIS a la base de datos");
 
 				} else {
-					alert('No se mirgó ningún egresado EISI UIS a la base de datos');
+					alert('No se mirgï¿½ ningï¿½n egresado EISI UIS a la base de datos');
 				}
 
 			} else if (ajax.status == 404) {
@@ -3436,7 +3436,7 @@ function cargarMigrarPlanos(idarchivo) {
 function cargarPrivadas() {
 	ajax = nuevoAjax();
 	parametros = "us=" + document.getElementById('hdnUs').value;
-	url = "/web/notasPrivadasRecientes.jsp";
+	url = "/f-web/notasPrivadasRecientes.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detallePrivadas').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -3462,10 +3462,10 @@ function cargarPrivadas() {
 
 function cargarPlanos() {
 	ajax = nuevoAjax();
-	url = "/web/archivosPlanos/resultadosPlanos.jsp";
+	url = "/f-web/archivosPlanos/resultadosPlanos.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
-			document.getElementById('detalleArchivos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Cargando información...";
+			document.getElementById('detalleArchivos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Cargando informaciï¿½n...";
 		} else if (ajax.readyState == 4) {
 			if (ajax.status == 200) {
 				document.getElementById('detalleArchivos').innerHTML = "";
@@ -3488,7 +3488,7 @@ function cargarPlanos() {
 
 function cargarPortafolios() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosPortafolios.jsp";
+	url = "/f-web/resultadosPortafolios.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -3585,7 +3585,7 @@ function validarLoteConsulta() {
 
 function cargarLotes2() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosLotes2.jsp?d="
+	url = "/f-web/resultadosLotes2.jsp?d="
 			+ document.getElementById("documento_certificado").value.replace(
 					/^\s*|\s*$/g, "");
 
@@ -3614,7 +3614,7 @@ function cargarLotes2() {
 
 function cargarLotes() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosLotes.jsp?tc="
+	url = "/f-web/resultadosLotes.jsp?tc="
 			+ document.getElementById("certificado").value
 			+ "&n="
 			+ document.getElementById("nombre").value.replace(/^\s*|\s*$/g, "")
@@ -3869,7 +3869,7 @@ function consultarMujer(id) {
 			+ "&doc="
 			+ encodeURIComponent(document.getElementById("control5").value);
 
-	url = "/web/mujeresConsultadas.jsp";
+	url = "/f-web/mujeresConsultadas.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -3898,7 +3898,7 @@ function cargarEliminarParametro(admin) {
 	if (confirm('REALMENTE DESEA ELIMINAR EL PARAMETRO?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
-		url = "/web/eliminarParametro.jsp";
+		url = "/f-web/eliminarParametro.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando espere un momento...";
@@ -3960,7 +3960,7 @@ function cargarCrearParametro() {
 			+ encodeURIComponent(document.getElementById("txtTitulo").value)
 			+ "&v="
 			+ encodeURIComponent(document.getElementById("txtValor").value);
-	url = "/web/nuevaCreacionParametro.jsp";
+	url = "/f-web/nuevaCreacionParametro.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalle').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> ";
@@ -3998,7 +3998,7 @@ function cargarCrearParametro() {
 
 function cargarParametros() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosParametros.jsp";
+	url = "/f-web/resultadosParametros.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -4090,7 +4090,7 @@ function es_numeroCERTIFICADO(cadena) {
 function validarFechas(mensaje) {
 	document.getElementById('hdnGuardarPublicacion').value = "0";
 	ajax = nuevoAjax();
-	url = "/web/validarFechas.jsp?fi="
+	url = "/f-web/validarFechas.jsp?fi="
 			+ document.getElementById("fecha_inicio").value + "&ff="
 			+ document.getElementById("fecha_fin").value + "&fm="
 			+ document.getElementById("fecha_maxima").value;
@@ -4180,7 +4180,7 @@ function validarFechas(mensaje) {
 
 function cargarNuevoLote() {
 	ajax = nuevoAjax();
-	url = "/web/crearNuevoLote.jsp?n="
+	url = "/f-web/crearNuevoLote.jsp?n="
 			+ document.getElementById("numero_personas").value;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -4213,7 +4213,7 @@ function cargarResultadosOJO2() {
 	if (document.getElementById("encuesta").value != "" && document.getElementById("documento_mujer").value!="") {
 
 		ajax = nuevoAjax();
-		url = "/web/resultadosMujeres2.jsp";
+		url = "/f-web/resultadosMujeres2.jsp";
 
 		parametros = "encuesta=" + document.getElementById("encuesta").value+ "&documento_mujer="+ document.getElementById("documento_mujer").value;
 
@@ -4257,7 +4257,7 @@ function cargarResultadosOJO() {
 	if (document.getElementById("encuesta").value != "") {
 
 		ajax = nuevoAjax();
-		url = "/web/resultadosMujeres2.jsp";
+		url = "/f-web/resultadosMujeres2.jsp";
 
 		parametros = "encuesta=" + document.getElementById("encuesta").value;
 
@@ -4298,7 +4298,7 @@ function cargarResultadosOJO() {
 
 function cargarMujeres() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosMujeres.jsp";
+	url = "/f-web/resultadosMujeres.jsp";
 
 	parametros = "pn="
 			+ encodeURIComponent(document.getElementById("control1").value)
@@ -4853,7 +4853,7 @@ function regresarAsistencia() {
 function cargarMujeresAsistencia2() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosMujeresAsistencia2.jsp";
+	url = "/f-web/resultadosMujeresAsistencia2.jsp";
 	parametros = "numero_asistentes="
 			+ document.getElementById("numero_asistentes").value + "&curso="
 			+ document.getElementById("curso").value + "&tema="
@@ -4896,7 +4896,7 @@ function cargarMujeresAsistencia2() {
 function cargarMujeresAsistenciaResultado() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosMujeresAsistenciaResultado.jsp";
+	url = "/f-web/resultadosMujeresAsistenciaResultado.jsp";
 	parametros = "curso=" + document.getElementById("curso").value + "&tema="
 			+ document.getElementById("temas").value + "&fecha_desde="
 			+ document.getElementById("fecha_desde").value + "&fecha_hasta="
@@ -4961,7 +4961,7 @@ function cargarMujeresAsistenciaResultado() {
 function cargarMujeresAsistencia3() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosMujeresAsistencia3.jsp";
+	url = "/f-web/resultadosMujeresAsistencia3.jsp";
 	parametros = "curso=" + document.getElementById("curso").value + "&tema="
 			+ document.getElementById("temas").value + "&fecha_desde="
 			+ document.getElementById("fecha_desde").value + "&fecha_hasta="
@@ -5024,7 +5024,7 @@ function cargarMujeresAsistencia3() {
 function cargarMujeresAsistencia() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosMujeresAsistencia.jsp";
+	url = "/f-web/resultadosMujeresAsistencia.jsp";
 	parametros = "curso=" + document.getElementById("curso").value + "&tema="
 			+ document.getElementById("temas").value + "&fecha="
 			+ document.getElementById("fecha").value + "&horas="
@@ -5089,7 +5089,7 @@ function cargarMujeresAsistencia() {
 function cargarMujeresCurso(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosMujeresCurso.jsp";
+	url = "/f-web/resultadosMujeresCurso.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5117,7 +5117,7 @@ function cargarMujeresCurso(curso) {
 function cargarBarriosVeredas2() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosBarriosVeredas.jsp";
+	url = "/f-web/resultadosBarriosVeredas.jsp";
 	parametros = "tipo=" + document.getElementById("control14").value + "&id="
 			+ document.getElementById("control15").value;
 
@@ -5151,7 +5151,7 @@ function cargarBarriosVeredas2() {
 function cargarBarriosVeredas() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosBarriosVeredas.jsp";
+	url = "/f-web/resultadosBarriosVeredas.jsp";
 	parametros = "tipo=" + document.getElementById("control14").value + "&id="
 			+ document.getElementById("control15").value;
 
@@ -5182,7 +5182,7 @@ function cargarBarriosVeredas() {
 function cargarTiposDirecciones2() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosTiposDirecciones.jsp";
+	url = "/f-web/resultadosTiposDirecciones.jsp";
 	parametros = "tipo=" + document.getElementById("control14").value;
 
 	if (document.getElementById("control14").value != "") {
@@ -5246,7 +5246,7 @@ function cargarTiposDirecciones2() {
 function cargarTiposDirecciones() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosTiposDirecciones.jsp";
+	url = "/f-web/resultadosTiposDirecciones.jsp";
 	parametros = "tipo=" + document.getElementById("control14").value;
 
 	if (document.getElementById("control14").value != "") {
@@ -5301,7 +5301,7 @@ function cargarTiposDirecciones() {
 function cargarLineasCombo() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosLineas2.jsp";
+	url = "/f-web/resultadosLineas2.jsp";
 	parametros = "id=" + document.getElementById("curso").value;
 
 	ajax.onreadystatechange = function() {
@@ -5330,7 +5330,7 @@ function cargarLineasCombo() {
 function cargarFinanciadoresCombo() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosFinanciadores2.jsp";
+	url = "/f-web/resultadosFinanciadores2.jsp";
 	parametros = "id=" + document.getElementById("curso").value;
 
 	ajax.onreadystatechange = function() {
@@ -5361,7 +5361,7 @@ function cargarFinanciadoresCombo() {
 function cargarTemasCombo() {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosTemas2.jsp";
+	url = "/f-web/resultadosTemas2.jsp";
 	parametros = "id=" + document.getElementById("curso").value;
 
 	if (document.getElementById("curso").value == "") {
@@ -5400,7 +5400,7 @@ function cargarTemasCombo() {
 function cargarPreguntas(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosPreguntas.jsp";
+	url = "/f-web/resultadosPreguntas.jsp";
 	parametros = "id=" + curso + "&encuesta="
 			+ document.getElementById('encuesta').value;
 	ajax.onreadystatechange = function() {
@@ -5429,7 +5429,7 @@ function cargarPreguntas(curso) {
 function cargarOpciones(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosOpciones.jsp";
+	url = "/f-web/resultadosOpciones.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5457,7 +5457,7 @@ function cargarOpciones(curso) {
 function cargarFinanciadoresC(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosFinanciadorC.jsp";
+	url = "/f-web/resultadosFinanciadorC.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5485,7 +5485,7 @@ function cargarFinanciadoresC(curso) {
 function cargarLineasC(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosLineasC.jsp";
+	url = "/f-web/resultadosLineasC.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5513,7 +5513,7 @@ function cargarLineasC(curso) {
 function cargarActividades(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosActividades.jsp";
+	url = "/f-web/resultadosActividades.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5541,7 +5541,7 @@ function cargarActividades(curso) {
 function cargarParticipaciones(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosParticipaciones.jsp";
+	url = "/f-web/resultadosParticipaciones.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5569,7 +5569,7 @@ function cargarParticipaciones(curso) {
 function cargarCapacitaciones(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosCapacitaciones.jsp";
+	url = "/f-web/resultadosCapacitaciones.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5597,7 +5597,7 @@ function cargarCapacitaciones(curso) {
 function cargarNiveles(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosNiveles.jsp";
+	url = "/f-web/resultadosNiveles.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5625,7 +5625,7 @@ function cargarNiveles(curso) {
 function cargarTemas(curso) {
 	ajax = nuevoAjax();
 
-	url = "/web/resultadosTemas.jsp";
+	url = "/f-web/resultadosTemas.jsp";
 	parametros = "id=" + curso;
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5657,7 +5657,7 @@ function cargarOpcionesMujer2() {
 			"") != "") {
 
 		ajax = nuevoAjax();
-		url = "/web/resultadosElegirEncuestaUsuario.jsp";
+		url = "/f-web/resultadosElegirEncuestaUsuario.jsp";
 		parametros = "documento_mujer="
 				+ document.getElementById('documento_mujer').value;
 		ajax.onreadystatechange = function() {
@@ -5698,7 +5698,7 @@ function cargarOpcionesMujer() {
 			"") != "") {
 
 		ajax = nuevoAjax();
-		url = "/web/resultadosElegirResultado.jsp";
+		url = "/f-web/resultadosElegirResultado.jsp";
 		parametros = "documento_mujer="
 				+ document.getElementById('documento_mujer').value;
 		ajax.onreadystatechange = function() {
@@ -5739,7 +5739,7 @@ function cargarEncuestasMujer() {
 			"") != "") {
 
 		ajax = nuevoAjax();
-		url = "/web/resultadosEncuestasMujer.jsp";
+		url = "/f-web/resultadosEncuestasMujer.jsp";
 		parametros = "documento_mujer="
 				+ document.getElementById('documento_mujer').value;
 		ajax.onreadystatechange = function() {
@@ -5776,7 +5776,7 @@ function cargarEncuestasMujer() {
 
 function cargarEncuestas() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosEncuestas.jsp";
+	url = "/f-web/resultadosEncuestas.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5802,7 +5802,7 @@ function cargarEncuestas() {
 
 function cargarCursos() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosCursos.jsp";
+	url = "/f-web/resultadosCursos.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5828,7 +5828,7 @@ function cargarCursos() {
 
 function cargarProyectosLineas() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosProyectosLineas.jsp";
+	url = "/f-web/resultadosProyectosLineas.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5854,7 +5854,7 @@ function cargarProyectosLineas() {
 
 function cargarLineas() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosLineas.jsp";
+	url = "/f-web/resultadosLineas.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5880,7 +5880,7 @@ function cargarLineas() {
 
 function cargarProyectos() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosProyectos.jsp";
+	url = "/f-web/resultadosProyectos.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5906,7 +5906,7 @@ function cargarProyectos() {
 
 function cargarFinanciadores() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosFinanciadores.jsp";
+	url = "/f-web/resultadosFinanciadores.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5932,7 +5932,7 @@ function cargarFinanciadores() {
 
 function cargarAdministradores() {
 	ajax = nuevoAjax();
-	url = "/web/resultadosAdministradores.jsp";
+	url = "/f-web/resultadosAdministradores.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
 			document.getElementById('detalleAdministradores').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -5960,10 +5960,10 @@ function cargarPropias() {
 	ajax = nuevoAjax();
 	parametros = "us=" + document.getElementById('hdnUs').value + "&tu="
 			+ document.getElementById('hdnTipoUs').value;
-	url = "/web/notasRealizadasUsuario.jsp";
+	url = "/f-web/notasRealizadasUsuario.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
-			document.getElementById('detallePropias').innerHTML = "<img src='/web/images/ajax/ajax-loader3.gif'>";
+			document.getElementById('detallePropias').innerHTML = "<img src='/f-web/images/ajax/ajax-loader3.gif'>";
 		} else if (ajax.readyState == 4) {
 			if (ajax.status == 200) {
 				document.getElementById('detallePropias').innerHTML = "";
@@ -5987,7 +5987,7 @@ function cargarPropias() {
 function cargarSeccion() {
 	ajax = nuevoAjax();
 	parametros = "id=" + document.getElementById('hdnSimulador').value;
-	url = "/web/actualizacionSeccion.jsp";
+	url = "/f-web/actualizacionSeccion.jsp";
 
 	document.getElementById('btnAceptar').style.display = "none";
 	document.getElementById('txtContenido').value = "";
@@ -5995,7 +5995,7 @@ function cargarSeccion() {
 
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
-			document.getElementById('pub1').innerHTML = "<img src='/web/images/ajax/ajax-loader3.gif'>";
+			document.getElementById('pub1').innerHTML = "<img src='/f-web/images/ajax/ajax-loader3.gif'>";
 		} else if (ajax.readyState == 4) {
 			if (ajax.status == 200) {
 				document.getElementById('pub1').innerHTML = "";
@@ -6048,10 +6048,10 @@ function eliminarPublicacion(idPublicacion) {
 function eliminarPropia2(idPublicacion) {
 	ajax = nuevoAjax();
 	parametros = "pub=" + idPublicacion;
-	url = "/web/noticias/eliminarPublicacion.jsp";
+	url = "/f-web/noticias/eliminarPublicacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
-			document.getElementById('detalleEliminar').innerHTML = "<img src='/web/images/ajax/ajax-loader3.gif'>";
+			document.getElementById('detalleEliminar').innerHTML = "<img src='/f-web/images/ajax/ajax-loader3.gif'>";
 		} else if (ajax.readyState == 4) {
 			if (ajax.status == 200) {
 				document.getElementById('detalleEliminar').innerHTML = "";
@@ -6061,7 +6061,7 @@ function eliminarPropia2(idPublicacion) {
 					alert('PUBLICACION ELIMINADA CON EXITO');
 					cargarPrivadas();
 				} else {
-					alert('No se ha podido eliminar la publicación, intente mas tarde');
+					alert('No se ha podido eliminar la publicaciï¿½n, intente mas tarde');
 				}
 
 			} else if (ajax.status == 404) {
@@ -6079,7 +6079,7 @@ function eliminarPropia2(idPublicacion) {
 }
 
 function eliminarPublicacion2(idPublicacion) {
-	if (confirm('Realmente desea eliminar la publicación?')) {
+	if (confirm('Realmente desea eliminar la publicaciï¿½n?')) {
 		eliminarPropia2(idPublicacion);
 
 	}
@@ -6089,10 +6089,10 @@ function eliminarPublicacion2(idPublicacion) {
 function eliminarPropia(idPublicacion) {
 	ajax = nuevoAjax();
 	parametros = "pub=" + idPublicacion;
-	url = "/web/eliminarPublicacion.jsp";
+	url = "/f-web/eliminarPublicacion.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
-			document.getElementById('detalleEliminar').innerHTML = "<img src='/web/images/ajax/ajax-loader3.gif'>";
+			document.getElementById('detalleEliminar').innerHTML = "<img src='/f-web/images/ajax/ajax-loader3.gif'>";
 		} else if (ajax.readyState == 4) {
 			if (ajax.status == 200) {
 				document.getElementById('detalleEliminar').innerHTML = "";
@@ -6102,7 +6102,7 @@ function eliminarPropia(idPublicacion) {
 					alert('PUBLICACION ELIMINADA CON EXITO');
 					cargarPropias();
 				} else {
-					alert('No se ha podido eliminar la publicación, intente mas tarde');
+					alert('No se ha podido eliminar la publicaciï¿½n, intente mas tarde');
 				}
 
 			} else if (ajax.status == 404) {

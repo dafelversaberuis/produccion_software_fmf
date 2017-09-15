@@ -180,8 +180,8 @@ function recargar(){
 						<div class="content">
 							<h3>REPOSITORIO DE FOTOS</h3>
 <%  List<RepositorioFotos> fotos = bAdministrarPublicaciones.getRepositorioFotos(); if(fotos==null || (fotos!=null && fotos.size()<4)){ %>
-							<a href="#" style="text-decoration:none" onclick="window.open('/web/subirFoto.jsp?tu=<%=bUsuario.getTipoUsuario()%>&us=<%=bUsuario.getIdUsuario()%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=400, height=300'); return false;">Compartir una nueva foto</a>&nbsp; |<%} %> &nbsp;
-<a href="#" style="text-decoration:none" onclick="window.open('/web/eliminarFoto.jsp?tu=2&us=<%=bUsuario.getIdUsuario()%>&r=<%=Math.random()%>', 'popup2', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=400'); return false;">Eliminar foto</a><br />
+							<a href="#" style="text-decoration:none" onclick="window.open('/f-web/subirFoto.jsp?tu=<%=bUsuario.getTipoUsuario()%>&us=<%=bUsuario.getIdUsuario()%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=400, height=300'); return false;">Compartir una nueva foto</a>&nbsp; |<%} %> &nbsp;
+<a href="#" style="text-decoration:none" onclick="window.open('/f-web/eliminarFoto.jsp?tu=2&us=<%=bUsuario.getIdUsuario()%>&r=<%=Math.random()%>', 'popup2', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=400'); return false;">Eliminar foto</a><br />
 <p>(Sólo se permite hasta cuatro fotos simultáneas para no recargar la página principal)</p>
 <div class="slider">
         					
@@ -193,7 +193,7 @@ function recargar(){
     for(RepositorioFotos l: fotos){
     	%>	
 							<li style="float: left; list-style: none; position: relative; width: 1140px;" class="bx-clone">
-    								<img src="/web/imagenes/cursos/<%=l.getDireccionFoto() %>?rf=<%=Math.random()%>" alt="Multiemegergencias">
+    								<img src="/f-web/imagenes/cursos/<%=l.getDireccionFoto() %>?rf=<%=Math.random()%>" alt="Multiemegergencias">
     							</li>
     							
     					<%

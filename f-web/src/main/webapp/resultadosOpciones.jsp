@@ -67,7 +67,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getOpciones(id);
 		<div align="center" style="font-size:11px"><font color="black"><%if(i[3].equals("N")){out.println("NO");}else{out.println("SI");} %></font></div>
 		</td>
 		<td align="center" style="font-size:11px" bgcolor="<%=color %>"><a href="#" onclick="cargarEliminarOpcion('<%=i[0]%>','<%=id %>'); return false;">Eliminar</a></td>
-		<td align="center"style="font-size:11px" bgcolor="<%=color %>"><a href="#" onclick="window.open('/web/editarOpcion.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=500'); return false;" style="text-decoration:none">Editar</a></td>    
+		<td align="center"style="font-size:11px" bgcolor="<%=color %>"><a href="#" onclick="window.open('/f-web/editarOpcion.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=500'); return false;" style="text-decoration:none">Editar</a></td>    
 		
 	</tr>
 	<%

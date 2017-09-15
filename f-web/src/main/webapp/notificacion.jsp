@@ -85,7 +85,7 @@ if(parametro.trim().equals("")){parametro="Sitio en mantenimiento!";}
 						<div class="content">
 							<h3><%=parametro%></h3>
 <br/>
-							<p><a href="/web/index.jsp"><h5>>>>>>> Volver <<<<<< </h5></a></p>
+							<p><a href="/f-web/index.jsp"><h5>>>>>>> Volver <<<<<< </h5></a></p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 						</div>

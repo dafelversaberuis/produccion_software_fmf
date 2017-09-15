@@ -58,7 +58,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getFinanciadores();
 		<div align="left"><font color="black"><%=i[1] %></font></div>
 		</td>
 		<td align="left" bgcolor="<%=color %>">
-		<%if(i[2].equals("S")){ %><a href="#" onclick="window.open('/web/verLogo.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Ver logo</a><%  }else{%> <a href="#" onclick="window.open('/web/subirLogo.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Cargar nuevo logo</a><% } %>
+		<%if(i[2].equals("S")){ %><a href="#" onclick="window.open('/f-web/verLogo.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Ver logo</a><%  }else{%> <a href="#" onclick="window.open('/f-web/subirLogo.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Cargar nuevo logo</a><% } %>
 		</td>
 		<td align="left" bgcolor="<%=color %>">
 		<div align="left"><font color="black"><%if(i[2].equals("S")){ %> <a href="#" onclick="cargarEliminarLogoFinanciador('<%=i[0]%>'); return false;">Eliminar logo</a> <%  } %></font></div>

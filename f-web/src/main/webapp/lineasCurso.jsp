@@ -215,7 +215,7 @@ if(hdnGuardarPublicacion!=null && hdnGuardarPublicacion.equals("1")){
 							<h4>Lineas del curso: <%=nombreCurso %></h4>
 
 <br/><br/> 
-<a href="#" onclick="window.open('/web/crearLineaC.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Adicionar línea estratégica al curso</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearLineaC.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Adicionar línea estratégica al curso</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

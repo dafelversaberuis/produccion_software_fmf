@@ -170,7 +170,7 @@
 							<h4>Actividades económicas de: <%=nombreCurso %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearActividad.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=800, height=450'); return false;" style="text-decoration:none">(Nueva actividad académica)</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearActividad.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=800, height=450'); return false;" style="text-decoration:none">(Nueva actividad académica)</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

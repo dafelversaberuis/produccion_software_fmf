@@ -171,7 +171,7 @@
 							<h4>Preguntas de la encuesta: <%=bAdministrarPublicaciones.getNombreEncuesta(encuesta)[1] %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearPregunta.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=450'); return false;" style="text-decoration:none">Crear una nueva pregunta a la encuesta</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearPregunta.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=450'); return false;" style="text-decoration:none">Crear una nueva pregunta a la encuesta</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

@@ -215,7 +215,7 @@ if(!(total!=null && !total.equals("") &&  !total.equals("null"))){
 
 						<div class="content">
 							<h4>Adicionar / editar parámetros</h4>
- <a href="#" onclick="window.open('/web/crearParametro.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Crear nuevo parámetro</a><br>
+ <a href="#" onclick="window.open('/f-web/crearParametro.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Crear nuevo parámetro</a><br>
 							<br>
 	    Listado de parámetros actuales
 	     <center><span id="detalleProcesos"></span>

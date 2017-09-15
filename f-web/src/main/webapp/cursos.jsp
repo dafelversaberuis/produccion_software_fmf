@@ -200,7 +200,7 @@
 
 						
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearCurso.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Crear un nuevo curso</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearCurso.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Crear un nuevo curso</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

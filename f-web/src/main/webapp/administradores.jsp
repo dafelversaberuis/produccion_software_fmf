@@ -164,7 +164,7 @@
 
 							<p>Listado de administradores del sistema. Tenga en cuenta que debe existir por lo menos un administrador de &eacute;ste.</p>
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearAdministrador.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Crear un(a) nuevo(a) administrador(a)</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearAdministrador.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">Crear un(a) nuevo(a) administrador(a)</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

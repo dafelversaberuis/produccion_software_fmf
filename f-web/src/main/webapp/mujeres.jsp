@@ -163,7 +163,7 @@
 							<h4>Hoja de Vida Mujeres Fundación</h4>
   						<p>Listado de mujeres que participan en la fundación</p>
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearMujer.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=850, height=400'); return false;" style="text-decoration:none">(Ingresar nueva mujer)</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearMujer.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=850, height=400'); return false;" style="text-decoration:none">(Ingresar nueva mujer)</a><br><br>
 
 
 	    <center>

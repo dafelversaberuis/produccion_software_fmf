@@ -170,7 +170,7 @@
 							<h4>Mujeres inscritas al curso: <%=nombreCurso %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearMC.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=650, height=400'); return false;" style="text-decoration:none">Inscribir mujer en el curso</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearMC.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=650, height=400'); return false;" style="text-decoration:none">Inscribir mujer en el curso</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

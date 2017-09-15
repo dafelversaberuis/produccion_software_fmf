@@ -351,7 +351,7 @@ Seccion seccion = null;
 		<td align="left" colspan="6"><span id="detalleFoto1">
 			<%if(seccion.getDireccionFoto()!=null && !seccion.getDireccionFoto().trim().equals("") && !seccion.getDireccionFoto().trim().equals("null")){ %>
 		
-		<img src='/web/images/publicaciones/<%=seccion.getDireccionFoto() %>' width='317' height='187' />
+		<img src='/f-web/images/publicaciones/<%=seccion.getDireccionFoto() %>' width='317' height='187' />
 	
 		<%} %>
 		

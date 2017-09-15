@@ -81,7 +81,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getCursos();
 		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="lineasCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Líneas estratégicas</a></td>
 		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="financiadoresCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Financiadores</a></td>
 		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="cargarEliminarCurso('<%=i[0]%>'); return false;">Eliminar</a></td>
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="window.open('/web/editarCurso.jsp?id=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Editar</a></td>  
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="window.open('/f-web/editarCurso.jsp?id=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Editar</a></td>  
 		  
 	</tr>
 	<%

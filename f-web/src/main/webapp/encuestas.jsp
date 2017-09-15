@@ -164,7 +164,7 @@
 
 						
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearEncuesta.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Crear una nueva encuesta</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearEncuesta.jsp', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Crear una nueva encuesta</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

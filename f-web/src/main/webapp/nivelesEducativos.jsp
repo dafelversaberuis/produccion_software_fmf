@@ -170,7 +170,7 @@
 							<h4>Niveles educativos de: <%=nombreCurso %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearNivelEducativo.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">(Nuevo nivel educativo)</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearNivelEducativo.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=500, height=350'); return false;" style="text-decoration:none">(Nuevo nivel educativo)</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

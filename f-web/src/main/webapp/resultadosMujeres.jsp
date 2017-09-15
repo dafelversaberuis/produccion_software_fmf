@@ -111,7 +111,7 @@ List<Object[]> mujeres = bAdministrarPublicaciones.getMujeresS(pn, sn, pa, sa, d
 		</td>
 		<td align="left" bgcolor="<%=color %>" ><font color="black" style="font-size:11px"><%=i[6-1] %></font></td>
 		  
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="window.open('/web/verMujer.jsp?id=<%=i[1-1]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=850, height=400'); return false;" style="text-decoration:none">Ver / Editar</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="window.open('/f-web/verMujer.jsp?id=<%=i[1-1]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=850, height=400'); return false;" style="text-decoration:none">Ver / Editar</a></td>
 			
 			<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="participaciones.jsp?id=<%=i[1-1]%>&nc=<%=i[2-1] + " " + i[3-1] + " " + i[4-1] + " "+ i[5-1] %>">Participación organizaciones</a></td>	
 <td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="capacitaciones.jsp?id=<%=i[1-1]%>&nc=<%=i[2-1] + " " + i[3-1] + " " + i[4-1] + " "+ i[5-1] %>">Capacitaciones recibidas</a></td>

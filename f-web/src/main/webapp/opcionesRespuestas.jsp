@@ -173,7 +173,7 @@
 							Opciones de respuesta a pregunta: <%=bAdministrarPublicaciones.getNombrePregunta(curso)[2] %></h4>
 
 <br/><br/>
-<a href="#" onclick="window.open('/web/crearOpcion.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=500'); return false;" style="text-decoration:none">Crear nueva opción de respuesta</a><br><br>
+<a href="#" onclick="window.open('/f-web/crearOpcion.jsp?id=<%=curso %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=500'); return false;" style="text-decoration:none">Crear nueva opción de respuesta</a><br><br>
 	    <center><span id="detalleProcesos"></span>
 <span id="detalleAdministradores"></span>
 <input name="hdnUs" id="hdnUs" type="hidden"

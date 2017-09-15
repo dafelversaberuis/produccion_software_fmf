@@ -35,7 +35,7 @@ function validarDocumento(correo) {
 	function cargarAjaxEnvioClave(correo) {
 		ajax = nuevoAjax();
 		parametros = "d=" + document.getElementById('txtDocumentoI').value;
-		url = "/web/claves/enviarClave.jsp";
+		url = "/f-web/claves/enviarClave.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleEnvio').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
@@ -82,7 +82,7 @@ function validarDocumento(correo) {
 			
 		ajax = nuevoAjax();
 		parametros = "correo=" + correo+"&id="+id+"&m="+m+"&c="+claveManual;
-		url = "/web/enviarClaveAdministrador.jsp";
+		url = "/f-web/enviarClaveAdministrador.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
 				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'>";
