@@ -27,14 +27,14 @@ public class Conexion {
 		DB_driver = "com.mysql.jdbc.Driver";
 		
 		//local
-		url = "jdbc:mysql://mysql:3306/produccion_fmf";
-		username = "root";
-		password = "12345678";
+//		url = "jdbc:mysql://mysql:3306/produccion_fmf";
+//		username = "root";
+//		password = "12345678";
 		
 		//openshift v3
-//		url = "jdbc:mysql://mysql:3306/produccion_fmf";
-//		username = "dannypipe_fmf";
-//		password = "meli0523_fmf";
+		url = "jdbc:mysql://mysql:3306/produccion_fmf";
+		username = "dannypipe_fmf";
+		password = "meli0523_fmf";
 		
 		//openshift v2
 //		url = "jdbc:mysql://127.10.97.2:3306/fmf";
