@@ -27,7 +27,7 @@ public class Conexion {
 		DB_driver = "com.mysql.jdbc.Driver";
 		
 		//local
-//		url = "jdbc:mysql://mysql:3306/produccion_fmf";
+//		url = "jdbc:mysql://localhost:3306/produccion_fmf";
 //		username = "root";
 //		password = "12345678";
 		

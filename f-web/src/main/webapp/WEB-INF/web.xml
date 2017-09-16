@@ -5,7 +5,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
 
-	<display-name>m-web</display-name>
+	<display-name>f-web</display-name>
 
 	<!-- MODO DE TRABAJO, DESARROLLO O PRODUCCIÓN , se debe pasara a production 
 		cuando se suba a pre y a apro -->
