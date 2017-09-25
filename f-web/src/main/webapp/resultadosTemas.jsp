@@ -62,7 +62,18 @@ List<Object[]> cursos = bAdministrarPublicaciones.getTemas(id);
 		<div align="left"><font color="black"><%=i[1] %></font></div>
 		</td>
 		<td align="left" bgcolor="<%=color %>"> 
-		<%if(i[3]!=null && !i[3].equals("")){ if(i[4]!=null){%><a href="/f-web/ver_archivo_adjunto.jsp?id=<%=i[0] %>" target="_blank" style="text-decoration:none">Ver archivo</a><%}else{ %><a href="imagenes/archivosTemas/<%=i[3] %>" target="_blank" style="text-decoration:none">Ver archivo</a><%}  }else{%> <a href="#" onclick="window.open('/f-web/subirArchivoTema.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Cargar archivo</a><% } %>
+		<%
+	
+		//el viejo
+		//imagenes/archivosTemas/<%=i[3]
+				
+				//cambio por www.spicol.com/fmf/<%=i[3]
+				
+				
+		
+		
+		
+		if(i[3]!=null && !i[3].equals("")){ if(i[4]!=null){%><a href="/f-web/ver_archivo_adjunto.jsp?id=<%=i[0] %>" target="_blank" style="text-decoration:none">Ver archivo</a><%}else{ %><a href="http://www.spicol.com/fmf/<%=i[3] %>" target="_blank" style="text-decoration:none">Ver archivo</a><%}  }else{%> <a href="#" onclick="window.open('/f-web/subirArchivoTema.jsp?id=<%=i[0]%>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Cargar archivo</a><% } %>
 		</td>  
 		<td align="center" bgcolor="<%=color %>"><%if(i[3]!=null && !i[3].equals("")){ %><a href="#" onclick="cargarEliminarArchivoTema('<%=i[0]%>','<%=id %>'); return false;">Eliminar archivo</a><% } %></td>
 		<td align="center" bgcolor="<%=color %>"><a href="#" onclick="cargarEliminarTema('<%=i[0]%>','<%=id %>'); return false;">Eliminar tema</a></td>  
