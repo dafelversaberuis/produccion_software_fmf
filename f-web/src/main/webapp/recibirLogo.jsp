@@ -89,6 +89,11 @@
 										
 										File uploadedFile = new File(directorio_ruta + "logo_financiador_"+id+".jpg");
 										item2.write(uploadedFile);
+										
+										bAdministrarPublicaciones.actualizarArchivo(new File(directorio_ruta + "logo_financiador_"+id+".jpg"), id);
+										
+										
+										
 										guardo = 1;   
 
 

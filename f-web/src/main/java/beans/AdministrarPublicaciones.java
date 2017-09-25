@@ -1,6 +1,9 @@
 package beans;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.ResultSet;
@@ -1050,15 +1053,44 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
+	
+	
+	public void actualizarArchivov3(File archivo, String id) {
 
-	public int actualizarArchivoTema(String id, String nombreArchivo) {
+		Conexion conexion = new Conexion();
+		byte[] array = null;
+
+		try {
+			FileInputStream is = new FileInputStream(archivo);
+
+			// guarda el archivo
+
+			String[][] condiciones = new String[1][2];
+			condiciones[0][0] = "id";
+			condiciones[0][1] = "" + id;
+			String[] campos = new String[1];
+			campos[0] = "array";
+
+			Object[] valores = new Object[1];
+			valores[0] = array;
+			boolean oka = conexion.actualizarBD3("temas", campos, condiciones, is, (int) archivo.length(), archivo);
+
+			conexion.cerrarConexion();
+
+		} catch (Exception e) {
+
+		}
+
+	}
+	
+	
+
+	public int actualizarArchivoTema(String id, String nombreArchivo,String contenttype) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE temas SET archivo ='"
-							+ nombreArchivo.toLowerCase() + "' WHERE id =" + id);
+			boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo ='" + nombreArchivo.toLowerCase() + "', content_type='"+contenttype+"' WHERE id =" + id);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1072,6 +1104,37 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
+	
+	
+	public void actualizarArchivo(File archivo, String financiador) {
+
+		Conexion conexion = new Conexion();
+		byte[] array = null;
+
+		try {
+			FileInputStream is = new FileInputStream(archivo);
+
+			// guarda el archivo
+
+			String[][] condiciones = new String[1][2];
+			condiciones[0][0] = "id";
+			condiciones[0][1] = "" + financiador;
+			String[] campos = new String[1];
+			campos[0] = "archivo";
+
+			Object[] valores = new Object[1];
+			valores[0] = array;
+			boolean oka = conexion.actualizarBD3("financiadores", campos, condiciones, is, (int) archivo.length(), archivo);
+
+			conexion.cerrarConexion();
+
+		} catch (Exception e) {
+
+		}
+
+	}
+	
+	
 
 	public int actualizarFinanciador(String financiador) {
 		Conexion conexion = new Conexion();
@@ -3805,19 +3868,20 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, l.nombre FROM curso_financiador a, financiadores l WHERE a.id_financiador = l.id AND a.id_curso="
+		String sentencia = "SELECT a.*, l.nombre, l.archivo FROM curso_financiador a, financiadores l WHERE a.id_financiador = l.id AND a.id_curso="
 				+ idCurso + " ORDER BY l.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
-				curso = new Object[5];
+				curso = new Object[6];
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
 				curso[2] = rs.getObject(3);
 				curso[3] = rs.getObject(4);
 				curso[4] = rs.getObject(5);
+				curso[5] = rs.getBytes(6);
 
 				cursos.add(curso);
 			}
@@ -4229,12 +4293,15 @@ public class AdministrarPublicaciones {
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
-				curso = new Object[4];
+				curso = new Object[6];
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
 				curso[2] = rs.getObject(3);
 				curso[3] = rs.getObject(4);
+				
+				curso[4] = rs.getBytes(5);
+				curso[5] = rs.getObject(6);
 
 				cursos.add(curso);
 			}
@@ -4431,6 +4498,58 @@ public class AdministrarPublicaciones {
 		}
 		return proyectos;
 	}
+	
+	
+	public void guardarArchivoDisco(String directorio_ruta_con_nombre_archivo, byte[] array) {
+
+		if (array != null) {
+			FileOutputStream fileOuputStream = null;
+			try {
+				fileOuputStream = new FileOutputStream(directorio_ruta_con_nombre_archivo);
+				fileOuputStream.write(array);
+			} catch (Exception e) {
+
+			} finally {
+				try {
+					fileOuputStream.close();
+				} catch (IOException e) {
+
+				}
+			}
+		}
+
+	}
+	
+	
+	public Object[] getFinanciador(Integer aId) {
+		Conexion conexion = new Conexion();
+		String sentencia = "SELECT * FROM financiadores a WHERE id ="+aId;
+		Object[] financiador = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			while (rs.next()) {
+				financiador = new Object[4];
+
+				financiador[0] = rs.getObject(1);
+				financiador[1] = rs.getObject(2);
+				financiador[2] = rs.getObject(3);
+				financiador[3] = rs.getBytes(4); //archivo
+
+				
+
+	
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return financiador;
+	}
+	
+	
+	
 
 	public List<Object[]> getFinanciadores() {
 
@@ -4441,11 +4560,13 @@ public class AdministrarPublicaciones {
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
-				financiador = new Object[3];
+				financiador = new Object[4];
 
 				financiador[0] = rs.getObject(1);
 				financiador[1] = rs.getObject(2);
 				financiador[2] = rs.getObject(3);
+				
+				financiador[3] = rs.getBytes(4); //archivo
 
 				financiadores.add(financiador);
 			}
@@ -4466,12 +4587,15 @@ public class AdministrarPublicaciones {
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			if (rs.next()) {
-				curso = new Object[4];
+				curso = new Object[6];
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
 				curso[2] = rs.getObject(3);
 				curso[3] = rs.getObject(4);
+				
+				curso[4] = rs.getBytes(5);
+				curso[5] = rs.getObject(6);
 
 			}
 			rs.close();

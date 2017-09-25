@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=iso-8859-1" language="java"
 	import="java.sql.*" import="java.util.*,java.text.SimpleDateFormat"
 	session="false"%>
+	
+		<jsp:useBean id="bAdministrarPublicaciones"
+	class="beans.AdministrarPublicaciones" scope="page" />
 
 <%
 	response.setHeader("Cache-Control", "no-store");
@@ -52,11 +55,30 @@ body {
 //String us = request.getParameter("us");
 String id = request.getParameter("id");
 
+//lo crea x sia ca no está
+String directorio_ruta = application.getRealPath("imagenes")+"/logosFinanciadores/";
+int sw= 0;
+Object[] financiador = bAdministrarPublicaciones.getFinanciador(Integer.parseInt(id));
 
+
+if(financiador[3]!=null){
+sw=1;
+bAdministrarPublicaciones.guardarArchivoDisco(directorio_ruta + "logo_financiador_"+id+".jpg", (byte[])financiador[3]);
+
+}
+
+
+
+ 
 %>
 
 <div id="contiene-imagenes" style="width:500px; height: 500px">
-<img src="imagenes/logosFinanciadores/logo_financiador_<%=id %>.jpg" alt="FINANCIADOR" title="FINANCIADOR"/>
+<%if(sw==0){ %>
+<img src="imagenes/logosFinanciadores/logo_financiador_<%=id %>.jpg" alt="CLIENTE" title="CLIENTE"/>
+
+<%}else{ %>
+<img src="/f-web/ver_foto_adjunta.jsp?id=<%=financiador[0] %>" alt="CLIENTE" title="CLIENTE"/>
+<% }%>
 </div>
 
 </body>

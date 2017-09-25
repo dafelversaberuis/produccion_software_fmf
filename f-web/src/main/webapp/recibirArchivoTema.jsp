@@ -91,7 +91,11 @@
 										item2.write(uploadedFile);
 										guardo = 1;     
 										
-										int ultima = bAdministrarPublicaciones.actualizarArchivoTema(id, "tema_id-"+id+"."+ext.toLowerCase());
+										int ultima = bAdministrarPublicaciones.actualizarArchivoTema(id, "tema_id-"+id+"."+ext.toLowerCase(),contentType);
+										
+										
+										
+										bAdministrarPublicaciones.actualizarArchivov3(new File(directorio_ruta + "tema_id-"+id+"."+ext.toLowerCase()),id);
 
 
 %>
