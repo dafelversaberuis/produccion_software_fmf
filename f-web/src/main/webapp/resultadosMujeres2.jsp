@@ -210,7 +210,7 @@ if(actividadesEncuesta!=null && actividadesEncuesta.size()>0 && mujeresEncuestaR
 			
 			<%
 			
-			List<Object[]> cursos = bAdministrarPublicaciones.getMujeresAsistenciaResultado(curso, tema, fecha_desde, fecha_hasta, tipo, asistio_mujer, proyecto,linea,financiador,""+m[0]);
+			List<Object[]> cursos = bAdministrarPublicaciones.getMujeresAsistenciaResultado(curso, tema, fecha_desde, fecha_hasta, tipo, asistio_mujer, proyecto,linea,financiador,""+m[0],null,null,null);
 			if(cursos!=null && cursos.size()>0){
 				mujeresConCurso++;
 			%>

@@ -30,7 +30,7 @@ if(id!=null && id.trim().equals("")){
 List<Object[]> cursos = bAdministrarPublicaciones.getTemas(id);
 %>
 
-<select name="temas" id="temas" style="width:300px">
+<select name="temas" id="temas" style="width:300px" class="js-example-basic-single2">
 	<option value="" selected>Seleccione..</option>
 	<%  if (cursos!=null && cursos.size() > 0) {
 		for(Object[] c: cursos){

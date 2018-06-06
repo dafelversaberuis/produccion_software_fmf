@@ -30,6 +30,24 @@ try{
 	String financiador = request.getParameter("financiador");
 	String documento = request.getParameter("documento");
 	String encuesta = request.getParameter("encuesta");
+	
+	String c14  = request.getParameter("c14");
+	String c15  = request.getParameter("c15");
+	String c16  = request.getParameter("c16");
+	if(c14!=null && c14.equals("null")){
+		
+		c14 = null;	
+	}
+	if(c15!=null && c15.equals("null")){
+		
+		c15 = null;	
+	}
+	if(c16!=null && c16.equals("null")){
+		
+		c16 = null;	
+	}
+	
+	
 
 	int mujeresConCurso = 0;
 
@@ -48,7 +66,7 @@ try{
 	mujeresEncuestaRespondida = bAdministrarPublicaciones
 			.getMujeresEncuestav2(encuesta, curso, tema, proyecto,
 					linea, financiador, documento, fecha_desde,
-					fecha_hasta);
+					fecha_hasta,c14,c15,c16);
 
 	//if(mujer!=null){
 	//mujeresEncuestaRespondida = bAdministrarPublicaciones.getMujeresEncuesta(encuesta,""+mujer[0]);
@@ -106,6 +124,18 @@ try{
 	alusión a los criterios seleccionados (SOLO CONTEMPLA MUJERES
 	PARTICIPES DE LAS ACTIVIDADES) </font>
 <br>
+<center>
+	<form action="imprimirExcel.jsp" method="post" target="_blank"
+		id="FormularioExportacion2" name="FormularioExportacion2">
+		<font color="black"> <input type="button"
+			value=" CALCULAR RESULTADOS DE NUEVO " onclick="validarPlanilla4();" />
+			&nbsp;&nbsp;  <input type="button"
+			value="Exportar a excel" onclick="genrarTabla()" />
+
+		</font>
+
+	</form>
+</center>
 <div id="Exportar_a_Excel">
 	<table border="1" cellspacing="2" cellpadding="2" style="width: 100%">
 
@@ -220,7 +250,7 @@ try{
 							.getMujeresAsistenciaResultado(curso, tema,
 									fecha_desde, fecha_hasta, tipo,
 									asistio_mujer, proyecto, linea,
-									financiador, "" + m[0]);
+									financiador, "" + m[0],c14,c15,c16);
 					if (cursos != null && cursos.size() > 0) {
 						mujeresConCurso++;
 		%>

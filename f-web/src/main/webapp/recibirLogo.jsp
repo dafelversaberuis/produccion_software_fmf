@@ -129,8 +129,8 @@ window.close();
 %>
 <html>
 <head>
- <title>FUNDACIÓN MUJER Y FUTURO</title>
-    <meta name="Description" content="FUNDACIÓN MUJER Y FUTURO">
+ <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF">
    
 
 <? header("Cache-Control: no-cache, must-revalidate");?>

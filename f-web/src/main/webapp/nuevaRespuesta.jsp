@@ -51,6 +51,9 @@ String encuesta = request.getParameter("encuesta");
 String mujer = request.getParameter("mujer");
 String totalPreguntas = request.getParameter("totalPreguntas");
 
+//elimina la anterior para guardar una nueva
+bAdministrarPublicaciones.eliminarAntesEncuesta(encuesta, mujer);
+
 for(int i=1; i<=Integer.parseInt(totalPreguntas); i++){
 	
 	 String tipoPregunta = request.getParameter("tipoPregunta"+i);

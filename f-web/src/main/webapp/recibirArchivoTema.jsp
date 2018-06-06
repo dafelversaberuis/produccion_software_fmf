@@ -16,7 +16,7 @@
 	// Si se ha enviado correctamente el formulario con la imagens se carga la imagen al servidor	
 	int l = 0;
 	int campo = 1;
-	int tamano_maximo_archivo = 1024*30;
+	int tamano_maximo_archivo = 1024*10;
 	String solonombrearchivo = new String();
 	// verifica si tenemos un request de file upload
 	boolean isMultipart = FileUpload.isMultipartContent(request);
@@ -130,8 +130,8 @@ window.close();
 %>
 <html>
 <head>
- <title>FUNDACIÓN MUJER Y FUTURO</title>
-    <meta name="Description" content="FUNDACIÓN MUJER Y FUTURO">
+ <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF">
    
 
 <? header("Cache-Control: no-cache, must-revalidate");?>

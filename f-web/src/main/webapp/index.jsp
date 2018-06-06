@@ -9,8 +9,8 @@
 <%@page import="beans.RepositorioFotos"%>	
 <html>
 <head>
-        <title>FUNDACIÓN MUJER Y FUTURO</title>
-    <meta name="Description" content="Fundación Mujer y Futuro">
+        <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
@@ -45,6 +45,12 @@
 		sinestilo:{ 
 		
 		}
+		
+		@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 		
 		</style>
 
@@ -238,17 +244,18 @@ alert('Información enviada con éxito');
 			<div class="header_details">
 				<div class="container">
 					<div class="header_icons accura-header-block accura-hidden-2xs">
-						<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">
+						<!-- 						<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">
 						<li id="1"><a href="https://www.facebook.com/fundacionmujeryfuturo?fref=ts" target="_blank" class="accura-social-icon-facebook circle"><i class="fa fa-facebook"></i></a></li>
 					    <li id="2"><a href="http://www.twitter.com/" target="_blank" class="accura-social-icon-twitter circle"><i class="fa fa-twitter"></i></a></li>
-
+-->
 					   
 						
 					  </ul>
 					</div>
 				<div class="call">
-					<div class="home_address">
-					<i class="fa fa-phone"></i>&nbsp;310 576 51 81 - 6341589<br>direccion@mujeryfuturo.org</div>
+					<div class="home_address" style="font-size:24px">
+				<span style="color:red; animation: blinker 1s linear infinite;">SIMYF</span>, Herramienta informática que da<br/>
+un valor al trabajo no remunerado de las mujeres,<br/>cuando trabajan en acciones comunitarias.</div>
 					</div>
 			</div>
 <!-- Mainheader Menu Section -->
@@ -261,8 +268,16 @@ alert('Información enviada con éxito');
         <div class="header-table col-md-13 header-menu">
         
         <!--  Logo section --> 
-        <div class="brand" style="bgcolor:#000000; height: 90px" ><a href="#home" class="nav-link" style="font-size:23px; line-height:1.2"><img src="home_files/logo.png" alt="logo"
-			width="230px" height="100%"></a></div>
+        <div class="brand" style="bgcolor:#000000; height: 90px" ><a href="#home" class="nav-link" style="font-size:23px; line-height:1.2">
+			
+				<%
+	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
+	bAdministrarPublicaciones.logoDinamico(absoluta);
+	%>
+	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="230px" height="100px">
+			
+			
+			</a></div>
         <!--  // Logo section -->
         
 <!-- Home Page Menu section -->

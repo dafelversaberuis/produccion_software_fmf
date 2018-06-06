@@ -9,6 +9,12 @@
 	import="java.sql.*,java.util.*,java.text.SimpleDateFormat, java.math.BigDecimal" errorPage=""
 	session="false"%>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	
+<style>
+.ignorar {
+	display: none;
+}
+</style>
 
 <%
 
@@ -19,7 +25,9 @@ response.setHeader("Cache-Control", "no-store");
 response.setHeader("Pragma", "no-cache"); 
 response.setDateHeader("Expires", 0);
 response.setHeader("Content-Disposition","attachment; filename=\"resultados.xls\""); 
-out.println(request.getParameter("datos_a_enviar"));
+String datos = request.getParameter("datos_a_enviar");
+
+out.println(datos);
 %>
 
 

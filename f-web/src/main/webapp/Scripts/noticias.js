@@ -2585,13 +2585,13 @@ function cargarEliminarLineaC(admin, curso) {
 
 function cargarEliminarArchivoTema(admin, curso) {
 
-	if (confirm('REALMENTE DESEA ELIMINAR EL ARCHIVO DEL TEMA?')) {
+	if (confirm('REALMENTE DESEA ELIMINAR EL ARCHIVO 1 DEL TEMA?')) {
 		ajax = nuevoAjax();
 		parametros = "id=" + admin;
 		url = "/f-web/eliminarArchivoTema.jsp";
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 1) {
-				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo espere un momento...";
+				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo 1 espere un momento...";
 			} else if (ajax.readyState == 4) {
 				if (ajax.status == 200) {
 					document.getElementById('detalleProcesos').innerHTML = "";
@@ -2599,11 +2599,93 @@ function cargarEliminarArchivoTema(admin, curso) {
 					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
 
 					if (parseInt(document.getElementById('hdnElimino').value) == 1) {
-						alert('ARCHIVO ELIMINADO CON EXITO');
+						alert('ARCHIVO 1 ELIMINADO CON EXITO');
 						cargarTemas(curso);
 
 					} else {
-						alert('NO SE PUEDE ELIMINAR EL ARCHIVO.');
+						alert('NO SE PUEDE ELIMINAR EL ARCHIVO 1.');
+
+					}
+
+				} else if (ajax.status == 404) {
+					document.getElementById('detalleProcesos').innerHTML = "-Inexistencia, contacte administrador-";
+				} else {
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+				}
+			}
+		}
+
+		ajax.open("POST", url, true);
+		ajax.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded; charset=utf-8');
+		ajax.send(parametros);
+
+	}
+}
+
+
+function cargarEliminarArchivoTema2(admin, curso) {
+
+	if (confirm('REALMENTE DESEA ELIMINAR EL ARCHIVO 2 DEL TEMA?')) {
+		ajax = nuevoAjax();
+		parametros = "id=" + admin;
+		url = "/f-web/eliminarArchivoTema2.jsp";
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 1) {
+				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo 2 espere un momento...";
+			} else if (ajax.readyState == 4) {
+				if (ajax.status == 200) {
+					document.getElementById('detalleProcesos').innerHTML = "";
+					document.getElementById('detalleProcesos').style.background = "";
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+
+					if (parseInt(document.getElementById('hdnElimino2').value) == 1) {
+						alert('ARCHIVO 2 ELIMINADO CON EXITO');
+						cargarTemas(curso);
+
+					} else {
+						alert('NO SE PUEDE ELIMINAR EL ARCHIVO 2.');
+
+					}
+
+				} else if (ajax.status == 404) {
+					document.getElementById('detalleProcesos').innerHTML = "-Inexistencia, contacte administrador-";
+				} else {
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+				}
+			}
+		}
+
+		ajax.open("POST", url, true);
+		ajax.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded; charset=utf-8');
+		ajax.send(parametros);
+
+	}
+}
+
+
+function cargarEliminarArchivoTema3(admin, curso) {
+
+	if (confirm('REALMENTE DESEA ELIMINAR EL ARCHIVO 3 DEL TEMA?')) {
+		ajax = nuevoAjax();
+		parametros = "id=" + admin;
+		url = "/f-web/eliminarArchivoTema3.jsp";
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 1) {
+				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando archivo 3 espere un momento...";
+			} else if (ajax.readyState == 4) {
+				if (ajax.status == 200) {
+					document.getElementById('detalleProcesos').innerHTML = "";
+					document.getElementById('detalleProcesos').style.background = "";
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+
+					if (parseInt(document.getElementById('hdnElimino3').value) == 1) {
+						alert('ARCHIVO 3 ELIMINADO CON EXITO');
+						cargarTemas(curso);
+
+					} else {
+						alert('NO SE PUEDE ELIMINAR EL ARCHIVO 3.');
 
 					}
 
@@ -3041,7 +3123,7 @@ function validarLleno(j) {
 function contestarEncuesta(admin) {
 
 	ajax = nuevoAjax();
-	parametros = "id=" + admin;
+	parametros = "id=" + admin+"&id_mujer="+document.getElementById('id_mujer_encuesta').value;
 	url = "/f-web/contestarEncuesta.jsp";
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -3250,6 +3332,49 @@ function cargarEliminarLogoFinanciador(admin) {
 
 					if (parseInt(document.getElementById('hdnElimino').value) == 1) {
 						alert('LOGO DEL FINANCIADOR ELIMINADO CON EXITO');
+						document.form1.submit();
+
+					} else {
+						alert('NO SE PUEDE ELIMINAR EL LOGO');
+
+					}
+
+				} else if (ajax.status == 404) {
+					document.getElementById('detalleProcesos').innerHTML = "-Inexistencia, contacte administrador-";
+				} else {
+					// document.getElementById('detalleProcesos').innerHTML =
+					// "-Error, contacte administrador";
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+				}
+			}
+		}
+
+		ajax.open("POST", url, true);
+		ajax.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded; charset=utf-8');
+		ajax.send(parametros);
+
+	}
+}
+
+
+function cargarEliminarLogoLogo(admin) {
+
+	if (confirm('REALMENTE DESEA ELIMINAR EL LOGO DEL SOFTWARE?')) {
+		ajax = nuevoAjax();
+		parametros = "id=" + admin;
+		url = "/f-web/eliminarLogoLogo.jsp";
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 1) {
+				document.getElementById('detalleProcesos').innerHTML = "<img src='images/ajax/ajax-loader3.gif'> Eliminando logo espere un momento...";
+			} else if (ajax.readyState == 4) {
+				if (ajax.status == 200) {
+					document.getElementById('detalleProcesos').innerHTML = "";
+					document.getElementById('detalleProcesos').style.background = "";
+					document.getElementById('detalleProcesos').innerHTML = ajax.responseText;
+
+					if (parseInt(document.getElementById('hdnElimino').value) == 1) {
+						alert('LOGO ELIMINADO CON EXITO');
 						document.form1.submit();
 
 					} else {
@@ -4007,6 +4132,12 @@ function cargarParametros() {
 				document.getElementById('detalleAdministradores').innerHTML = "";
 				document.getElementById('detalleAdministradores').style.background = "";
 				document.getElementById('detalleAdministradores').innerHTML = ajax.responseText;
+				
+				
+				cambiarAnual();
+				
+				
+				
 
 			} else if (ajax.status == 404) {
 				document.getElementById('detalleAdministradores').innerHTML = "-Inexistencia, contacte administrador-";
@@ -4309,7 +4440,16 @@ function cargarMujeres() {
 			+ "&sa="
 			+ encodeURIComponent(document.getElementById("control4").value)
 			+ "&doc="
-			+ encodeURIComponent(document.getElementById("control5").value);
+			+ encodeURIComponent(document.getElementById("control5").value)
+	
+			+ "&c14="
+			+ encodeURIComponent(document.getElementById("control14").value)
+			
+			+ "&c15="
+			+ encodeURIComponent(document.getElementById("control15").value)
+			
+			+ "&c16="
+			+ encodeURIComponent(document.getElementById("control16").value);
 
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -4632,10 +4772,24 @@ function validarPlanilla3() {
 	}
 	
 	
+	if (document.getElementById("control14").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+	if (document.getElementById("control15").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+	if (document.getElementById("control16").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+	
+	
 	
 	
 
-	if (sw == 10) {
+	if (sw == 13) {
 
 		mensaje = "* POR LO MENOS UN CAMPO DEBE ESTAR DILIGENCIADO\n";
 	}
@@ -4711,6 +4865,24 @@ function validarPlanilla4() {
 	}
 	
 	
+	if (document.getElementById("control14").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+	if (document.getElementById("control15").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+	if (document.getElementById("control16").value.replace(/^\s*|\s*$/g, "") == "") {
+		sw += 1;
+
+	}
+
+	
+	
+	
+	
+	
 	if (document.getElementById("encuesta").value.replace(/^\s*|\s*$/g, "") == "") {
 		sw += 1;
 		mensaje = "* POR LO MENOS SE DEBE SELECCIONAR LA ENCUESTA BASE PARA DETERMINAR EL APORTE\n";
@@ -4720,7 +4892,7 @@ function validarPlanilla4() {
 	
 	
 
-	if (sw == 10) {
+	if (sw == 13) {
 
 		//mensaje = "* POR LO MENOS UN CAMPO DEBE ESTAR DILIGENCIADO\n";
 	}
@@ -4768,10 +4940,14 @@ function validarPlanilla() {
 		sw = 1;
 
 	}
+	
+	
+	
+	
 
 	if (sw == 1) {
 
-		mensaje = "* EXISTEN CAMPOS VACIOS. DILIGENCIELOS\n";
+		mensaje = "* EXISTEN CAMPOS VACIOS QUE SON REQUERIDOS (*). DILIGENCIELOS\n";
 	}
 
 	// valida numeros
@@ -4847,6 +5023,9 @@ function regresarAsistencia() {
 	document.getElementById("fecha").disabled = false;
 	document.getElementById("horas_certificadas").disabled = false;
 	document.getElementById("cal").disabled = false;
+	document.getElementById("control14").disabled = false;
+	document.getElementById("control15").disabled = false;
+	document.getElementById("control16").disabled = false;
 
 }
 
@@ -4907,7 +5086,10 @@ function cargarMujeresAsistenciaResultado() {
 			+ document.getElementById("linea").value + "&financiador="
 			+ document.getElementById("financiador").value + "&documento="
 			+ document.getElementById("documento").value+ "&encuesta="
-			+ document.getElementById("encuesta").value;
+			+ document.getElementById("encuesta").value+ "&c14="
+			+ document.getElementById("control14").value + "&c15="
+			+ document.getElementById("control15").value + "&c16="
+			+ document.getElementById("control16").value;
 
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -4971,7 +5153,13 @@ function cargarMujeresAsistencia3() {
 			+ document.getElementById("proyecto2").value + "&linea="
 			+ document.getElementById("linea").value + "&financiador="
 			+ document.getElementById("financiador").value + "&documento="
-			+ document.getElementById("documento").value;
+			+ document.getElementById("documento").value+ "&c14="
+			
+			+ document.getElementById("control14").value + "&c15="
+			+ document.getElementById("control15").value + "&c16="
+			+ document.getElementById("control16").value;
+			
+			
 
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5030,7 +5218,11 @@ function cargarMujeresAsistencia() {
 			+ document.getElementById("fecha").value + "&horas="
 			+ document.getElementById("horas_certificadas").value + "&linea="
 			+ document.getElementById("lineas").value + "&financiador="
-			+ document.getElementById("financiadores").value;
+			+ document.getElementById("financiadores").value+ "&c14="
+			
+			+ document.getElementById("control14").value + "&c15="
+			+ document.getElementById("control15").value + "&c16="
+			+ document.getElementById("control16").value;
 
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 1) {
@@ -5053,6 +5245,10 @@ function cargarMujeresAsistencia() {
 					document.getElementById("fecha").disabled = false;
 					document.getElementById("cal").disabled = false;
 					document.getElementById("horas_certificadas").disabled = false;
+					
+					document.getElementById("control14").disabled = false;
+					document.getElementById("control15").disabled = false;
+					document.getElementById("control16").disabled = false;  
 
 					document.getElementById('detalleLote').innerHTML = "<font color='black'><input	type='button' value=' Generar planilla ' onclick='validarPlanilla();' /></font>";
 					alert('NO EXISTEN MUJER PENDIENTES POR REGISTRAR PLANILLA DE ASISTENCIA PARA LA FECHA, CURSO Y TEMA SELECCIONADOS.');
@@ -5069,6 +5265,10 @@ function cargarMujeresAsistencia() {
 					document.getElementById("fecha").disabled = true;
 					document.getElementById("cal").disabled = true;
 					document.getElementById("horas_certificadas").disabled = true;
+					
+					document.getElementById("control14").disabled = true;
+					document.getElementById("control15").disabled = true;
+					document.getElementById("control16").disabled = true;
 
 				}
 
@@ -5298,6 +5498,62 @@ function cargarTiposDirecciones() {
 	}
 }
 
+
+function cargarTiposDireccionesConsulta() {
+	ajax = nuevoAjax();
+
+	url = "/f-web/resultadosTiposDirecciones.jsp";
+	parametros = "tipo=" + document.getElementById("control14").value;
+
+	if (document.getElementById("control14").value != "") {
+
+		if (document.getElementById("control14").value == "C") {
+
+			document.getElementById('span_1').innerHTML = "<font color=\"black\">Comuna: </font>";
+			document.getElementById('span_3').innerHTML = "<font color=\"black\">Barrio: </font>";
+
+		} else {
+
+			document.getElementById('span_1').innerHTML = "<font color=\"black\">Corregimiento: </font>";
+			document.getElementById('span_3').innerHTML = "<font color=\"black\">Vereda/Asentamiento: </font>";
+		}
+
+		document.getElementById('span_2').innerHTML = "Cargando...";
+
+		document.getElementById('span_4').innerHTML = "<select id='control16' style=\"width:250px; color:black\"><option value=\"\">Seleccione...</option></select>";
+
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 1) {
+				document.getElementById('span_2').innerHTML = "Cargando...";
+			} else if (ajax.readyState == 4) {
+				if (ajax.status == 200) {
+					document.getElementById('span_2').innerHTML = "";
+					document.getElementById('span_2').style.background = "";
+					document.getElementById('span_2').innerHTML = ajax.responseText;
+
+				} else if (ajax.status == 404) {
+					document.getElementById('span_2').innerHTML = "-Inexistencia, contacte administrador-";
+				} else {
+					document.getElementById('span_2').innerHTML = ajax.responseText;
+				}
+			}
+		}
+
+		ajax.open("POST", url, true);
+		ajax.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded; charset=utf-8');
+		ajax.send(parametros);
+
+	} else {
+
+		document.getElementById('span_1').innerHTML = "<font color=\"black\">Comuna/Corregimiento: </font>";
+		document.getElementById('span_2').innerHTML = "<select  style=\"width:250px\" name=\"control15\" id=\"control15\"><option value=\"\">Seleccione...</option></select>";
+		document.getElementById('span_3').innerHTML = "<font color=\"black\">Barrio/Vereda/Asentamiento: </font>";
+		document.getElementById('span_4').innerHTML = "<select style=\"width:250px\" name=\"control16\" id=\"control16\"><option value=\"\">Seleccione...</option></select>";
+
+	}
+}
+
 function cargarLineasCombo() {
 	ajax = nuevoAjax();
 
@@ -5380,7 +5636,9 @@ function cargarTemasCombo() {
 				document.getElementById('span_tema').innerHTML = "";
 				document.getElementById('span_tema').style.background = "";
 				document.getElementById('span_tema').innerHTML = ajax.responseText;
-
+				
+				 $('.js-example-basic-single2').select2();
+			
 				cargarFinanciadoresCombo();
 
 			} else if (ajax.status == 404) {
@@ -6117,4 +6375,48 @@ function eliminarPropia(idPublicacion) {
 	ajax.setRequestHeader('Content-Type',
 			'application/x-www-form-urlencoded; charset=utf-8');
 	ajax.send(parametros);
+}  
+
+function cambiarAnual(){
+
+		if(document.getElementById('valor2').value!=null && document.getElementById('valor2').value=='O'){
+			document.getElementById('titulo3').style.display = 'block';
+			document.getElementById('valor3').style.display = 'block';
+			
+			
+			
+			try{
+				document.getElementById('valor4').value =  parseInt(parseInt(document.getElementById('valor3').value) / 12);
+				}catch(e){  
+					
+				}
+				
+				document.getElementById('valor4').readOnly = true;
+				document.getElementById('valor4').style.backgroundColor = "#D1D6E2";
+			
+		
+
+		}else{
+			
+			document.getElementById('titulo3').style.display = 'none';
+			document.getElementById('valor3').style.display = 'none';
+			
+			document.getElementById('valor4').readOnly = false;
+			document.getElementById('valor4').style.backgroundColor = "white";
+			
+		
+
+		}
+
+		
+}
+
+function cambiarMinimo(){
+	
+	try{
+		document.getElementById('valor3').value =  parseInt(parseInt(document.getElementById('valor4').value)* 12);
+		}catch(e){  
+			
+		}
+	
 }

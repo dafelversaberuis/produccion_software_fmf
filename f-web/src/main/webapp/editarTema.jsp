@@ -13,8 +13,8 @@
 
 <html>
 <head>
-   <title>FUNDACIÓN MUJER Y FUTURO</title>
-    <meta name="Description" content="Fundación Mujer y Futuro">
+   <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF">
   
 
 <? header("Cache-Control: no-cache, must-revalidate");?>

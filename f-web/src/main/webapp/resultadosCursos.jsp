@@ -76,11 +76,11 @@ List<Object[]> cursos = bAdministrarPublicaciones.getCursos();
 		<td align="left" bgcolor="<%=color %>" style="font-size:11px">
 		<div align="left"><font color="black"><%=i[3] %></font></div>
 		</td>  
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="mujeresCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Mujeres del curso</a></td>
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="temas.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Temas</a></td>
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="lineasCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Líneas estratégicas</a></td>
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="financiadoresCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Financiadores</a></td>
-		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="cargarEliminarCurso('<%=i[0]%>'); return false;">Eliminar</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a target="_blank"   href="mujeresCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Mujeres del curso</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a target="_blank" href="temas.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Temas</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a target="_blank" href="lineasCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Líneas estratégicas</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a target="_blank" href="financiadoresCurso.jsp?id=<%=i[0]%>&nc=<%=i[1] %>">Financiadores</a></td>
+		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a  href="#" onclick="cargarEliminarCurso('<%=i[0]%>'); return false;">Eliminar</a></td>
 		<td align="center" bgcolor="<%=color %>" style="font-size:11px"><a href="#" onclick="window.open('/f-web/editarCurso.jsp?id=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=350'); return false;" style="text-decoration:none">Editar</a></td>  
 		  
 	</tr>

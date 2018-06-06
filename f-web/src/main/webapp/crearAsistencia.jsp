@@ -12,12 +12,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>FUNDACIÓN MUJER Y FUTURO</title>
-<meta name="Description" content="Fundación Mujer y Futuro">
+<title>SOFTWARE SIMYF</title>
+<meta name="Description" content="SOFTWARE SIMYF">
 
 <script type="text/javascript" src="Scripts/noticias.js" charset="UTF-8"></script>
 <script type="text/javascript" src="Scripts/claves.js" charset="UTF-8"></script>
 
+<script type="text/javascript" src="Scripts/jquery-3.3.1.min.js" ></script>
+  
 
 
 <meta name="viewport" content="initial-scale=1.0,width=device-width">
@@ -64,6 +66,10 @@
 	width: 0% !important;
 }
 </style>
+
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css">
+
+
 <link rel="stylesheet" type="text/css" href="css/epoch_styles.css" />
 <script type="text/javascript" src="Scripts/epoch_classes.js"></script>
 <script language="JavaScript">
@@ -77,8 +83,17 @@
 	};
 	//Termina Calendario
 	//Esta funcion asigna el calendario al campo5  del formulario
+	
+	//buscador 
+	// In your Javascript (external .js resource or <script> tag)
+
+	
 </script>
 <link rel="stylesheet" type="text/css" href="home_files/style.css">
+
+
+<!-- combo buscador -->
+
 </head>
 <!--****************************INICIO SESION************************************* -->
 <%
@@ -149,6 +164,9 @@
 
 <!--****************************FIN SESION************************************* -->
 <body>
+
+   
+   
 	<%
 		String numero_personas = request.getParameter("total_asistencia");
 
@@ -206,7 +224,13 @@
 	<form name="form1" id="form1" method="post">
 
 		<!--HEADER-->  
-	<header><img src="home_files/logo.png" alt="logo" width="220px" height="80px">
+	<header>
+	
+		<%
+	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
+	bAdministrarPublicaciones.logoDinamico(absoluta);
+	%>
+	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
 	<div class="container">
 		
 		<!--MENU-->
@@ -236,6 +260,7 @@
 							<div class="content">
 								<h4>Nueva planilla de asistencia (Inscritas y No a la fundación)</h4>
 								<div align="left">
+									 <table border="1" style="width:100%"><tr><th>Criterios</th><tr><td>
 									<table width="100%" border="0" cellspacing="2" cellpadding="2">
 										<tr>
 											<td>Fecha *:</td>
@@ -259,14 +284,14 @@
 
 
 											<td>Curso *:</td>
-											<td><select name="curso" id="curso"
+											<td><font color='black'><select name="curso" id="curso"  class="js-example-basic-single"
 												onchange="cargarTemasCombo()" style="width:300px">
 													<option value="" selected>Seleccione..</option>
 													<%
 														if(cursos!=null && cursos.size()>0){
 																																			for(Object[] c: cursos){
 													%>
-													<option value="<%=c[0]%>"><%=c[1]%></option>
+													<option value="<%=c[0]%>" ><%=c[1]%></option>
 													
 													<%
 														}
@@ -285,7 +310,7 @@
 														}
 																																		}
 													%>
-											
+											</font>
 											</td>
 											<td>Tema *:</td>
 											<td><span id="span_tema"></span></td>
@@ -309,10 +334,30 @@
 												type="text"
 												style="background-color: #D1D6E2; text-align: left; vertical-align: middle; width:300px;"
 												readonly="true" value="" /></td>
-											<td></td>
-											<td></td>
+											<td style="color:blue">Tipo dirección(opcional):</td>
+										<td><select name="control14" id="control14"
+											onchange="cargarTiposDireccionesConsulta()" style="width: 250px">
+												<option value="" selected>Seleccione...</option>
+												<option value="C">COMUNA</option>
+												<option value="CO">CORREGIMIENTO</option>
+										</select></td>
 										</tr>
+										<tr>
+										<td style="color:blue"><span id="span_1"><font color="blue">Comuna/Corregimiento(opcional):</font></span></td>
+										<td><span id="span_2"><select  style="width:250px; color:black" name="control15" id="control15">
+												<option value="" selected>Seleccione...</option>
+											</select></span>
+</td>
+										<td style="color:blue"><span id="span_3"><font color="blue">Barrio/Vereda/asentamiento(opcional):</font></span></td>
+										<td><span id="span_4">
+										<select  style="width:250px; color:black" name="control16" id="control16">
+												<option value="" selected>Seleccione...</option>
+											</select>
+										</span></td>
+									</tr>
 									</table>
+									</td></tr></table>
+									Tenga en cuenta que si genera planilla incluyendo comuna/corregimiento (opcionales) sólo es para esas áreas
 								</div>
 								<script>
 									cargarTemasCombo();
@@ -349,16 +394,12 @@
 			<div class="container">
 				<img src="home_files/logo-sm.png" alt="">
 				<ul class="list-inline social">
-					<li><a href="https://www.facebook.com/fundacionmujeryfuturo"
-						target="_blank"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="http://www.mujeryfuturo.org" target="_blank"><i
-							class="fa fa-twitter"></i></a></li>
+			
 
 
 				</ul>
 				<p>
-					Contacto: direccion@mujeryfuturo.org<br>Teléfonos:
-					(+57-7)6341589 - (+57)3105765181<br>Diseñado por:
+					SOFTWARE SIMYF<br>Diseñado por:
 					quimerapps.com
 				</p>
 			</div>
@@ -366,12 +407,14 @@
 		</footer>
 		<!--END FOOTER-->
 
-		<script src="home_files/jquery-1.11.0.min.js"></script>
-		<script src="home_files/jquery-migrate-1.2.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 
 		<script src="home_files/smoothscroll.js"></script>
 		<script src="home_files/snap.svg-min.js"></script>
-		<script src="home_files/jquery.bxslider.js"></script>
+	
 		<script src="home_files/retina.min.js"></script>
 		<script src="home_files/imagesloaded.pkgd.min.js"></script>
 		<script src="home_files/masonry.pkgd.min.js"></script>
@@ -385,6 +428,15 @@
 		<script src="home_files/main.js"></script>
 		<input name="hdnGuardarPublicacion" id="hdnGuardarPublicacion"
 			type="hidden" value="0" />
+			
+				 <script>
+
+				// In your Javascript (external .js resource or <script> tag)
+				 $(document).ready(function() {
+				     $('.js-example-basic-single').select2();
+				 });
+
+				 </script>
 	</form>
 </body>
 </html>

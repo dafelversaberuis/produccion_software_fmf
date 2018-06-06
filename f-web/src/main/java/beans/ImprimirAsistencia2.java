@@ -107,6 +107,22 @@ public class ImprimirAsistencia2 extends HttpServlet {
 				pars.put("tema", informacion);
 				pars.put("horas", horas);
 				pars.put("cursoCompleto", cursoCompleto);
+				
+				
+			//*******************NUEVO LO GO DE BD
+				try {
+					logo = request.getRealPath("/imagenes/logosLogos/");
+					Object[] logoReal = new AdministrarPublicaciones().getLogo(1);
+					byte[] archivoLogoReal = (byte[]) logoReal[3];
+					if (archivoLogoReal != null) {
+						new AdministrarPublicaciones().guardarArchivoDisco(logo + "/logo_financiador_OK.jpg", archivoLogoReal);
+						pars.put("logo", logo + "/logo_financiador_OK.jpg");
+					}
+				} catch (Exception e) {
+					logo = request.getRealPath("/home_files/");
+					pars.put("logo", logo + "/logo_original.png");
+				}
+				//********************************************
 
 				//
 

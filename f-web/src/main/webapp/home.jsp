@@ -11,8 +11,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <title>FUNDACIÓN MUJER Y FUTURO</title>
-    <meta name="Description" content="Fundación Mujer y Futuro">
+     <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF">
 	<meta name="viewport" content="initial-scale=1.0,width=device-width">
 <link rel="stylesheet" type="text/css" href="home_files/bootstrap.css">
 <link rel="stylesheet" type="text/css"
@@ -128,7 +128,13 @@
 	<form name="form1" id="form1" method="post"></form>
 
 	<!--HEADER-->  
-	<header><img src="home_files/logo.png" alt="logo" width="220px" height="80px">
+	<header>
+	
+	<%
+	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
+	bAdministrarPublicaciones.logoDinamico(absoluta);
+	%>
+	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
 	<div class="container">
 		  
 		<!--MENU-->
@@ -177,13 +183,13 @@
 	<div class="container">
 		<img src="home_files/logo-sm.png" alt="">
 		<ul class="list-inline social">
-			<li><a href="https://www.facebook.com/fundacionmujeryfuturo" target="_blank"><i class="fa fa-facebook"></i></a></li>
-			<li><a href="http://www.mujeryfuturo.org" target="_blank" ><i class="fa fa-twitter"></i></a></li>
+			
+			
 			
 
 		</ul>
 		<p>
-			Contacto: direccion@mujeryfuturo.org<br>Teléfonos: (+57-7)6341589 - (+57)3105765181<br>Diseñado por: quimerapps.com
+			SOFTWARE SIMYF<br>Diseñado por: quimerapps.com
 		</p>
 	</div></center>
 	</footer>

@@ -42,6 +42,10 @@ public class ImprimirAsistencia extends HttpServlet {
 			String horas = request.getParameter("horas");
 			String logo_f = "";
 
+			String c14 = request.getParameter("c14");
+			String c15 = request.getParameter("c15");
+			String c16 = request.getParameter("c16");
+
 			byte[] archivoLogo = null;
 
 			Object[] informacion = new AdministrarPublicaciones().getCursoTema(tema);
@@ -73,7 +77,7 @@ public class ImprimirAsistencia extends HttpServlet {
 
 			// out.println("curso fecha tema "curso+curso+" * "+fecha+" * "+tema);
 
-			List<Object[]> cursos = new AdministrarPublicaciones().getMujeresAsistencia(curso, tema, fecha);
+			List<Object[]> cursos = new AdministrarPublicaciones().getMujeresAsistencia(curso, tema, fecha, c14, c15, c16);
 			List<Asistencia> asistencia = new ArrayList<Asistencia>();
 			if (cursos != null && cursos.size() > 0) {
 				for (Object[] o : cursos) {
@@ -93,6 +97,21 @@ public class ImprimirAsistencia extends HttpServlet {
 				if (archivoLogo != null) {
 					new AdministrarPublicaciones().guardarArchivoDisco(logo2 + "/logo_financiador_" + logo_f + ".jpg", archivoLogo);
 				}
+
+				//*******************NUEVO LO GO DE BD
+				try {
+					logo = request.getRealPath("/imagenes/logosLogos/");
+					Object[] logoReal = new AdministrarPublicaciones().getLogo(1);
+					byte[] archivoLogoReal = (byte[]) logoReal[3];
+					if (archivoLogoReal != null) {
+						new AdministrarPublicaciones().guardarArchivoDisco(logo + "/logo_financiador_OK.jpg", archivoLogoReal);
+						pars.put("logo", logo + "/logo_financiador_OK.jpg");
+					}
+				} catch (Exception e) {
+					logo = request.getRealPath("/home_files/");
+					pars.put("logo", logo + "/logo_original.png");
+				}
+				//********************************************
 
 				pars.put("logo_f", logo2 + "/logo_financiador_" + logo_f + ".jpg");
 				pars.put("fecha", fecha);

@@ -33,7 +33,7 @@ if(id!=null && id.trim().equals("")){
 List<Object[]> cursos = bAdministrarPublicaciones.getBarriosVeredas(tipo, id);
 %>
 
-<select name="control16" id="control16" style="width:250px">
+<select name="control16" id="control16" style="width:250px; color:black">
 	<option value="" selected>Seleccione...</option>
 	<%  if (cursos!=null && cursos.size() > 0) {
 		for(Object[] c: cursos){

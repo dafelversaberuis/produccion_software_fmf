@@ -74,7 +74,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getPreguntas(id);
 		<td align="left" bgcolor="<%=color %>" style="font-size:11px" valign="middle"><font color="black"><%=j%></font></td>
 		<td align="left" bgcolor="<%=color %>" valign="top" style="font-size:11px"><%=i[2] %></td>
 		<td align="center" bgcolor="<%=color %>" valign="middle" style="font-size:11px"><font color="black"><%=i[3] %></font></td>  
-		<td align="center" bgcolor="<%=color %>" valign="middle"  style="font-size:11px"><%if(i[3].equals("U") || i[3].equals("M") ){ %><a href="opcionesRespuestas.jsp?encuesta=<%=encuesta %>&id=<%=i[0]%>&preg=<%=i[0]%>&nc=dfv %>"> Op. respuesta </a><%}else{out.println("- -");} %></td>  
+		<td align="center" bgcolor="<%=color %>" valign="middle"  style="font-size:11px"><%if(i[3].equals("U") || i[3].equals("M") ){ %><a href="opcionesRespuestas.jsp?encuesta=<%=encuesta %>&id=<%=i[0]%>&preg=<%=i[0]%>&nc=dfv"> Op. respuesta </a><%}else{out.println("- -");} %></td>  
 		<td align="center" bgcolor="<%=color %>" valign="middle"  style="font-size:11px"> <a href="#" onclick="cargarEliminarPregunta('<%=i[0]%>','<%=id %>'); return false;"> Eliminar </a> </td>  
 		<td align="right" bgcolor="<%=color %>" valign="middle"  style="font-size:11px"> <a href="#" onclick="window.open('/f-web/editarPregunta.jsp?id=<%=i[1] %>&p=<%=i[0] %>', 'popup', 'toolbar=no, menubar=no, scrollbars=no, resizable=no, width=650, height=450'); return false;" style="text-decoration:none"> Editar </a> </td>
 		

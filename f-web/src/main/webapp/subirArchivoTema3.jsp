@@ -11,8 +11,8 @@
 
 <html>
 <head>
-<title>MULTIEMERGENCIAS S.A.S</title>
-    <meta name="Description" content="CENTRO DE ENTRENAMIENTO EN EMERGENCIAS y SALUD OCUPACIONAL ">
+<title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF ">
 
 
 <? header("Cache-Control: no-cache, must-revalidate");?>
@@ -24,12 +24,12 @@
 
 <link href="estilos/estilos.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-<!--
+
 body {
 	background-image: url();
-	background-color: #AFDBF6;
+	background-color: #FBD7EB;
 }
--->
+
 </style>
 <style type="text/css">
 <!--
@@ -50,7 +50,7 @@ body {
 		}
 		else
 		{
-			alert("Debe seleccionar una imagen. Clic en el botón examinar; seleccione la imagen y luego clic en Aceptar");			
+			alert("Debe seleccionar un archivo. Clic en el botón examinar; seleccione la imagen y luego clic en Aceptar");			
 		}
 	
 	}
@@ -59,16 +59,17 @@ body {
 </head>
 <body>
 <%
-String tu = request.getParameter("tu");
-String us = request.getParameter("us");
+//String tu = request.getParameter("tu");
+//String us = request.getParameter("us");
+String id = request.getParameter("id");
 
 
 %>
 
 <p class="Estilo4">&nbsp;</p>
 <p class="Estilo4">&nbsp;</p>
-<p class="Estilo4">Busque la imagen a asociar (jpg,gif,png):</p>
-<form action="recibirFotoPublicacion.jsp?tu=2&us=<%=us%>" method="post" enctype="multipart/form-data" name="frm_cargar">
+<p class="Estilo4">Seleccione el archivo que desea cargar. Formatos aceptados: pdf, word (doc, docx), excel (xls, xlsx), power point (ppt,pptx,pps,ppsx), imágenes (jpg,jpeg,gif,png), comprimidos(zip, rar, 7z)</p>
+<form action="recibirArchivoTema3.jsp?id=<%=id%>" method="post" enctype="multipart/form-data" name="frm_cargar">
         <p>
           <input name="fil_imagen" type="file" size="40">
  </p>

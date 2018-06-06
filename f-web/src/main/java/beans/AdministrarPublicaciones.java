@@ -20,6 +20,26 @@ public class AdministrarPublicaciones {
 
 	private int numeroColumnasMujeres = 42;
 
+public void logoDinamico(String abosulta){
+	
+	//*******************NUEVO LO GO DE BD
+	try {
+	
+		Object[] logoReal = new AdministrarPublicaciones().getLogo(1);
+		byte[] archivoLogoReal = (byte[]) logoReal[3];
+		if (archivoLogoReal != null) {
+			new AdministrarPublicaciones().guardarArchivoDisco(abosulta + "/logo_financiador_OK.jpg", archivoLogoReal);
+
+		}
+	} catch (Exception e) {
+		
+
+	}
+	//********************************************
+	
+}
+	
+	
 	/**
 	 * Redondea un valor a n decimales
 	 * 
@@ -27,8 +47,7 @@ public class AdministrarPublicaciones {
 	 * @param aNumeroDecimales
 	 * @return valor
 	 */
-	public BigDecimal getValorRedondeado(BigDecimal aValor,
-			Integer aNumeroDecimales) {
+	public BigDecimal getValorRedondeado(BigDecimal aValor, Integer aNumeroDecimales) {
 
 		BigDecimal valor = new BigDecimal(0);
 		try {
@@ -42,8 +61,7 @@ public class AdministrarPublicaciones {
 		return valor;
 	}
 
-	public int contactar(String correo, String nombre, String telefono,
-			String contenido) {
+	public int contactar(String correo, String nombre, String telefono, String contenido) {
 
 		int exito = 0;
 		try {
@@ -59,26 +77,7 @@ public class AdministrarPublicaciones {
 
 			if (c == 0) {
 				asunto = "Nuevo contacto desde el software de Fundación Mujer y Futuro";
-				mensaje = "<table width='100%' border='0'>"
-						+ "<tr>"
-						+ "<td colspan='2' align='left' valign='middle'><strong><span class='Estilo2'>Software Fundación Mujer y Futuro</strong></td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td colspan='2'>&nbsp;</td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td colspan='2'><p>Estimado administrador(a) existe un nuevo comentario de contacto desde el sitio Web. Éstos son los datos:<br><br>-<strong>Nombres:</strong>"
-						+ nombre
-						+ "<br><br>-<strong>Correo:</strong>"
-						+ correo
-						+ "<br><br>-<strong>Teléfono:</strong>"
-						+ telefono
-						+ "<br><br>-<strong>Contenido</strong>:<br>"
-						+ contenido
-						+ "<br><br>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='"
-						+ parametros[0] + "'>" + parametros[0]
-						+ "</a> &oacute; contactarnos a nuestro correo: "
-						+ parametros[1] + " </span></td></tr></table>";
+				mensaje = "<table width='100%' border='0'>" + "<tr>" + "<td colspan='2' align='left' valign='middle'><strong><span class='Estilo2'>Software Fundación Mujer y Futuro</strong></td>" + "</tr>" + "<tr>" + "<td colspan='2'>&nbsp;</td>" + "</tr>" + "<tr>" + "<td colspan='2'><p>Estimado administrador(a) existe un nuevo comentario de contacto desde el sitio Web. Éstos son los datos:<br><br>-<strong>Nombres:</strong>" + nombre + "<br><br>-<strong>Correo:</strong>" + correo + "<br><br>-<strong>Teléfono:</strong>" + telefono + "<br><br>-<strong>Contenido</strong>:<br>" + contenido + "<br><br>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='" + parametros[0] + "'>" + parametros[0] + "</a> &oacute; contactarnos a nuestro correo: " + parametros[1] + " </span></td></tr></table>";
 
 				try {
 					email.enviarEmail(mensaje, asunto, parametros[1]);
@@ -106,9 +105,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO portafolio(titulo_portafolio,contenido_portafolio) VALUES('"
-							+ titulo + "','" + contenido + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO portafolio(titulo_portafolio,contenido_portafolio) VALUES('" + titulo + "','" + contenido + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -127,12 +124,7 @@ public class AdministrarPublicaciones {
 		Conexion conexion = new Conexion();
 		int valor = 0;
 
-		ResultSet rs2 = conexion
-				.consultarBD("SELECT COUNT(*) FROM respuestas_encuesta WHERE id_encuesta = "
-						+ encuesta
-						+ " AND id_pregunta= "
-						+ pregunta
-						+ " AND id_opcion=" + opcion);
+		ResultSet rs2 = conexion.consultarBD("SELECT COUNT(*) FROM respuestas_encuesta WHERE id_encuesta = " + encuesta + " AND id_pregunta= " + pregunta + " AND id_opcion=" + opcion);
 		try {
 			if (rs2.next()) {
 				valor = rs2.getInt(1);
@@ -149,8 +141,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int editarPregunta(String nombre, String idPregunta, String tipo,
-			String parametro) {
+	public int editarPregunta(String nombre, String idPregunta, String tipo, String parametro) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 
@@ -158,21 +149,14 @@ public class AdministrarPublicaciones {
 
 			if (parametro == null) {
 
-				boolean actualizo = conexion
-						.actualizarBD("UPDATE preguntas SET descripcion='"
-								+ nombre.trim() + "', tipo_respuesta = '"
-								+ tipo + "' WHERE id_pregunta = " + idPregunta);
+				boolean actualizo = conexion.actualizarBD("UPDATE preguntas SET descripcion='" + nombre.trim() + "', tipo_respuesta = '" + tipo + "' WHERE id_pregunta = " + idPregunta);
 				if (actualizo) {
 					exito = 1;
 				}
 
 			} else {
 
-				boolean actualizo = conexion
-						.actualizarBD("UPDATE preguntas SET descripcion='"
-								+ nombre.trim() + "', tipo_respuesta = '"
-								+ tipo + "' , id_pregunta_sup = " + parametro
-								+ " WHERE id_pregunta = " + idPregunta);
+				boolean actualizo = conexion.actualizarBD("UPDATE preguntas SET descripcion='" + nombre.trim() + "', tipo_respuesta = '" + tipo + "' , id_pregunta_sup = " + parametro + " WHERE id_pregunta = " + idPregunta);
 
 				if (actualizo) {
 					exito = 1;
@@ -195,9 +179,7 @@ public class AdministrarPublicaciones {
 
 		int c = 0;
 
-		ResultSet rs2 = conexion
-				.consultarBD("SELECT COUNT(*) FROM preguntas WHERE id_encuesta = "
-						+ idEncuesta);
+		ResultSet rs2 = conexion.consultarBD("SELECT COUNT(*) FROM preguntas WHERE id_encuesta = " + idEncuesta);
 		try {
 			if (rs2.next()) {
 				c = rs2.getInt(1);
@@ -212,14 +194,7 @@ public class AdministrarPublicaciones {
 
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO preguntas(descripcion,id_encuesta,tipo_respuesta,orden) VALUES('"
-							+ nombre.trim()
-							+ "',"
-							+ idEncuesta
-							+ ",'"
-							+ tipo
-							+ "','" + c + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO preguntas(descripcion,id_encuesta,tipo_respuesta,orden) VALUES('" + nombre.trim() + "'," + idEncuesta + ",'" + tipo + "','" + c + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -239,12 +214,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE opciones_respuesta SET descripcion= '"
-							+ nombre.trim()
-							+ "', ampliar='"
-							+ aAmpliar
-							+ "' where id_op_respuesta=" + idOpcion);
+			boolean actualizo = conexion.actualizarBD("UPDATE opciones_respuesta SET descripcion= '" + nombre.trim() + "', ampliar='" + aAmpliar + "' where id_op_respuesta=" + idOpcion);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -264,13 +234,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO opciones_respuesta(descripcion,id_pregunta,ampliar) VALUES('"
-							+ nombre.trim()
-							+ "',"
-							+ idPregunta
-							+ ",'"
-							+ aAmpliar + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO opciones_respuesta(descripcion,id_pregunta,ampliar) VALUES('" + nombre.trim() + "'," + idPregunta + ",'" + aAmpliar + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -286,22 +250,14 @@ public class AdministrarPublicaciones {
 	}
 
 	// 2137 -2173 ppto
-
-	public int crearRespuestaTiempo(String encuesta, String pregunta,
-			String mujer, String horas, String minutos) {
+	
+	
+	public int eliminarAntesEncuesta(String encuesta, String mujer) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_mujer,horas,minutos) VALUES("
-							+ encuesta
-							+ ","
-							+ pregunta
-							+ ","
-							+ mujer
-							+ ","
-							+ horas + "," + minutos + ")");
+			boolean actualizo = conexion.actualizarBD("DELETE FROM respuestas_encuesta WHERE id_encuesta= "+encuesta+" and id_mujer = "+mujer);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -316,23 +272,36 @@ public class AdministrarPublicaciones {
 
 	}
 	
-	
-	
+
+	public int crearRespuestaTiempo(String encuesta, String pregunta, String mujer, String horas, String minutos) {
+		Conexion conexion = new Conexion();
+		int exito = 0;
+		try {
+
+			boolean actualizo = conexion.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_mujer,horas,minutos) VALUES(" + encuesta + "," + pregunta + "," + mujer + "," + horas + "," + minutos + ")");
+			if (actualizo) {
+				exito = 1;
+			}
+
+		} catch (Exception ee) {
+			// e//e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+
+		return exito;
+
+	}
+
 	public int crearRespuestaAbierta(String encuesta, String pregunta, String mujer, String abierta) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
 			boolean actualizo = false;
-			
-		
-			
-			actualizo = conexion
-					.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_mujer,ampliacion) VALUES("
-							+ encuesta + "," + pregunta + "," + mujer+",'"+abierta+"')");
-			
-		
-			
+
+			actualizo = conexion.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_mujer,ampliacion) VALUES(" + encuesta + "," + pregunta + "," + mujer + ",'" + abierta + "')");
+
 			if (actualizo) {
 				exito = 1;
 			}
@@ -346,29 +315,24 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
-	
-	
+
 	public int crearRespuestaUnica(String encuesta, String pregunta, String opcion, String mujer, String ampliacion) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
 			boolean actualizo = false;
-			
-			if(ampliacion!=null && !ampliacion.equals("") && !ampliacion.equals("null")){
-			
-				actualizo = conexion
-					.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion,id_mujer,ampliacion) VALUES("
-							+ encuesta + "," + pregunta + "," + opcion + ","+mujer+",'"+ampliacion+"')");
-			
-			}else{
-				
-				actualizo = conexion
-						.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion,id_mujer) VALUES("
-								+ encuesta + "," + pregunta + "," + opcion + ","+mujer+")");
-				
+
+			if (ampliacion != null && !ampliacion.equals("") && !ampliacion.equals("null")) {
+
+				actualizo = conexion.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion,id_mujer,ampliacion) VALUES(" + encuesta + "," + pregunta + "," + opcion + "," + mujer + ",'" + ampliacion + "')");
+
+			} else {
+
+				actualizo = conexion.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion,id_mujer) VALUES(" + encuesta + "," + pregunta + "," + opcion + "," + mujer + ")");
+
 			}
-			
+
 			if (actualizo) {
 				exito = 1;
 			}
@@ -382,16 +346,13 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
-	
 
 	public int crearRespuesta(String encuesta, String pregunta, String opcion) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion) VALUES("
-							+ encuesta + "," + pregunta + "," + opcion + ")");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO respuestas_encuesta(id_encuesta,id_pregunta,id_opcion) VALUES(" + encuesta + "," + pregunta + "," + opcion + ")");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -411,9 +372,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE temas SET nombre='" + nombre.trim()
-							+ "' WHERE id=" + idTema);
+			boolean actualizo = conexion.actualizarBD("UPDATE temas SET nombre='" + nombre.trim() + "' WHERE id=" + idTema);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -447,9 +406,7 @@ public class AdministrarPublicaciones {
 		BigDecimal valor = new BigDecimal(0);
 		try {
 
-			valor = new BigDecimal(aValor).setScale(2, RoundingMode.HALF_UP)
-					.divide(new BigDecimal(4), 10, RoundingMode.HALF_UP)
-					.setScale(2, RoundingMode.HALF_UP);
+			valor = new BigDecimal(aValor).setScale(2, RoundingMode.HALF_UP).divide(new BigDecimal(4), 10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
 
 		} catch (Exception e) {
 			valor = new BigDecimal(0);
@@ -465,9 +422,7 @@ public class AdministrarPublicaciones {
 
 			int c = 0;
 
-			ResultSet rs = conexion
-					.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_financiador="
-							+ idFinanciador + " AND id_curso=" + idCurso);
+			ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_financiador=" + idFinanciador + " AND id_curso=" + idCurso);
 			try {
 				if (rs.next()) {
 					c = rs.getInt(1);
@@ -479,14 +434,10 @@ public class AdministrarPublicaciones {
 			}
 			if (c == 0) {
 
-				boolean actualizo = conexion
-						.actualizarBD("INSERT INTO curso_financiador(id_financiador,id_curso) VALUES("
-								+ idFinanciador + "," + idCurso + ")");
+				boolean actualizo = conexion.actualizarBD("INSERT INTO curso_financiador(id_financiador,id_curso) VALUES(" + idFinanciador + "," + idCurso + ")");
 				if (actualizo) {
 					c = 0;
-					ResultSet rs2 = conexion
-							.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_curso="
-									+ idCurso);
+					ResultSet rs2 = conexion.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_curso=" + idCurso);
 					try {
 						if (rs2.next()) {
 							c = rs2.getInt(1);
@@ -497,11 +448,8 @@ public class AdministrarPublicaciones {
 						// e.printStackTrace();
 					}
 
-					BigDecimal porcentaje = new BigDecimal(100).divide(
-							new BigDecimal(c), 10, RoundingMode.HALF_UP)
-							.setScale(2, RoundingMode.HALF_UP);
-					conexion.actualizarBD("UPDATE curso_financiador SET porcentaje="
-							+ porcentaje + " WHERE id_curso=" + idCurso);
+					BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c), 10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+					conexion.actualizarBD("UPDATE curso_financiador SET porcentaje=" + porcentaje + " WHERE id_curso=" + idCurso);
 
 					exito = 1;
 				}
@@ -525,9 +473,7 @@ public class AdministrarPublicaciones {
 
 			int c = 0;
 
-			ResultSet rs = conexion
-					.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_linea="
-							+ idLinea + " AND id_curso=" + idCurso);
+			ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_linea=" + idLinea + " AND id_curso=" + idCurso);
 			try {
 				if (rs.next()) {
 					c = rs.getInt(1);
@@ -539,14 +485,10 @@ public class AdministrarPublicaciones {
 			}
 			if (c == 0) {
 
-				boolean actualizo = conexion
-						.actualizarBD("INSERT INTO curso_linea(id_linea,id_curso) VALUES("
-								+ idLinea + "," + idCurso + ")");
+				boolean actualizo = conexion.actualizarBD("INSERT INTO curso_linea(id_linea,id_curso) VALUES(" + idLinea + "," + idCurso + ")");
 				if (actualizo) {
 					c = 0;
-					ResultSet rs2 = conexion
-							.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_curso="
-									+ idCurso);
+					ResultSet rs2 = conexion.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_curso=" + idCurso);
 					try {
 						if (rs2.next()) {
 							c = rs2.getInt(1);
@@ -557,11 +499,8 @@ public class AdministrarPublicaciones {
 						// e.printStackTrace();
 					}
 
-					BigDecimal porcentaje = new BigDecimal(100).divide(
-							new BigDecimal(c), 10, RoundingMode.HALF_UP)
-							.setScale(2, RoundingMode.HALF_UP);
-					conexion.actualizarBD("UPDATE curso_linea SET porcentaje="
-							+ porcentaje + " WHERE id_curso=" + idCurso);
+					BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c), 10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+					conexion.actualizarBD("UPDATE curso_linea SET porcentaje=" + porcentaje + " WHERE id_curso=" + idCurso);
 
 					exito = 1;
 				}
@@ -578,31 +517,19 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearActividad(String idActividad, String idMujer,
-			String justificacion, String idRango, String salarioSemanal) {
+	public int crearActividad(String idActividad, String idMujer, String justificacion, String idRango, String salarioSemanal) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
 			boolean actualizo = false;
 			if (justificacion != null) {
-				actualizo = conexion
-						.actualizarBD("INSERT INTO actividades_mujeres(id_mujer,id_actividad,justificacion,salario,numero_salarios) VALUES('"
-								+ idMujer
-								+ "','"
-								+ idActividad
-								+ "','"
-								+ justificacion
-								+ "','"
-								+ salarioSemanal
-								+ "','" + idRango + "')");
+				actualizo = conexion.actualizarBD("INSERT INTO actividades_mujeres(id_mujer,id_actividad,justificacion,salario,numero_salarios) VALUES('" + idMujer + "','" + idActividad + "','" + justificacion + "','" + salarioSemanal + "','" + idRango + "')");
 			} else {
 
 				int c = 0;
 
-				ResultSet rs = conexion
-						.consultarBD("SELECT COUNT(*) FROM actividades_mujeres WHERE id_mujer= "
-								+ idMujer + " AND id_actividad=" + idActividad);
+				ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM actividades_mujeres WHERE id_mujer= " + idMujer + " AND id_actividad=" + idActividad);
 				try {
 					if (rs.next()) {
 						c = rs.getInt(1);
@@ -614,13 +541,7 @@ public class AdministrarPublicaciones {
 				}
 
 				if (c == 0) {
-					actualizo = conexion
-							.actualizarBD("INSERT INTO actividades_mujeres(id_mujer,id_actividad,salario,numero_salarios) VALUES('"
-									+ idMujer
-									+ "','"
-									+ idActividad
-									+ "','"
-									+ salarioSemanal + "','" + idRango + "')");
+					actualizo = conexion.actualizarBD("INSERT INTO actividades_mujeres(id_mujer,id_actividad,salario,numero_salarios) VALUES('" + idMujer + "','" + idActividad + "','" + salarioSemanal + "','" + idRango + "')");
 
 				}
 			}
@@ -639,35 +560,19 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearParticipacion(String idNivel, String idMujer,
-			String justificacion, String tipo, String cargo) {
+	public int crearParticipacion(String idNivel, String idMujer, String justificacion, String tipo, String cargo) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
 			boolean actualizo = false;
 			if (justificacion != null) {
-				actualizo = conexion
-						.actualizarBD("INSERT INTO participaciones_mujeres(id_mujer,id_organizacion,id_cargo,tipo,justificacion) VALUES('"
-								+ idMujer
-								+ "','"
-								+ idNivel
-								+ "','"
-								+ cargo
-								+ "','" + tipo + "','" + justificacion + "')");
+				actualizo = conexion.actualizarBD("INSERT INTO participaciones_mujeres(id_mujer,id_organizacion,id_cargo,tipo,justificacion) VALUES('" + idMujer + "','" + idNivel + "','" + cargo + "','" + tipo + "','" + justificacion + "')");
 			} else {
 
 				int c = 0;
 
-				ResultSet rs = conexion
-						.consultarBD("SELECT COUNT(*) FROM participaciones_mujeres WHERE id_mujer= "
-								+ idMujer
-								+ " AND id_organizacion="
-								+ idNivel
-								+ " AND id_cargo="
-								+ cargo
-								+ " AND tipo='"
-								+ tipo + "'");
+				ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM participaciones_mujeres WHERE id_mujer= " + idMujer + " AND id_organizacion=" + idNivel + " AND id_cargo=" + cargo + " AND tipo='" + tipo + "'");
 				try {
 					if (rs.next()) {
 						c = rs.getInt(1);
@@ -679,14 +584,7 @@ public class AdministrarPublicaciones {
 				}
 
 				if (c == 0) {
-					actualizo = conexion
-							.actualizarBD("INSERT INTO participaciones_mujeres(id_mujer,id_organizacion,id_cargo,tipo) VALUES('"
-									+ idMujer
-									+ "','"
-									+ idNivel
-									+ "','"
-									+ cargo
-									+ "','" + tipo + "')");
+					actualizo = conexion.actualizarBD("INSERT INTO participaciones_mujeres(id_mujer,id_organizacion,id_cargo,tipo) VALUES('" + idMujer + "','" + idNivel + "','" + cargo + "','" + tipo + "')");
 
 				}
 			}
@@ -705,9 +603,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearCapacitacion(String idNivel, String idMujer,
-			String justificacion, String institucion, String percepcion,
-			String tiempo, String tipo) {
+	public int crearCapacitacion(String idNivel, String idMujer, String justificacion, String institucion, String percepcion, String tiempo, String tipo) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		String sql = "";
@@ -718,34 +614,12 @@ public class AdministrarPublicaciones {
 
 				if (tipo != null && tipo.equals("C")) {
 
-					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_capacitacion, justificacion,tiempo,institucion,nivel) VALUES("
-							+ idMujer
-							+ ","
-							+ idNivel
-							+ ",'"
-							+ justificacion
-							+ "','"
-							+ tiempo
-							+ "','"
-							+ institucion
-							+ "','"
-							+ percepcion + "')";
+					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_capacitacion, justificacion,tiempo,institucion,nivel) VALUES(" + idMujer + "," + idNivel + ",'" + justificacion + "','" + tiempo + "','" + institucion + "','" + percepcion + "')";
 					actualizo = conexion.actualizarBD(sql);
 
 				} else {
 
-					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_linea, justificacion,tiempo,institucion,nivel) VALUES("
-							+ idMujer
-							+ ","
-							+ idNivel
-							+ ",'"
-							+ justificacion
-							+ "','"
-							+ tiempo
-							+ "','"
-							+ institucion
-							+ "','"
-							+ percepcion + "')";
+					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_linea, justificacion,tiempo,institucion,nivel) VALUES(" + idMujer + "," + idNivel + ",'" + justificacion + "','" + tiempo + "','" + institucion + "','" + percepcion + "')";
 					actualizo = conexion.actualizarBD(sql);
 
 				}
@@ -753,26 +627,12 @@ public class AdministrarPublicaciones {
 			} else {
 
 				if (tipo != null && tipo.equals("C")) {
-					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_capacitacion, tiempo,institucion,nivel) VALUES("
-							+ idMujer
-							+ ","
-							+ idNivel
-							+ ",'"
-							+ tiempo
-							+ "','"
-							+ institucion + "','" + percepcion + "')";
+					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_capacitacion, tiempo,institucion,nivel) VALUES(" + idMujer + "," + idNivel + ",'" + tiempo + "','" + institucion + "','" + percepcion + "')";
 					actualizo = conexion.actualizarBD(sql);
 
 				} else {
 
-					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_linea, tiempo,institucion,nivel) VALUES("
-							+ idMujer
-							+ ","
-							+ idNivel
-							+ ",'"
-							+ tiempo
-							+ "','"
-							+ institucion + "','" + percepcion + "')";
+					sql = "INSERT INTO capacitaciones_mujeres(id_mujer,id_linea, tiempo,institucion,nivel) VALUES(" + idMujer + "," + idNivel + ",'" + tiempo + "','" + institucion + "','" + percepcion + "')";
 					actualizo = conexion.actualizarBD(sql);
 
 				}
@@ -800,20 +660,12 @@ public class AdministrarPublicaciones {
 
 			boolean actualizo = false;
 			if (justificacion != null) {
-				actualizo = conexion
-						.actualizarBD("INSERT INTO niveles_mujeres(id_mujer,id_nivel,justificacion) VALUES('"
-								+ idMujer
-								+ "','"
-								+ idNivel
-								+ "','"
-								+ justificacion + "')");
+				actualizo = conexion.actualizarBD("INSERT INTO niveles_mujeres(id_mujer,id_nivel,justificacion) VALUES('" + idMujer + "','" + idNivel + "','" + justificacion + "')");
 			} else {
 
 				int c = 0;
 
-				ResultSet rs = conexion
-						.consultarBD("SELECT COUNT(*) FROM niveles_mujeres WHERE id_mujer= "
-								+ idMujer + " AND id_nivel=" + idNivel);
+				ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM niveles_mujeres WHERE id_mujer= " + idMujer + " AND id_nivel=" + idNivel);
 				try {
 					if (rs.next()) {
 						c = rs.getInt(1);
@@ -825,9 +677,7 @@ public class AdministrarPublicaciones {
 				}
 
 				if (c == 0) {
-					actualizo = conexion
-							.actualizarBD("INSERT INTO niveles_mujeres(id_mujer,id_nivel) VALUES('"
-									+ idMujer + "','" + idNivel + "')");
+					actualizo = conexion.actualizarBD("INSERT INTO niveles_mujeres(id_mujer,id_nivel) VALUES('" + idMujer + "','" + idNivel + "')");
 
 				}
 			}
@@ -851,9 +701,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO temas(nombre,id_curso) VALUES('"
-							+ nombre.trim() + "'," + idCurso + ")");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO temas(nombre,id_curso) VALUES('" + nombre.trim() + "'," + idCurso + ")");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -874,9 +722,7 @@ public class AdministrarPublicaciones {
 		try {
 			int c = 0;
 
-			ResultSet rs = conexion
-					.consultarBD("SELECT COUNT(*) FROM mujeres_curso WHERE id_mujer= "
-							+ idMujer + " AND id_curso=" + idCurso);
+			ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM mujeres_curso WHERE id_mujer= " + idMujer + " AND id_curso=" + idCurso);
 			try {
 				if (rs.next()) {
 					c = rs.getInt(1);
@@ -888,9 +734,7 @@ public class AdministrarPublicaciones {
 			}
 			if (c == 0) {
 
-				boolean actualizo = conexion
-						.actualizarBD("INSERT INTO mujeres_curso(id_mujer,id_curso) VALUES('"
-								+ idMujer + "'," + idCurso + ")");
+				boolean actualizo = conexion.actualizarBD("INSERT INTO mujeres_curso(id_mujer,id_curso) VALUES('" + idMujer + "'," + idCurso + ")");
 				if (actualizo) {
 					exito = 1;
 				}
@@ -907,17 +751,12 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int editarEncuesta(String id, String encuesta, String fechaDesde,
-			String fechaHasta) {
+	public int editarEncuesta(String id, String encuesta, String fechaDesde, String fechaHasta) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE encuestas SET descripcion='"
-							+ encuesta.trim() + "', fecha_desde='" + fechaDesde
-							+ "',fecha_hasta='" + fechaHasta
-							+ "' WHERE id_encuesta=" + id);
+			boolean actualizo = conexion.actualizarBD("UPDATE encuestas SET descripcion='" + encuesta.trim() + "', fecha_desde='" + fechaDesde + "',fecha_hasta='" + fechaHasta + "' WHERE id_encuesta=" + id);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -932,19 +771,12 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearEncuesta(String encuesta, String fechaDesde,
-			String fechaHasta) {
+	public int crearEncuesta(String encuesta, String fechaDesde, String fechaHasta) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO encuestas(descripcion,fecha_desde,fecha_hasta) VALUES('"
-							+ encuesta.trim()
-							+ "','"
-							+ fechaDesde
-							+ "','"
-							+ fechaHasta + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO encuestas(descripcion,fecha_desde,fecha_hasta) VALUES('" + encuesta.trim() + "','" + fechaDesde + "','" + fechaHasta + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -959,20 +791,14 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearProyectoLinea(String proyecto, String linea,
-			String financiador) {
+	public int crearProyectoLinea(String proyecto, String linea, String financiador) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
 			int c = 0;
 
-			ResultSet rs = conexion
-					.consultarBD("SELECT COUNT(*) FROM proyecto_linea_finan WHERE id_proyecto= "
-							+ proyecto
-							+ " AND id_linea = "
-							+ linea
-							+ " AND id_financiador=" + financiador);
+			ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM proyecto_linea_finan WHERE id_proyecto= " + proyecto + " AND id_linea = " + linea + " AND id_financiador=" + financiador);
 
 			try {
 				if (rs.next()) {
@@ -986,14 +812,7 @@ public class AdministrarPublicaciones {
 
 			if (c == 0) {
 
-				boolean actualizo = conexion
-						.actualizarBD("INSERT INTO proyecto_linea_finan(id_proyecto,id_linea,id_financiador) VALUES("
-								+ proyecto
-								+ ","
-								+ linea
-								+ ","
-								+ financiador
-								+ ")");
+				boolean actualizo = conexion.actualizarBD("INSERT INTO proyecto_linea_finan(id_proyecto,id_linea,id_financiador) VALUES(" + proyecto + "," + linea + "," + financiador + ")");
 				if (actualizo) {
 					exito = 1;
 				}
@@ -1015,9 +834,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO lineas(nombre) VALUES('"
-							+ proyecto.trim() + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO lineas(nombre) VALUES('" + proyecto.trim() + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1037,9 +854,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO proyectos(nombre) VALUES('"
-							+ proyecto.trim() + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO proyectos(nombre) VALUES('" + proyecto.trim() + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1053,8 +868,7 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
-	
-	
+
 	public void actualizarArchivov3(File archivo, String id) {
 
 		Conexion conexion = new Conexion();
@@ -1084,13 +898,88 @@ public class AdministrarPublicaciones {
 	}
 	
 	
+	public void actualizarArchivov33(File archivo, String id) {
 
-	public int actualizarArchivoTema(String id, String nombreArchivo,String contenttype) {
+		Conexion conexion = new Conexion();
+		byte[] array = null;
+
+		try {
+			FileInputStream is = new FileInputStream(archivo);
+
+			// guarda el archivo
+
+			String[][] condiciones = new String[1][2];
+			condiciones[0][0] = "id";
+			condiciones[0][1] = "" + id;
+			String[] campos = new String[1];
+			campos[0] = "array3";
+
+			Object[] valores = new Object[1];
+			valores[0] = array;
+			boolean oka = conexion.actualizarBD3("temas", campos, condiciones, is, (int) archivo.length(), archivo);
+
+			conexion.cerrarConexion();
+
+		} catch (Exception e) {
+
+		}
+
+	}
+	
+	public void actualizarArchivov32(File archivo, String id) {
+
+		Conexion conexion = new Conexion();
+		byte[] array = null;
+
+		try {
+			FileInputStream is = new FileInputStream(archivo);
+
+			// guarda el archivo
+
+			String[][] condiciones = new String[1][2];
+			condiciones[0][0] = "id";
+			condiciones[0][1] = "" + id;
+			String[] campos = new String[1];
+			campos[0] = "array2";
+
+			Object[] valores = new Object[1];
+			valores[0] = array;
+			boolean oka = conexion.actualizarBD3("temas", campos, condiciones, is, (int) archivo.length(), archivo);
+
+			conexion.cerrarConexion();
+
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	public int actualizarArchivoTema(String id, String nombreArchivo, String contenttype) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo ='" + nombreArchivo.toLowerCase() + "', content_type='"+contenttype+"' WHERE id =" + id);
+			boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo ='" + nombreArchivo.toLowerCase() + "', content_type='" + contenttype + "' WHERE id =" + id);
+			if (actualizo) {
+				exito = 1;
+			}
+
+		} catch (Exception ee) {
+			// e//e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+
+		return exito;
+
+	}
+	
+	public int actualizarArchivoTema3(String id, String nombreArchivo, String contenttype) {
+		Conexion conexion = new Conexion();
+		int exito = 0;
+		try {
+
+			boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo3 ='" + nombreArchivo.toLowerCase() + "', content_type3='" + contenttype + "' WHERE id =" + id);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1106,6 +995,26 @@ public class AdministrarPublicaciones {
 	}
 	
 	
+	public int actualizarArchivoTema2(String id, String nombreArchivo, String contenttype) {
+		Conexion conexion = new Conexion();
+		int exito = 0;
+		try {
+
+			boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo2 ='" + nombreArchivo.toLowerCase() + "', content_type2='" + contenttype + "' WHERE id =" + id);
+			if (actualizo) {
+				exito = 1;
+			}
+
+		} catch (Exception ee) {
+			// e//e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+
+		return exito;
+
+	}
+
 	public void actualizarArchivo(File archivo, String financiador) {
 
 		Conexion conexion = new Conexion();
@@ -1134,16 +1043,61 @@ public class AdministrarPublicaciones {
 
 	}
 	
+	public void actualizarArchivoLogo(File archivo, String financiador) {
+
+		Conexion conexion = new Conexion();
+		byte[] array = null;
+
+		try {
+			FileInputStream is = new FileInputStream(archivo);
+
+			// guarda el archivo
+
+			String[][] condiciones = new String[1][2];
+			condiciones[0][0] = "id";
+			condiciones[0][1] = "" + financiador;
+			String[] campos = new String[1];
+			campos[0] = "archivo";
+
+			Object[] valores = new Object[1];
+			valores[0] = array;
+			boolean oka = conexion.actualizarBD3("logo_software", campos, condiciones, is, (int) archivo.length(), archivo);
+
+			conexion.cerrarConexion();
+
+		} catch (Exception e) {
+
+		}
+
+	}
 	
+	
+	public int actualizarLogo(String financiador) {
+		Conexion conexion = new Conexion();
+		int exito = 0;
+		try {
+
+			boolean actualizo = conexion.actualizarBD("UPDATE logo_software SET posee_logo ='S' WHERE id =" + financiador);
+			if (actualizo) {
+				exito = 1;
+			}
+
+		} catch (Exception ee) {
+			// e//e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+
+		return exito;
+
+	}
 
 	public int actualizarFinanciador(String financiador) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE financiadores SET posee_logo ='S' WHERE id ="
-							+ financiador);
+			boolean actualizo = conexion.actualizarBD("UPDATE financiadores SET posee_logo ='S' WHERE id =" + financiador);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1163,9 +1117,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO financiadores(nombre) VALUES('"
-							+ financiador.trim() + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO financiadores(nombre) VALUES('" + financiador.trim() + "')");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1185,9 +1137,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE cursos SET nombre='" + curso.trim()
-							+ "', id_proyecto=" + proyecto + " WHERE id=" + id);
+			boolean actualizo = conexion.actualizarBD("UPDATE cursos SET nombre='" + curso.trim() + "', id_proyecto=" + proyecto + " WHERE id=" + id);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1207,9 +1157,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO cursos(nombre,id_proyecto) VALUES('"
-							+ curso.trim() + "'," + proyecto + ")");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO cursos(nombre,id_proyecto) VALUES('" + curso.trim() + "'," + proyecto + ")");
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1224,8 +1172,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int crearAdmin(String pn, String sn, String pa, String sa, int doc,
-			String correo, String clave) {
+	public int crearAdmin(String pn, String sn, String pa, String sa, int doc, String correo, String clave) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
@@ -1236,9 +1183,7 @@ public class AdministrarPublicaciones {
 			String[] parametros = parametro.getarametros();
 			int c = 0;
 
-			ResultSet rs = conexion
-					.consultarBD("SELECT COUNT(*) FROM administradores WHERE documento= "
-							+ doc);
+			ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM administradores WHERE documento= " + doc);
 			try {
 				if (rs.next()) {
 					c = rs.getInt(1);
@@ -1254,37 +1199,7 @@ public class AdministrarPublicaciones {
 
 			if (c == 0) {
 				asunto = "Nueva cuenta en sitio Web Fundación Mujer y Futuro";
-				mensaje = "<table width='100%' border='0'>"
-						+ "<tr>"
-						+ "<td colspan='2' align='left' valign='middle'><strong>Sistema de informaci&oacute;n de Fundación Mujer y Futuro </strong></td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td colspan='2'>&nbsp;</td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td colspan='2'><p>Estimado administrador(a) <strong>"
-						+ pn
-						+ " "
-						+ sn
-						+ " "
-						+ pa
-						+ " "
-						+ sa
-						+ "</strong> se le ha creado una nueva cuenta en sitio Web Fundación Mujer y Futuro. Le recordamos su nueva contraseña, cámbiela cuando desee desde el menú administrador. La contraseña es: "
-						+ clave
-						+ ".</p>"
-						+ "<p>&nbsp; </p></td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td colspan='2'><span class='Estilo6'>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='"
-						+ parametros[0]
-						+ "'>"
-						+ parametros[0]
-						+ "</a> &oacute; contactarnos a nuestro correo: "
-						+ parametros[1]
-						+ " </span></td>"
-						+ "</tr>"
-						+ "</table>";
+				mensaje = "<table width='100%' border='0'>" + "<tr>" + "<td colspan='2' align='left' valign='middle'><strong>Sistema de informaci&oacute;n de Fundación Mujer y Futuro </strong></td>" + "</tr>" + "<tr>" + "<td colspan='2'>&nbsp;</td>" + "</tr>" + "<tr>" + "<td colspan='2'><p>Estimado administrador(a) <strong>" + pn + " " + sn + " " + pa + " " + sa + "</strong> se le ha creado una nueva cuenta en sitio Web Fundación Mujer y Futuro. Le recordamos su nueva contraseña, cámbiela cuando desee desde el menú administrador. La contraseña es: " + clave + ".</p>" + "<p>&nbsp; </p></td>" + "</tr>" + "<tr>" + "<td colspan='2'><span class='Estilo6'>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='" + parametros[0] + "'>" + parametros[0] + "</a> &oacute; contactarnos a nuestro correo: " + parametros[1] + " </span></td>" + "</tr>" + "</table>";
 
 				try {
 					email.enviarEmail(mensaje, asunto, correo);
@@ -1293,22 +1208,7 @@ public class AdministrarPublicaciones {
 					// e.printStackTrace();
 				}
 
-				boolean actualizo = conexion
-						.actualizarBD("INSERT INTO administradores(primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,documento,clave,correo) VALUES('"
-								+ pn
-								+ "','"
-								+ sn
-								+ "','"
-								+ pa
-								+ "','"
-								+ sa
-								+ "',"
-								+ doc
-								+ ",\""
-								+ clave
-								+ "\",'"
-								+ correo
-								+ "')");
+				boolean actualizo = conexion.actualizarBD("INSERT INTO administradores(primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,documento,clave,correo) VALUES('" + pn + "','" + sn + "','" + pa + "','" + sa + "'," + doc + ",\"" + clave + "\",'" + correo + "')");
 				if (actualizo) {
 					exito = 1;
 				}
@@ -1324,8 +1224,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int getEnviarNuevaClaveAdmin(String correo, int id, String m,
-			String clave) {
+	public int getEnviarNuevaClaveAdmin(String correo, int id, String m, String clave) {
 		Conexion conexion = new Conexion();
 		int exito = 0;
 		try {
@@ -1345,24 +1244,7 @@ public class AdministrarPublicaciones {
 				admin.setClave(clave);
 			}
 			asunto = "Nueva clave software Fundación Mujer y Futuro";
-			mensaje = "<table width='100%' border='0'>"
-					+ "<tr>"
-					+ "<td colspan='2' align='left' valign='middle'><strong>Sistema de informaci&oacute;n  Fundación Mujer y Futuro</strong></td>"
-					+ "</tr>"
-					+ "<tr>"
-					+ "<td colspan='2'>&nbsp;</td>"
-					+ "</tr>"
-					+ "<tr>"
-					+ "<td colspan='2'><p>Estimado administrador(a), se le ha asignado una nueva contraseña. Cámbiela cuando desee. La contraseña es: "
-					+ admin.getClave()
-					+ "</p>"
-					+ "<p>&nbsp; </p></td>"
-					+ "</tr>"
-					+ "<tr>"
-					+ "<td colspan='2'><span class='Estilo6'>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='"
-					+ parametros[0] + "'>" + parametros[0]
-					+ "</a> &oacute; contactarnos a nuestro correo: "
-					+ parametros[1] + " </span></td></tr>" + "</table>";
+			mensaje = "<table width='100%' border='0'>" + "<tr>" + "<td colspan='2' align='left' valign='middle'><strong>Sistema de informaci&oacute;n  Fundación Mujer y Futuro</strong></td>" + "</tr>" + "<tr>" + "<td colspan='2'>&nbsp;</td>" + "</tr>" + "<tr>" + "<td colspan='2'><p>Estimado administrador(a), se le ha asignado una nueva contraseña. Cámbiela cuando desee. La contraseña es: " + admin.getClave() + "</p>" + "<p>&nbsp; </p></td>" + "</tr>" + "<tr>" + "<td colspan='2'><span class='Estilo6'>* Puedes visitar nuestro portal en cualquier momento dirigi&eacute;ndote a la direcci&oacute;n de internet: <a href='" + parametros[0] + "'>" + parametros[0] + "</a> &oacute; contactarnos a nuestro correo: " + parametros[1] + " </span></td></tr>" + "</table>";
 
 			try {
 				email.enviarEmail(mensaje, asunto, correo);
@@ -1371,10 +1253,7 @@ public class AdministrarPublicaciones {
 				// e.printStackTrace();
 			}
 
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE administradores SET clave=(\""
-							+ admin.getClave() + "\") WHERE id_administrador="
-							+ id);
+			boolean actualizo = conexion.actualizarBD("UPDATE administradores SET clave=(\"" + admin.getClave() + "\") WHERE id_administrador=" + id);
 			if (actualizo) {
 				exito = 1;
 			}
@@ -1410,9 +1289,7 @@ public class AdministrarPublicaciones {
 		conexion.setAutoCommitBD(true);
 		int g = 0;
 		boolean actualizo = false;
-		actualizo = conexion
-				.actualizarBD("DELETE FROM archivos_planos WHERE id_archivo="
-						+ Integer.parseInt(idArchivo));
+		actualizo = conexion.actualizarBD("DELETE FROM archivos_planos WHERE id_archivo=" + Integer.parseInt(idArchivo));
 		// conexion.commitBD();
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1427,9 +1304,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM portafolio WHERE id_portafolio="
-						+ Integer.parseInt(idPortafolio));
+		actualizo = conexion.actualizarBD("DELETE FROM portafolio WHERE id_portafolio=" + Integer.parseInt(idPortafolio));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1444,8 +1319,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM mujeres WHERE id_mujer="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM mujeres WHERE id_mujer=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1460,8 +1334,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM mujeres_curso WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM mujeres_curso WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1476,9 +1349,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM preguntas WHERE id_pregunta="
-						+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM preguntas WHERE id_pregunta=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1493,9 +1364,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM opciones_respuesta WHERE id_op_respuesta="
-						+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM opciones_respuesta WHERE id_op_respuesta=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1511,9 +1380,7 @@ public class AdministrarPublicaciones {
 		boolean actualizo = false;
 
 		int curso = 0;
-		ResultSet rs2 = conexion
-				.consultarBD("SELECT id_curso FROM  curso_financiador WHERE id="
-						+ idAdministrador);
+		ResultSet rs2 = conexion.consultarBD("SELECT id_curso FROM  curso_financiador WHERE id=" + idAdministrador);
 		try {
 			if (rs2.next()) {
 				curso = rs2.getInt(1);
@@ -1524,14 +1391,10 @@ public class AdministrarPublicaciones {
 			// e.printStackTrace();
 		}
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM curso_financiador WHERE id="
-						+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM curso_financiador WHERE id=" + Integer.parseInt(idAdministrador));
 
 		int c = 0;
-		ResultSet rs = conexion
-				.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_curso ="
-						+ curso);
+		ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM curso_financiador WHERE id_curso =" + curso);
 		try {
 			if (rs.next()) {
 				c = rs.getInt(1);
@@ -1542,10 +1405,8 @@ public class AdministrarPublicaciones {
 			// e.printStackTrace();
 		}
 
-		BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c),
-				10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
-		conexion.actualizarBD("UPDATE curso_financiador SET porcentaje="
-				+ porcentaje + " WHERE id_curso=" + curso);
+		BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c), 10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+		conexion.actualizarBD("UPDATE curso_financiador SET porcentaje=" + porcentaje + " WHERE id_curso=" + curso);
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1561,9 +1422,7 @@ public class AdministrarPublicaciones {
 		boolean actualizo = false;
 
 		int curso = 0;
-		ResultSet rs2 = conexion
-				.consultarBD("SELECT id_curso FROM  curso_linea WHERE id="
-						+ idAdministrador);
+		ResultSet rs2 = conexion.consultarBD("SELECT id_curso FROM  curso_linea WHERE id=" + idAdministrador);
 		try {
 			if (rs2.next()) {
 				curso = rs2.getInt(1);
@@ -1574,13 +1433,10 @@ public class AdministrarPublicaciones {
 			// e.printStackTrace();
 		}
 
-		actualizo = conexion.actualizarBD("DELETE FROM curso_linea WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM curso_linea WHERE id=" + Integer.parseInt(idAdministrador));
 
 		int c = 0;
-		ResultSet rs = conexion
-				.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_curso ="
-						+ curso);
+		ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM curso_linea WHERE id_curso =" + curso);
 		try {
 			if (rs.next()) {
 				c = rs.getInt(1);
@@ -1591,10 +1447,8 @@ public class AdministrarPublicaciones {
 			// e.printStackTrace();
 		}
 
-		BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c),
-				10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
-		conexion.actualizarBD("UPDATE curso_linea SET porcentaje=" + porcentaje
-				+ " WHERE id_curso=" + curso);
+		BigDecimal porcentaje = new BigDecimal(100).divide(new BigDecimal(c), 10, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+		conexion.actualizarBD("UPDATE curso_linea SET porcentaje=" + porcentaje + " WHERE id_curso=" + curso);
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1609,9 +1463,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM actividades_mujeres WHERE id="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM actividades_mujeres WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -1627,9 +1479,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM participaciones_mujeres WHERE id="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM participaciones_mujeres WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -1645,9 +1495,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM capacitaciones_mujeres WHERE id="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM capacitaciones_mujeres WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -1663,9 +1511,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM niveles_mujeres WHERE id="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM niveles_mujeres WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -1681,8 +1527,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM temas WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM temas WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 
@@ -1706,8 +1551,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM asistencia WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM asistencia WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1724,11 +1568,8 @@ public class AdministrarPublicaciones {
 		List<Object[]> preguntas = getPreguntas(idAdministrador);
 		if (preguntas != null && preguntas.size() > 0) {
 			for (Object[] pregunta : preguntas) {
-				if (pregunta[3] != null
-						&& (((String) pregunta[3]).equals("M") || ((String) pregunta[3])
-								.equals("U"))) {
-					List<Object[]> opciones = this
-							.getOpciones("" + pregunta[0]);
+				if (pregunta[3] != null && (((String) pregunta[3]).equals("M") || ((String) pregunta[3]).equals("U"))) {
+					List<Object[]> opciones = this.getOpciones("" + pregunta[0]);
 					if (!(opciones != null && opciones.size() > 0)) {
 						sw = 0;
 						break;
@@ -1742,9 +1583,7 @@ public class AdministrarPublicaciones {
 		}
 
 		if (sw == 1) {
-			boolean actualizo = conexion
-					.actualizarBD("UPDATE encuestas SET activa = 'S' WHERE id_encuesta = "
-							+ Integer.parseInt(idAdministrador));
+			boolean actualizo = conexion.actualizarBD("UPDATE encuestas SET activa = 'S' WHERE id_encuesta = " + Integer.parseInt(idAdministrador));
 			if (!actualizo) {
 				sw = 0;
 			}
@@ -1760,9 +1599,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM encuestas WHERE id_encuesta="
-						+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM encuestas WHERE id_encuesta=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1777,9 +1614,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM proyecto_linea_finan WHERE id="
-						+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM proyecto_linea_finan WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1794,8 +1629,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM lineas WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM lineas WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1810,8 +1644,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM proyectos WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM proyectos WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1824,8 +1657,67 @@ public class AdministrarPublicaciones {
 		Conexion conexion = new Conexion();
 		conexion.setAutoCommitBD(true);
 		int exito = 0;
-		boolean actualizo = conexion
-				.actualizarBD("UPDATE temas SET archivo = NULL WHERE id =" + id);
+		boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo = NULL WHERE id =" + id);
+
+		java.io.File archivo = new java.io.File(ruta);
+		if (actualizo) {
+			if (archivo.exists()) {
+				archivo.delete();
+			}
+
+			if (actualizo) {
+				exito = 1;
+			}
+		}
+		return exito;
+	}
+	
+	
+	public int eliminarArchivoTema2(String id, String ruta) {
+		Conexion conexion = new Conexion();
+		conexion.setAutoCommitBD(true);
+		int exito = 0;
+		boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo2 = NULL WHERE id =" + id);
+
+		java.io.File archivo = new java.io.File(ruta);
+		if (actualizo) {
+			if (archivo.exists()) {
+				archivo.delete();
+			}
+
+			if (actualizo) {
+				exito = 1;
+			}
+		}
+		return exito;
+	}
+	
+	
+	public int eliminarArchivoTema3(String id, String ruta) {
+		Conexion conexion = new Conexion();
+		conexion.setAutoCommitBD(true);
+		int exito = 0;
+		boolean actualizo = conexion.actualizarBD("UPDATE temas SET archivo3 = NULL WHERE id =" + id);
+
+		java.io.File archivo = new java.io.File(ruta);
+		if (actualizo) {
+			if (archivo.exists()) {
+				archivo.delete();
+			}
+
+			if (actualizo) {
+				exito = 1;
+			}
+		}
+		return exito;
+	}
+	
+	
+	public int eliminarLogoLogo(String id, String ruta) {
+		Conexion conexion = new Conexion();
+		conexion.setAutoCommitBD(true);
+		int exito = 0;
+		boolean actualizo = conexion.actualizarBD("UPDATE logo_software SET posee_logo ='N' WHERE id =" + id);
 
 		java.io.File archivo = new java.io.File(ruta);
 		if (actualizo) {
@@ -1844,9 +1736,7 @@ public class AdministrarPublicaciones {
 		Conexion conexion = new Conexion();
 		conexion.setAutoCommitBD(true);
 		int exito = 0;
-		boolean actualizo = conexion
-				.actualizarBD("UPDATE financiadores SET posee_logo ='N' WHERE id ="
-						+ id);
+		boolean actualizo = conexion.actualizarBD("UPDATE financiadores SET posee_logo ='N' WHERE id =" + id);
 
 		java.io.File archivo = new java.io.File(ruta);
 		if (actualizo) {
@@ -1867,8 +1757,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM financiadores WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM financiadores WHERE id=" + Integer.parseInt(idAdministrador));
 
 		if (actualizo) {
 			java.io.File archivo = new java.io.File(ruta);
@@ -1891,8 +1780,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("DELETE FROM cursos WHERE id="
-				+ Integer.parseInt(idAdministrador));
+		actualizo = conexion.actualizarBD("DELETE FROM cursos WHERE id=" + Integer.parseInt(idAdministrador));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1907,8 +1795,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		ResultSet rs = conexion
-				.consultarBD("SELECT COUNT(*) FROM administradores");
+		ResultSet rs = conexion.consultarBD("SELECT COUNT(*) FROM administradores");
 		int c = 0;
 		try {
 			while (rs.next()) {
@@ -1920,9 +1807,7 @@ public class AdministrarPublicaciones {
 		}
 
 		if (c > 1) {
-			actualizo = conexion
-					.actualizarBD("DELETE FROM administradores WHERE id_administrador="
-							+ Integer.parseInt(idAdministrador));
+			actualizo = conexion.actualizarBD("DELETE FROM administradores WHERE id_administrador=" + Integer.parseInt(idAdministrador));
 		}
 
 		conexion.cerrarConexion();
@@ -1938,9 +1823,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM certificados WHERE id_certificado="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM certificados WHERE id_certificado=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -1961,9 +1844,7 @@ public class AdministrarPublicaciones {
 		conexion.setAutoCommitBD(true);
 		int g = 0;
 		boolean actualizo = false;
-		actualizo = conexion
-				.actualizarBD("DELETE FROM repositorio_fotos WHERE id_foto="
-						+ Integer.parseInt(idFoto));
+		actualizo = conexion.actualizarBD("DELETE FROM repositorio_fotos WHERE id_foto=" + Integer.parseInt(idFoto));
 		// conexion.commitBD();
 
 		if (actualizo) {
@@ -1974,9 +1855,7 @@ public class AdministrarPublicaciones {
 
 		String sentencia = "";
 
-		sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado"
-				+ " UNION ALL"
-				+ " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
+		sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado" + " UNION ALL" + " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
 
 		RepositorioFotos foto2 = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -2009,15 +1888,10 @@ public class AdministrarPublicaciones {
 
 				if (!f1.exists()) {
 					f1 = new File(ruta + "\\cursos\\" + p.getDireccionFoto());
-					f1.renameTo(new File(ruta + "\\cursos\\T"
-							+ p.getDireccionFoto()));
+					f1.renameTo(new File(ruta + "\\cursos\\T" + p.getDireccionFoto()));
 				}
 
-				actualizo = conexion
-						.actualizarBD("UPDATE repositorio_fotos SET direccion_foto='curso_"
-								+ cuenta
-								+ ".jpg' WHERE id_foto="
-								+ p.getIdFoto());
+				actualizo = conexion.actualizarBD("UPDATE repositorio_fotos SET direccion_foto='curso_" + cuenta + ".jpg' WHERE id_foto=" + p.getIdFoto());
 			}
 
 			cuenta = 0;
@@ -2030,8 +1904,7 @@ public class AdministrarPublicaciones {
 
 				if (!f3.exists()) {
 					f3 = new File(ruta + "\\cursos\\T" + p.getDireccionFoto());
-					f3.renameTo(new File(ruta + "\\cursos\\curso_" + cuenta
-							+ ".jpg"));
+					f3.renameTo(new File(ruta + "\\cursos\\curso_" + cuenta + ".jpg"));
 				}
 
 			}
@@ -2043,18 +1916,14 @@ public class AdministrarPublicaciones {
 		return g;
 	}
 
-	public List<RepositorioFotos> getRepositorioFotosEliminar(
-			String tipoUsuario, String usuario) {
+	public List<RepositorioFotos> getRepositorioFotosEliminar(String tipoUsuario, String usuario) {
 		List<RepositorioFotos> fotos = new ArrayList<RepositorioFotos>();
 		Conexion conexion = new Conexion();
 		String sentencia = "";
 		if (tipoUsuario.equals("1")) {
-			sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado AND eg.id_egresado="
-					+ usuario;
+			sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado AND eg.id_egresado=" + usuario;
 		} else {
-			sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado"
-					+ " UNION ALL"
-					+ " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
+			sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado" + " UNION ALL" + " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
 		}
 		RepositorioFotos foto = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -2080,9 +1949,7 @@ public class AdministrarPublicaciones {
 	public List<RepositorioFotos> getRepositorioFotos() {
 		List<RepositorioFotos> fotos = new ArrayList<RepositorioFotos>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado"
-				+ " UNION ALL"
-				+ " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
+		String sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado" + " UNION ALL" + " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
 		RepositorioFotos foto = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		int c = 0;
@@ -2108,13 +1975,7 @@ public class AdministrarPublicaciones {
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		int g = 0;
 		boolean actualizo = false;
-		actualizo = conexion
-				.actualizarBD("INSERT INTO archivos_planos(archivo, id_administrador, fecha) VALUES('"
-						+ archivo
-						+ "',"
-						+ usuario
-						+ ",'"
-						+ formato.format(new Date()) + "' )");
+		actualizo = conexion.actualizarBD("INSERT INTO archivos_planos(archivo, id_administrador, fecha) VALUES('" + archivo + "'," + usuario + ",'" + formato.format(new Date()) + "' )");
 		conexion.cerrarConexion();
 		if (actualizo) {
 			g = 1;
@@ -2123,16 +1984,13 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int guardarRepositorio(String tipoEgresado, String usuario,
-			String foto) {
+	public int guardarRepositorio(String tipoEgresado, String usuario, String foto) {
 		Conexion conexion = new Conexion();
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("INSERT INTO repositorio_fotos(direccion_foto, id_administrador, fecha_publicacion) VALUES('"
-						+ foto + "',1,'" + formato.format(new Date()) + "')");
+		actualizo = conexion.actualizarBD("INSERT INTO repositorio_fotos(direccion_foto, id_administrador, fecha_publicacion) VALUES('" + foto + "',1,'" + formato.format(new Date()) + "')");
 
 		if (actualizo) {
 			g = 1;
@@ -2142,9 +2000,7 @@ public class AdministrarPublicaciones {
 
 		String sentencia = "";
 
-		sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado"
-				+ " UNION ALL"
-				+ " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
+		sentencia = "SELECT rf.fecha_publicacion, rf.direccion_foto, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, id_foto FROM repositorio_fotos rf, egresados eg WHERE rf.id_egresado = eg.id_egresado" + " UNION ALL" + " SELECT rf.fecha_publicacion, rf.direccion_foto, 'ADMINISTRADOR' AS nombre, id_foto FROM repositorio_fotos rf WHERE rf.id_administrador IS NOT NULL AND id_egresado IS NULL";
 
 		RepositorioFotos foto2 = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -2171,11 +2027,7 @@ public class AdministrarPublicaciones {
 				actualizo = false;
 				cuenta++;
 				g = cuenta;
-				actualizo = conexion
-						.actualizarBD("UPDATE repositorio_fotos SET direccion_foto='curso_"
-								+ cuenta
-								+ ".jpg' WHERE id_foto="
-								+ p.getIdFoto());
+				actualizo = conexion.actualizarBD("UPDATE repositorio_fotos SET direccion_foto='curso_" + cuenta + ".jpg' WHERE id_foto=" + p.getIdFoto());
 			}
 
 		}
@@ -2186,29 +2038,13 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int guardarPlanilla2(String[][] datos, int longitud)
-			throws Exception {
+	public int guardarPlanilla2(String[][] datos, int longitud) throws Exception {
 		Conexion conexion = new Conexion();
 
 		int g = 0;
 
 		for (int i = 0; i <= datos.length - 1; i++) {
-			conexion.actualizarBD("INSERT INTO asistencia(id_tema,fecha, asistio, horas,nombres_otra,documento_otra,comuna_otra,telefono_otra,fundacion_otra) VALUES ('"
-					+ datos[i][5]
-					+ "','"
-					+ datos[i][2]
-					+ "','S','"
-					+ datos[i][3]
-					+ "','"
-					+ datos[i][0]
-					+ "','"
-					+ datos[i][1]
-					+ "','"
-					+ datos[i][6]
-					+ "','"
-					+ datos[i][7]
-					+ "','"
-					+ datos[i][8] + "')");
+			conexion.actualizarBD("INSERT INTO asistencia(id_tema,fecha, asistio, horas,nombres_otra,documento_otra,comuna_otra,telefono_otra,fundacion_otra) VALUES ('" + datos[i][5] + "','" + datos[i][2] + "','S','" + datos[i][3] + "','" + datos[i][0] + "','" + datos[i][1] + "','" + datos[i][6] + "','" + datos[i][7] + "','" + datos[i][8] + "')");
 
 		}
 
@@ -2224,18 +2060,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 
 		for (int i = 0; i <= datos.length - 1; i++) {
-			conexion.actualizarBD("INSERT INTO asistencia(id_mujer_curso,id_tema,fecha, asistio, horas, id_financiador, id_linea) VALUES ('"
-					+ datos[i][0]
-					+ "','"
-					+ datos[i][5]
-					+ "','"
-					+ datos[i][2]
-					+ "','"
-					+ datos[i][1]
-					+ "','"
-					+ datos[i][3]
-					+ "','"
-					+ datos[i][6] + "','" + datos[i][7] + "')");
+			conexion.actualizarBD("INSERT INTO asistencia(id_mujer_curso,id_tema,fecha, asistio, horas, id_financiador, id_linea) VALUES ('" + datos[i][0] + "','" + datos[i][5] + "','" + datos[i][2] + "','" + datos[i][1] + "','" + datos[i][3] + "','" + datos[i][6] + "','" + datos[i][7] + "')");
 
 		}
 
@@ -2245,30 +2070,13 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int guardarCertificado(String[][] datos, int longitud)
-			throws Exception {
+	public int guardarCertificado(String[][] datos, int longitud) throws Exception {
 		Conexion conexion = new Conexion();
 
 		int g = 0;
 
 		for (int i = 0; i <= longitud - 1; i++) {
-			conexion.actualizarBD("INSERT INTO certificados(tipo_documento,documento,ciudad_documento,nombre_completo,fecha_inicio,fecha_fin,fecha_disponibilidad,tipo_certificado,ciudad_depto_curso,numero_horas) VALUES ('"
-					+ datos[i][9]
-					+ "','"
-					+ datos[i][2]
-					+ "','"
-					+ datos[i][1]
-					+ "','"
-					+ datos[i][6]
-					+ "','"
-					+ datos[i][5]
-					+ "','"
-					+ datos[i][4]
-					+ "','"
-					+ datos[i][3]
-					+ "','"
-					+ datos[i][8]
-					+ "','" + datos[i][0] + "','" + datos[i][7] + "')");
+			conexion.actualizarBD("INSERT INTO certificados(tipo_documento,documento,ciudad_documento,nombre_completo,fecha_inicio,fecha_fin,fecha_disponibilidad,tipo_certificado,ciudad_depto_curso,numero_horas) VALUES ('" + datos[i][9] + "','" + datos[i][2] + "','" + datos[i][1] + "','" + datos[i][6] + "','" + datos[i][5] + "','" + datos[i][4] + "','" + datos[i][3] + "','" + datos[i][8] + "','" + datos[i][0] + "','" + datos[i][7] + "')");
 
 		}
 
@@ -2278,8 +2086,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int guardarSeccion(String titulo, String contenido, String foto,
-			String receptor) throws Exception {
+	public int guardarSeccion(String titulo, String contenido, String foto, String receptor) throws Exception {
 		Conexion conexion = new Conexion();
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		int g = 0;
@@ -2287,12 +2094,7 @@ public class AdministrarPublicaciones {
 		if (foto == null || foto.equals("null")) {
 			foto = "";
 		}
-		actualizo = conexion
-				.actualizarBD("UPDATE secciones SET titulo_seccion = '"
-						+ titulo + "',  direccion_foto_seccion = '" + foto
-						+ "', fecha = '" + formato.format(new Date())
-						+ "', contenido_seccion ='" + contenido
-						+ "' WHERE id_seccion =" + Integer.parseInt(receptor));
+		actualizo = conexion.actualizarBD("UPDATE secciones SET titulo_seccion = '" + titulo + "',  direccion_foto_seccion = '" + foto + "', fecha = '" + formato.format(new Date()) + "', contenido_seccion ='" + contenido + "' WHERE id_seccion =" + Integer.parseInt(receptor));
 
 		if (actualizo) {
 			g = 1;
@@ -2308,8 +2110,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion.actualizarBD("UPDATE curso_linea SET porcentaje="
-				+ valor + " WHERE id=" + Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("UPDATE curso_linea SET porcentaje=" + valor + " WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -2326,9 +2127,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("UPDATE curso_financiador SET porcentaje="
-						+ valor + " WHERE id=" + Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("UPDATE curso_financiador SET porcentaje=" + valor + " WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -2339,8 +2138,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int actualizarParametro(String id, String titulo, String valor)
-			throws Exception {
+	public int actualizarParametro(String id, String titulo, String valor) throws Exception {
 		Conexion conexion = new Conexion();
 
 		int g = 0;
@@ -2354,8 +2152,7 @@ public class AdministrarPublicaciones {
 		condiciones[0][0] = "id";
 		condiciones[0][1] = "" + id;
 
-		boolean bandera = conexion.actualizarBD2("parametros_globales", campos,
-				valores, condiciones);
+		boolean bandera = conexion.actualizarBD2("parametros_globales", campos, valores, condiciones);
 		if (bandera) {
 			g = 1;
 		}
@@ -2370,9 +2167,7 @@ public class AdministrarPublicaciones {
 		int g = 0;
 		boolean actualizo = false;
 
-		actualizo = conexion
-				.actualizarBD("DELETE FROM parametros_globales WHERE id="
-						+ Integer.parseInt(id));
+		actualizo = conexion.actualizarBD("DELETE FROM parametros_globales WHERE id=" + Integer.parseInt(id));
 
 		conexion.cerrarConexion();
 
@@ -2387,9 +2182,7 @@ public class AdministrarPublicaciones {
 		int exito = 0;
 		try {
 
-			boolean actualizo = conexion
-					.actualizarBD("INSERT INTO parametros_globales(titulo,valor) VALUES('"
-							+ titulo.trim() + "','" + valor.trim() + "')");
+			boolean actualizo = conexion.actualizarBD("INSERT INTO parametros_globales(titulo,valor) VALUES('" + titulo.trim() + "','" + valor.trim() + "')");
 
 			if (actualizo) {
 				exito = 1;
@@ -2404,11 +2197,32 @@ public class AdministrarPublicaciones {
 		return exito;
 
 	}
+	
+	public String getIdioma() {
+		String idioma = "";
+		Conexion conexion = new Conexion();
+		String sentencia = " SELECT valor FROM parametros_globales WHERE id = 24";
+
+		ResultSet rs = conexion.consultarBD(sentencia);
+
+		try {
+			if (rs.next()) {
+				idioma = rs.getString(1);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return idioma;
+	}
+	
 
 	public List<Object[]> getParametrosGlobales() {
 		List<Object[]> parametros = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = " SELECT * FROM parametros_globales ORDER BY valor, id, titulo";
+		String sentencia = " SELECT * FROM parametros_globales ORDER BY titulo, valor, id";
 
 		Object[] parametro = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -2444,16 +2258,11 @@ public class AdministrarPublicaciones {
 
 		String[] campos = {
 
-		"primer_nombre", "segundo_nombre", "primer_apellido",
-				"segundo_apellido", "documento", "fecha_nacimiento",
-				"estado_civil", "correo", "sexo", "hijas", "hijos",
-				"direccion", "telefonos", "tipo_sitio", "id_comuna",
-				"id_barrio", "inscrita", "id_corregimiento", "id_vereda"
+				"primer_nombre", "segundo_nombre", "primer_apellido", "segundo_apellido", "documento", "fecha_nacimiento", "estado_civil", "correo", "sexo", "hijas", "hijos", "direccion", "telefonos", "tipo_sitio", "id_comuna", "id_barrio", "inscrita", "id_corregimiento", "id_vereda"
 
 		};
 
-		actualizo = conexion.actualizarBD2("mujeres", campos, valores,
-				condiciones);
+		actualizo = conexion.actualizarBD2("mujeres", campos, valores, condiciones);
 
 		if (actualizo) {
 			g = 1;
@@ -2463,8 +2272,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int actualizarHojaVida2(Object[] valores, String id)
-			throws Exception {
+	public int actualizarHojaVida2(Object[] valores, String id) throws Exception {
 		Conexion conexion = new Conexion();
 
 		int g = 0;
@@ -2486,11 +2294,7 @@ public class AdministrarPublicaciones {
 				// "nivel_capacitacion_5", "capacitacion_6",
 				// "institucion_capacitacion_6", "nivel_capacitacion_6",
 				// "observaciones"
-				"primer_nombre", "segundo_nombre", "primer_apellido",
-				"segundo_apellido", "documento", "fecha_nacimiento",
-				"estado_civil", "correo", "sexo", "hijas", "hijos",
-				"direccion", "telefonos", "tipo_sitio", "id_comuna",
-				"id_barrio", "inscrita", "id_corregimiento", "id_vereda"
+				"primer_nombre", "segundo_nombre", "primer_apellido", "segundo_apellido", "documento", "fecha_nacimiento", "estado_civil", "correo", "sexo", "hijas", "hijos", "direccion", "telefonos", "tipo_sitio", "id_comuna", "id_barrio", "inscrita", "id_corregimiento", "id_vereda"
 
 		};
 
@@ -2510,11 +2314,7 @@ public class AdministrarPublicaciones {
 				// "nivel_capacitacion_5", "capacitacion_6",
 				// "institucion_capacitacion_6", "nivel_capacitacion_6",
 				// "observaciones"
-				"primer_nombre", "segundo_nombre", "primer_apellido",
-				"segundo_apellido", "documento", "fecha_nacimiento",
-				"estado_civil", "correo", "sexo", "hijas", "hijos",
-				"direccion", "telefonos", "tipo_sitio", "id_corregimiento",
-				"id_vereda", "inscrita", "id_comuna", "id_barrio"
+				"primer_nombre", "segundo_nombre", "primer_apellido", "segundo_apellido", "documento", "fecha_nacimiento", "estado_civil", "correo", "sexo", "hijas", "hijos", "direccion", "telefonos", "tipo_sitio", "id_corregimiento", "id_vereda", "inscrita", "id_comuna", "id_barrio"
 
 		};
 
@@ -2523,12 +2323,10 @@ public class AdministrarPublicaciones {
 		condiciones[0][1] = "" + id;
 
 		if (valores != null && ("" + valores[13]).equals("C")) {
-			actualizo = conexion.actualizarBD2("mujeres", campos, valores,
-					condiciones);
+			actualizo = conexion.actualizarBD2("mujeres", campos, valores, condiciones);
 
 		} else {
-			actualizo = conexion.actualizarBD2("mujeres", campos2, valores,
-					condiciones);
+			actualizo = conexion.actualizarBD2("mujeres", campos2, valores, condiciones);
 		}
 
 		if (actualizo) {
@@ -2561,11 +2359,7 @@ public class AdministrarPublicaciones {
 				// "nivel_capacitacion_5", "capacitacion_6",
 				// "institucion_capacitacion_6", "nivel_capacitacion_6",
 				// "observaciones"
-				"primer_nombre", "segundo_nombre", "primer_apellido",
-				"segundo_apellido", "documento", "fecha_nacimiento",
-				"estado_civil", "correo", "sexo", "hijas", "hijos",
-				"direccion", "telefonos", "tipo_sitio", "id_comuna",
-				"id_barrio", "inscrita"
+				"primer_nombre", "segundo_nombre", "primer_apellido", "segundo_apellido", "documento", "fecha_nacimiento", "estado_civil", "correo", "sexo", "hijas", "hijos", "direccion", "telefonos", "tipo_sitio", "id_comuna", "id_barrio", "inscrita"
 
 		};
 
@@ -2585,11 +2379,7 @@ public class AdministrarPublicaciones {
 				// "nivel_capacitacion_5", "capacitacion_6",
 				// "institucion_capacitacion_6", "nivel_capacitacion_6",
 				// "observaciones"
-				"primer_nombre", "segundo_nombre", "primer_apellido",
-				"segundo_apellido", "documento", "fecha_nacimiento",
-				"estado_civil", "correo", "sexo", "hijas", "hijos",
-				"direccion", "telefonos", "tipo_sitio", "id_corregimiento",
-				"id_vereda", "inscrita"
+				"primer_nombre", "segundo_nombre", "primer_apellido", "segundo_apellido", "documento", "fecha_nacimiento", "estado_civil", "correo", "sexo", "hijas", "hijos", "direccion", "telefonos", "tipo_sitio", "id_corregimiento", "id_vereda", "inscrita"
 
 		};
 
@@ -2608,9 +2398,7 @@ public class AdministrarPublicaciones {
 
 	}
 
-	public int guardarPublicacion(int tipoUsuario, int administrador,
-			int egresado, int privacidad, String titulo, String contenido,
-			String foto, String receptor) throws Exception {
+	public int guardarPublicacion(int tipoUsuario, int administrador, int egresado, int privacidad, String titulo, String contenido, String foto, String receptor) throws Exception {
 		Conexion conexion = new Conexion();
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		int g = 0;
@@ -2633,9 +2421,7 @@ public class AdministrarPublicaciones {
 		objeto[5] = receptor;
 		objeto[6] = formato.format(new Date());
 
-		String[] campos = { "id_administrador", "privacidad_publicacion",
-				"titulo_publicacion", "contenido_publicacion",
-				"direccion_foto_publicacion", "receptor", "fecha" };
+		String[] campos = { "id_administrador", "privacidad_publicacion", "titulo_publicacion", "contenido_publicacion", "direccion_foto_publicacion", "receptor", "fecha" };
 
 		actualizo = conexion.insertarBD2("publicaciones", campos, objeto);
 
@@ -2651,9 +2437,7 @@ public class AdministrarPublicaciones {
 		Conexion conexion = new Conexion();
 		boolean actualizo = false;
 		int g = 0;
-		actualizo = conexion
-				.actualizarBD("DELETE FROM publicaciones WHERE id_publicacion='"
-						+ aIdPublicacion + "'");
+		actualizo = conexion.actualizarBD("DELETE FROM publicaciones WHERE id_publicacion='" + aIdPublicacion + "'");
 
 		conexion.cerrarConexion();
 		if (actualizo) {
@@ -2666,11 +2450,7 @@ public class AdministrarPublicaciones {
 	public List<Publicacion> getPublicaciones(int aEgresado) {
 		List<Publicacion> publicaciones = new ArrayList<Publicacion>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu LEFT JOIN egresados eg  ON  pu.id_egresado = eg.id_egresado WHERE privacidad_publicacion = 1 UNION ALL"
-				+ " SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion FROM publicaciones pu, egresados eg WHERE privacidad_publicacion =3 AND receptor = "
-				+ aEgresado
-				+ " AND pu.id_egresado = eg.id_egresado"
-				+ " ORDER BY fecha DESC, id_publicacion DESC FIRST 10";
+		String sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu LEFT JOIN egresados eg  ON  pu.id_egresado = eg.id_egresado WHERE privacidad_publicacion = 1 UNION ALL" + " SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion FROM publicaciones pu, egresados eg WHERE privacidad_publicacion =3 AND receptor = " + aEgresado + " AND pu.id_egresado = eg.id_egresado" + " ORDER BY fecha DESC, id_publicacion DESC FIRST 10";
 		Publicacion publicacion = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		int c = 0;
@@ -2687,8 +2467,7 @@ public class AdministrarPublicaciones {
 
 				publicacion.setPrivacidadPublicacion(rs.getInt(9));
 
-				if (rs.getString(8) == null
-						|| rs.getString(8).trim().equals("")) {
+				if (rs.getString(8) == null || rs.getString(8).trim().equals("")) {
 					c++;
 					// publicacion.setDireccionFotoPublicacion("sinImagen" + c +
 					// ".jpg");
@@ -2716,17 +2495,14 @@ public class AdministrarPublicaciones {
 		return publicaciones;
 	}
 
-	public List<Publicacion> getPublicacionesEgresado(int aEgresado,
-			int tipoUsuario) {
+	public List<Publicacion> getPublicacionesEgresado(int aEgresado, int tipoUsuario) {
 		List<Publicacion> publicaciones = new ArrayList<Publicacion>();
 		Conexion conexion = new Conexion();
 		String sentencia = "";
 		if (tipoUsuario == 2) {
 			sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu, egresados eg  WHERE  pu.id_egresado = eg.id_egresado AND (receptor IS NULL OR receptor = 0) ORDER BY fecha DESC, id_publicacion DESC";
 		} else {
-			sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu, egresados eg  WHERE  pu.id_egresado = eg.id_egresado AND eg.id_egresado="
-					+ aEgresado
-					+ " ORDER BY fecha DESC, id_publicacion DESC FIRST 10";
+			sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu, egresados eg  WHERE  pu.id_egresado = eg.id_egresado AND eg.id_egresado=" + aEgresado + " ORDER BY fecha DESC, id_publicacion DESC FIRST 10";
 		}
 		Publicacion publicacion = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -2744,8 +2520,7 @@ public class AdministrarPublicaciones {
 
 				publicacion.setPrivacidadPublicacion(rs.getInt(9));
 
-				if (rs.getString(8) == null
-						|| rs.getString(8).trim().equals("")) {
+				if (rs.getString(8) == null || rs.getString(8).trim().equals("")) {
 					c++;
 					// publicacion.setDireccionFotoPublicacion("sinImagen" + c +
 					// ".jpg");
@@ -2770,8 +2545,7 @@ public class AdministrarPublicaciones {
 
 	public Publicacion getNotaPublica(int id) {
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu LEFT JOIN egresados eg ON pu.id_egresado = eg.id_egresado WHERE privacidad_publicacion = 2 AND pu.id_publicacion="
-				+ id;
+		String sentencia = "SELECT pu.id_publicacion, pu.id_egresado, id_administrador, (eg.primer_nombre||' '|| eg.segundo_nombre|| ' '|| eg.primer_apellido|| ' '|| eg.segundo_apellido) AS nombre, fecha, titulo_publicacion, contenido_publicacion, direccion_foto_publicacion, privacidad_publicacion  FROM publicaciones pu LEFT JOIN egresados eg ON pu.id_egresado = eg.id_egresado WHERE privacidad_publicacion = 2 AND pu.id_publicacion=" + id;
 		Publicacion publicacion = new Publicacion();
 		ResultSet rs = conexion.consultarBD(sentencia);
 		int c = 0;
@@ -2788,8 +2562,7 @@ public class AdministrarPublicaciones {
 
 				publicacion.setPrivacidadPublicacion(rs.getInt(9));
 
-				if (rs.getString(8) == null
-						|| rs.getString(8).trim().equals("")) {
+				if (rs.getString(8) == null || rs.getString(8).trim().equals("")) {
 					c++;
 					// publicacion.setDireccionFotoPublicacion("sinImagen" + c +
 					// ".jpg");
@@ -2850,8 +2623,7 @@ public class AdministrarPublicaciones {
 				seccion.setTitulo(rs.getString(2));
 				seccion.setContenido(rs.getString(3));
 
-				if (rs.getString(4) == null
-						|| rs.getString(4).trim().equals("")) {
+				if (rs.getString(4) == null || rs.getString(4).trim().equals("")) {
 
 				} else {
 					seccion.setDireccionFoto(rs.getString(4));
@@ -2884,8 +2656,7 @@ public class AdministrarPublicaciones {
 				seccion.setTitulo(rs.getString(2));
 				seccion.setContenido(rs.getString(3));
 
-				if (rs.getString(4) == null
-						|| rs.getString(4).trim().equals("")) {
+				if (rs.getString(4) == null || rs.getString(4).trim().equals("")) {
 
 				} else {
 					seccion.setDireccionFoto(rs.getString(4));
@@ -2925,8 +2696,7 @@ public class AdministrarPublicaciones {
 
 				publicacion.setPrivacidadPublicacion(rs.getInt(9));
 
-				if (rs.getString(8) == null
-						|| rs.getString(8).trim().equals("")) {
+				if (rs.getString(8) == null || rs.getString(8).trim().equals("")) {
 					c++;
 					// publicacion.setDireccionFotoPublicacion("sinImagen" + c +
 					// ".jpg");
@@ -3024,42 +2794,67 @@ public class AdministrarPublicaciones {
 		return tipos;
 	}
 
-	public List<Object[]> getMujeresS(String pn, String sn, String pa,
-			String sa, String doc) {
+	public List<Object[]> getMujeresS(String pn, String sn, String pa, String sa, String doc, String c14, String c15, String c16) {
 
 		Conexion conexion = new Conexion();
 		String sentencia = "SELECT * FROM mujeres WHERE 1=1 ";
 
-		if (pn != null & !pn.trim().equals("")) {
+		if (pn != null && !pn.trim().equals("")) {
 
-			sentencia += " AND UPPER(primer_nombre) LIKE '%"
-					+ pn.toUpperCase().trim() + "%'";
+			sentencia += " AND UPPER(primer_nombre) LIKE '%" + pn.toUpperCase().trim() + "%'";
 
 		}
-		if (sn != null & !sn.trim().equals("")) {
+		if (sn != null && !sn.trim().equals("")) {
 
-			sentencia += " AND UPPER(segundo_nombre) LIKE '%"
-					+ sn.toUpperCase().trim() + "%'";
+			sentencia += " AND UPPER(segundo_nombre) LIKE '%" + sn.toUpperCase().trim() + "%'";
 
 		}
 
-		if (pa != null & !pa.trim().equals("")) {
+		if (pa != null && !pa.trim().equals("")) {
 
-			sentencia += " AND UPPER(primer_apellido) LIKE '%"
-					+ pn.toUpperCase().trim() + "%'";
-
-		}
-
-		if (sa != null & !sa.trim().equals("")) {
-
-			sentencia += " AND UPPER(segundo_apellido) LIKE '%"
-					+ sn.toUpperCase().trim() + "%'";
+			sentencia += " AND UPPER(primer_apellido) LIKE '%" + pn.toUpperCase().trim() + "%'";
 
 		}
 
-		if (doc != null & !doc.trim().equals("")) {
+		if (sa != null && !sa.trim().equals("")) {
+
+			sentencia += " AND UPPER(segundo_apellido) LIKE '%" + sn.toUpperCase().trim() + "%'";
+
+		}
+
+		if (doc != null && !doc.trim().equals("")) {
 
 			sentencia += " AND documento = " + doc;
+
+		}
+
+		if (c14 != null && !c14.trim().equals("")) {
+			if (c14.equals("C")) {
+				sentencia += " AND id_comuna IS NOT NULL";
+			}
+			if (c14.equals("CO")) {
+				sentencia += " AND id_corregimiento IS NOT NULL ";
+			}
+
+			if (c15 != null && !c15.trim().equals("")) {
+
+				if (c14.equals("C")) {
+					sentencia += " AND id_comuna =" + c15;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND id_corregimiento= " + c15;
+				}
+
+			}
+
+			if (c16 != null && !c16.trim().equals("")) {
+				if (c14.equals("C")) {
+					sentencia += " AND id_barrio =" + c16;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND id_vereda= " + c16;
+				}
+			}
 
 		}
 
@@ -3090,9 +2885,7 @@ public class AdministrarPublicaciones {
 	public Object[] getMujerDoc(String doc) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM mujeres a WHERE documento="
-				+ doc
-				+ " ORDER BY primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
+		String sentencia = "SELECT * FROM mujeres a WHERE documento=" + doc + " ORDER BY primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
 		Object[] mujer = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3116,9 +2909,7 @@ public class AdministrarPublicaciones {
 	public Object[] getMujer(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM mujeres a WHERE id_mujer="
-				+ id
-				+ " ORDER BY primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
+		String sentencia = "SELECT * FROM mujeres a WHERE id_mujer=" + id + " ORDER BY primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
 		Object[] mujer = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3139,28 +2930,11 @@ public class AdministrarPublicaciones {
 		return mujer;
 	}
 
-	
-	public List<Object[]> getMujeresAsistenciaResultado(String curso, String tema,
-			String fechaDesde, String fechaHasta, String tipo, String asisitio,
-			String proyecto, String linea, String financiador, String id_mujer) {
+	public List<Object[]> getMujeresAsistenciaResultado(String curso, String tema, String fechaDesde, String fechaHasta, String tipo, String asisitio, String proyecto, String linea, String financiador, String id_mujer, String c14, String c15, String c16) {
 
 		List<Object[]> mujeres = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia =  " SELECT SUM(a.horas), c.id, c.nombre, mu.id_mujer"+
-							" FROM asistencia a"+
-							" LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id"+
-							" LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer "+
-							" INNER JOIN temas t ON t.id = a.id_tema "+
-							" INNER JOIN cursos c ON c.id = t.id_curso "+
-							" INNER JOIN proyectos p ON c.id_proyecto = p.id"+ 
-							" INNER JOIN curso_linea cl ON a.id_linea = cl.id "+
-							" INNER JOIN curso_financiador cf ON a.id_financiador = cf.id"+ 
-							" INNER JOIN lineas l ON cl.id_linea = l.id "+
-							" INNER JOIN financiadores f ON cf.id_financiador = f.id"+
-							" WHERE mu.id_mujer =  "+id_mujer;
-							
-
-		
+		String sentencia = " SELECT SUM(a.horas), c.id, c.nombre, mu.id_mujer" + " FROM asistencia a" + " LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id" + " LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer " + " INNER JOIN temas t ON t.id = a.id_tema " + " INNER JOIN cursos c ON c.id = t.id_curso " + " INNER JOIN proyectos p ON c.id_proyecto = p.id" + " INNER JOIN curso_linea cl ON a.id_linea = cl.id " + " INNER JOIN curso_financiador cf ON a.id_financiador = cf.id" + " INNER JOIN lineas l ON cl.id_linea = l.id " + " INNER JOIN financiadores f ON cf.id_financiador = f.id" + " WHERE mu.id_mujer =  " + id_mujer;
 
 		if (fechaDesde != null && !fechaDesde.trim().equals("")) {
 
@@ -3198,12 +2972,38 @@ public class AdministrarPublicaciones {
 			sentencia += " AND f.id = '" + financiador + "'";
 		}
 
+		sentencia += " AND a.asistio = 'S'";
 		
+		
+		if (c14 != null && !c14.trim().equals("")) {
+			if (c14.equals("C")) {
+				sentencia += " AND mu.id_comuna IS NOT NULL";
+			}
+			if (c14.equals("CO")) {
+				sentencia += " AND mu.id_corregimiento IS NOT NULL ";
+			}
 
-	
+			if (c15 != null && !c15.trim().equals("")) {
 
-	    sentencia += " AND a.asistio = 'S'";
-	
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_comuna =" + c15;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_corregimiento= " + c15;
+				}
+
+			}
+
+			if (c16 != null && !c16.trim().equals("")) {
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_barrio =" + c16;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_vereda= " + c16;
+				}
+			}
+
+		}
 
 		sentencia += " GROUP BY  c.id, c.nombre, mu.id_mujer ";
 
@@ -3216,7 +3016,6 @@ public class AdministrarPublicaciones {
 				mujer[1] = rs.getObject(2);
 				mujer[2] = rs.getObject(3);
 				mujer[3] = rs.getObject(4);
-			
 
 				mujeres.add(mujer);
 			}
@@ -3228,27 +3027,12 @@ public class AdministrarPublicaciones {
 		}
 		return mujeres;
 	}
-	
-	
-	
-	public List<Object[]> getMujeresAsistencia3(String curso, String tema,
-			String fechaDesde, String fechaHasta, String tipo, String asisitio,
-			String proyecto, String linea, String financiador, String documento) {
+
+	public List<Object[]> getMujeresAsistencia3(String curso, String tema, String fechaDesde, String fechaHasta, String tipo, String asisitio, String proyecto, String linea, String financiador, String documento, String c14, String c15, String c16) {
 
 		List<Object[]> mujeres = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = " SELECT a.id, a.id_mujer_curso, a.asistio, a.fecha, a.horas, mu.primer_nombre, mu.segundo_nombre, mu.primer_apellido, mu.segundo_apellido, mu.documento, mu.telefonos, t.nombre nombre_tema, c.nombre nombre_curso, p.nombre proyecto, l.nombre linea, f.nombre financiador, mu.inscrita "
-				+ " FROM asistencia a"
-				+ " LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id"
-				+ " LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer "
-				+ " INNER JOIN temas t ON t.id = a.id_tema "
-				+ " INNER JOIN cursos c ON c.id = t.id_curso "
-				+ " INNER JOIN proyectos p ON c.id_proyecto = p.id "
-				+ " INNER JOIN curso_linea cl ON a.id_linea = cl.id "
-				+ " INNER JOIN curso_financiador cf ON a.id_financiador = cf.id "
-				+ " INNER JOIN lineas l ON cl.id_linea = l.id "
-				+ " INNER JOIN financiadores f ON cf.id_financiador = f.id "
-				+ " WHERE 1=1";
+		String sentencia = " SELECT a.id, a.id_mujer_curso, a.asistio, a.fecha, a.horas, mu.primer_nombre, mu.segundo_nombre, mu.primer_apellido, mu.segundo_apellido, mu.documento, mu.telefonos, t.nombre nombre_tema, c.nombre nombre_curso, p.nombre proyecto, l.nombre linea, f.nombre financiador, mu.inscrita, mu.id_comuna, mu.id_corregimiento, mu.id_barrio, mu.id_vereda " + " FROM asistencia a" + " LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id" + " LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer " + " INNER JOIN temas t ON t.id = a.id_tema " + " INNER JOIN cursos c ON c.id = t.id_curso " + " INNER JOIN proyectos p ON c.id_proyecto = p.id " + " INNER JOIN curso_linea cl ON a.id_linea = cl.id " + " INNER JOIN curso_financiador cf ON a.id_financiador = cf.id " + " INNER JOIN lineas l ON cl.id_linea = l.id " + " INNER JOIN financiadores f ON cf.id_financiador = f.id " + " WHERE 1=1";
 
 		if (tipo != null && tipo.equals("1")) {
 
@@ -3305,6 +3089,39 @@ public class AdministrarPublicaciones {
 
 			sentencia += " AND a.asistio = '" + asisitio + "'";
 		}
+		
+		
+		if (c14 != null && !c14.trim().equals("")) {
+			if (c14.equals("C")) {
+				sentencia += " AND mu.id_comuna IS NOT NULL";
+			}
+			if (c14.equals("CO")) {
+				sentencia += " AND mu.id_corregimiento IS NOT NULL ";
+			}
+
+			if (c15 != null && !c15.trim().equals("")) {
+
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_comuna =" + c15;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_corregimiento= " + c15;
+				}
+
+			}
+
+			if (c16 != null && !c16.trim().equals("")) {
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_barrio =" + c16;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_vereda= " + c16;
+				}
+			}
+
+		}
+		
+		
 
 		sentencia += " ORDER BY a.fecha DESC, c.nombre, t.nombre, p.nombre, l.nombre, f.nombre, mu.primer_nombre, mu.segundo_nombre, mu.primer_apellido, mu.segundo_apellido";
 
@@ -3312,7 +3129,7 @@ public class AdministrarPublicaciones {
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
-				mujer = new Object[19];
+				mujer = new Object[23];
 				mujer[0] = rs.getObject(1);
 				mujer[9] = rs.getObject("id_mujer_curso");
 
@@ -3344,6 +3161,13 @@ public class AdministrarPublicaciones {
 				mujer[17] = rs.getObject("linea");
 				mujer[18] = rs.getObject("financiador");
 				// mujer[18] = sentencia;
+				
+				mujer[19] = rs.getObject("id_comuna");
+				mujer[20] = rs.getObject("id_corregimiento");
+				mujer[21] = rs.getObject("id_barrio");
+				mujer[22] = rs.getObject("id_vereda");
+				
+				
 
 				mujeres.add(mujer);
 			}
@@ -3356,27 +3180,53 @@ public class AdministrarPublicaciones {
 		return mujeres;
 	}
 
-	public List<Object[]> getMujeresAsistencia(String curso, String tema,
-			String fecha) {
+	public List<Object[]> getMujeresAsistencia(String curso, String tema, String fecha, String c14, String c15, String c16) {
 
 		List<Object[]> mujeres = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
 		SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
 
-		String sentencia = "SELECT a . * , m . * , b.nombre barrio_c, c.nombre vereda_c"
-				+ " FROM mujeres_curso a, mujeres m"
-				+ " LEFT JOIN barrios b ON m.id_barrio = b.id"
-				+ " LEFT JOIN veredas c ON m.id_vereda = c.id"
-				+ " WHERE a.id_mujer = m.id_mujer AND a.id_curso="
-				+ curso
-				+ "  AND a.id NOT IN("
-				+ "  											SELECT c.id_mujer_curso FROM asistencia c WHERE c.id_tema="
-				+ tema
-				+ " AND c.fecha='"
-				+ fecha
-				+ "' AND c.id_mujer_curso IS NOT NULL"
-				+ "  								)"
-				+ " order by primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
+		String sentencia = "SELECT a . * , m . * , b.nombre barrio_c, c.nombre vereda_c" +
+		" FROM mujeres_curso a, mujeres m" +
+		" LEFT JOIN barrios b ON m.id_barrio = b.id" +
+				" LEFT JOIN veredas c ON m.id_vereda = c.id" + 
+		" WHERE a.id_mujer = m.id_mujer AND a.id_curso=" + curso ;
+		
+		
+		if (c14 != null && !c14.trim().equals("")) {
+			if (c14.equals("C")) {
+				sentencia += " AND m.id_comuna IS NOT NULL";
+			}
+			if (c14.equals("CO")) {
+				sentencia += " AND m.id_corregimiento IS NOT NULL ";
+			}
+
+			if (c15 != null && !c15.trim().equals("")) {
+
+				if (c14.equals("C")) {
+					sentencia += " AND m.id_comuna =" + c15;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND m.id_corregimiento= " + c15;
+				}
+
+			}
+
+			if (c16 != null && !c16.trim().equals("")) {
+				if (c14.equals("C")) {
+					sentencia += " AND m.id_barrio =" + c16;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND m.id_vereda= " + c16;
+				}
+			}
+
+		}
+		
+		sentencia += "  AND a.id NOT IN(" +
+		"  											SELECT c.id_mujer_curso FROM asistencia c WHERE c.id_tema=" + tema + 
+		" AND c.fecha='" + fecha + "' AND c.id_mujer_curso IS NOT NULL" + "  								)" +
+		" order by primer_nombre, segundo_nombre, primer_apellido, segundo_apellido";
 		Object[] mujer = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3408,8 +3258,7 @@ public class AdministrarPublicaciones {
 				mujer[11] = rs.getObject("sexo");
 				if (rs.getObject("fecha_nacimiento") != null) {
 					try {
-						mujer[12] = getEdad(formato.parse(rs
-								.getString("fecha_nacimiento")));
+						mujer[12] = getEdad(formato.parse(rs.getString("fecha_nacimiento")));
 					} catch (ParseException e) {
 						mujer[12] = null;
 					}
@@ -3463,11 +3312,9 @@ public class AdministrarPublicaciones {
 
 		int diffYear = today.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
 
-		int diffMonth = today.get(Calendar.MONTH)
-				- fechaNac.get(Calendar.MONTH);
+		int diffMonth = today.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
 
-		int diffDay = today.get(Calendar.DAY_OF_MONTH)
-				- fechaNac.get(Calendar.DAY_OF_MONTH);
+		int diffDay = today.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
 
 		// Si está en ese año pero todavía no los ha cumplido
 
@@ -3484,9 +3331,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM mujeres_curso a, mujeres m WHERE a.id_mujer = m.id_mujer AND a.id_curso="
-				+ id
-				+ " ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
+		String sentencia = "SELECT * FROM mujeres_curso a, mujeres m WHERE a.id_mujer = m.id_mujer AND a.id_curso=" + id + " ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3516,8 +3361,7 @@ public class AdministrarPublicaciones {
 	public Object[] getNombrePregunta(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM preguntas a WHERE a.id_pregunta="
-				+ id;
+		String sentencia = "SELECT * FROM preguntas a WHERE a.id_pregunta=" + id;
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3540,17 +3384,54 @@ public class AdministrarPublicaciones {
 		}
 		return curso;
 	}
-
-	public Object[] getHorasMujerEncuesta(String encuesta, String mujer,
-			String pregunta) {
+	
+	public Object[] getHorasMujerEncuestaActualizar(String encuesta, String mujer, String pregunta, String opcion) {
 
 		// /List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT distinct r.* FROM respuestas_encuesta r WHERE id_encuesta = "
-				+ encuesta
-				+ " and r.id_mujer= "
-				+ mujer
-				+ " and r.horas is not null and r.id_pregunta=" + pregunta;
+		String sentencia = "SELECT distinct r.* FROM respuestas_encuesta r WHERE id_encuesta = " + encuesta + " and r.id_mujer= " + mujer + " and r.id_pregunta=" + pregunta;
+		
+		if(opcion!=null){
+		sentencia+= " and r.id_opcion="+opcion;
+		}else{
+			sentencia+= " and r.id_opcion IS NULL";
+			
+		}
+		Object[] curso = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			if (rs.next()) {
+				curso = new Object[8];
+
+				curso[0] = rs.getObject(1);
+				curso[1] = rs.getObject(2);
+				curso[2] = rs.getObject(3);
+				curso[3] = rs.getObject(4);
+				curso[4] = rs.getObject(5);
+				curso[5] = rs.getObject(6);
+				curso[6] = rs.getObject(7);
+				curso[7] = rs.getObject(8);
+
+				// cursos.add(curso);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return curso;
+	}
+	
+	
+	
+	
+
+	public Object[] getHorasMujerEncuesta(String encuesta, String mujer, String pregunta) {
+
+		// /List<Object[]> cursos = new ArrayList<Object[]>();
+		Conexion conexion = new Conexion();
+		String sentencia = "SELECT distinct r.* FROM respuestas_encuesta r WHERE id_encuesta = " + encuesta + " and r.id_mujer= " + mujer + " and r.horas is not null and r.id_pregunta=" + pregunta;
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3575,14 +3456,12 @@ public class AdministrarPublicaciones {
 		}
 		return curso;
 	}
-	
-	public List<Object[]> getMujeresEncuesta(String encuesta,String mujer) {
+
+	public List<Object[]> getMujeresEncuesta(String encuesta, String mujer) {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT distinct m.* FROM respuestas_encuesta r, mujeres m WHERE id_encuesta = "
-				+ encuesta
-				+ " and r.id_mujer= m.id_mujer and r.horas is not null AND r.id_mujer = "+mujer+" ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
+		String sentencia = "SELECT distinct m.* FROM respuestas_encuesta r, mujeres m WHERE id_encuesta = " + encuesta + " and r.id_mujer= m.id_mujer and r.horas is not null AND r.id_mujer = " + mujer + " ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3605,39 +3484,24 @@ public class AdministrarPublicaciones {
 		}
 		return cursos;
 	}
-	
 
-	public List<Object[]> getMujeresEncuestav2(String encuesta, String aCurso, String aTema, String aProyecto, String aLinea, String aFinanciador, String aDocumento, String fechaDesde, String fechaHasta) {
+	public List<Object[]> getMujeresEncuestav2(String encuesta, String aCurso, String aTema, String aProyecto, String aLinea, String aFinanciador, String aDocumento, String fechaDesde, String fechaHasta, String c14, String c15, String c16) {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		
-		
-		String sentencia = " SELECT distinct mu.* "
-				+ " FROM asistencia a"
-				+ " LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id"
-				+ " LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer "
-				+ " INNER JOIN temas t ON t.id = a.id_tema "
-				+ " INNER JOIN cursos c ON c.id = t.id_curso "
-				+ " INNER JOIN proyectos p ON c.id_proyecto = p.id "
-				+ " INNER JOIN curso_linea cl ON a.id_linea = cl.id "
-				+ " INNER JOIN curso_financiador cf ON a.id_financiador = cf.id "
-				+ " INNER JOIN lineas l ON cl.id_linea = l.id "
-				+ " INNER JOIN financiadores f ON cf.id_financiador = f.id "
-				+ " INNER JOIN respuestas_encuesta r ON  r.id_mujer= mu.id_mujer "
-				+ " WHERE 1=1 AND r.horas is not null and  r.id_encuesta = "+ encuesta;
 
-//		if (tipo != null && tipo.equals("1")) {
-//
-//			sentencia += " AND mu.inscrita = 'S'";
-//
-//		} else if (tipo != null && tipo.equals("2")) {
-//
-//			sentencia += " AND mu.inscrita = 'N'";
-//
-//		}
-		
-		
+		String sentencia = " SELECT distinct mu.* " + " FROM asistencia a" + " LEFT JOIN mujeres_curso m ON a.id_mujer_curso = m.id" + " LEFT JOIN mujeres mu ON m.id_mujer = mu.id_mujer " + " INNER JOIN temas t ON t.id = a.id_tema " + " INNER JOIN cursos c ON c.id = t.id_curso " + " INNER JOIN proyectos p ON c.id_proyecto = p.id " + " INNER JOIN curso_linea cl ON a.id_linea = cl.id " + " INNER JOIN curso_financiador cf ON a.id_financiador = cf.id " + " INNER JOIN lineas l ON cl.id_linea = l.id " + " INNER JOIN financiadores f ON cf.id_financiador = f.id " + " INNER JOIN respuestas_encuesta r ON  r.id_mujer= mu.id_mujer " + " WHERE 1=1 AND r.horas is not null and  r.id_encuesta = " + encuesta;
+
+		// if (tipo != null && tipo.equals("1")) {
+		//
+		// sentencia += " AND mu.inscrita = 'S'";
+		//
+		// } else if (tipo != null && tipo.equals("2")) {
+		//
+		// sentencia += " AND mu.inscrita = 'N'";
+		//
+		// }
+
 		if (fechaDesde != null && !fechaDesde.trim().equals("")) {
 
 			sentencia += " AND a.fecha >= '" + fechaDesde + "'";
@@ -3648,9 +3512,6 @@ public class AdministrarPublicaciones {
 
 			sentencia += " AND a.fecha <= '" + fechaHasta + "'";
 		}
-
-
-		
 
 		if (aCurso != null && !aCurso.trim().equals("")) {
 
@@ -3682,14 +3543,42 @@ public class AdministrarPublicaciones {
 			sentencia += " AND (mu.documento = '" + aDocumento + "')";
 		}
 
-	
-
 		sentencia += " AND a.asistio = 'S'";
-	
+		
+		
+		if (c14 != null && !c14.trim().equals("")) {
+			if (c14.equals("C")) {
+				sentencia += " AND mu.id_comuna IS NOT NULL";
+			}
+			if (c14.equals("CO")) {
+				sentencia += " AND mu.id_corregimiento IS NOT NULL ";
+			}
+
+			if (c15 != null && !c15.trim().equals("")) {
+
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_comuna =" + c15;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_corregimiento= " + c15;
+				}
+
+			}
+
+			if (c16 != null && !c16.trim().equals("")) {
+				if (c14.equals("C")) {
+					sentencia += " AND mu.id_barrio =" + c16;
+				}
+				if (c14.equals("CO")) {
+					sentencia += " AND mu.id_vereda= " + c16;
+				}
+			}
+
+		}
+		
 
 		sentencia += " ORDER BY mu.primer_nombre, mu.segundo_nombre, mu.primer_apellido, mu.segundo_apellido";
-		
-		
+
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3712,16 +3601,12 @@ public class AdministrarPublicaciones {
 		}
 		return cursos;
 	}
-	
-	
+
 	public List<Object[]> getMujeresEncuesta(String encuesta) {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT distinct m.* FROM respuestas_encuesta r, mujeres m"
-				+ " WHERE id_encuesta = "+ encuesta
-				+ " and r.id_mujer= m.id_mujer and r.horas is not null"
-				+ " ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
+		String sentencia = "SELECT distinct m.* FROM respuestas_encuesta r, mujeres m" + " WHERE id_encuesta = " + encuesta + " and r.id_mujer= m.id_mujer and r.horas is not null" + " ORDER BY m.primer_nombre, m.segundo_nombre, m.primer_apellido, m.segundo_apellido";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3749,11 +3634,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = " SELECT DISTINCT p .* , a.id_pregunta tabulador"
-				+ " FROM preguntas a, preguntas p"
-				+ " WHERE a.id_pregunta_sup = p.id_pregunta"
-				+ " AND a.id_encuesta =" + encuesta
-				+ " AND a.tipo_respuesta =  'T'";
+		String sentencia = " SELECT DISTINCT p .* , a.id_pregunta tabulador" + " FROM preguntas a, preguntas p" + " WHERE a.id_pregunta_sup = p.id_pregunta" + " AND a.id_encuesta =" + encuesta + " AND a.tipo_respuesta =  'T'";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3765,8 +3646,8 @@ public class AdministrarPublicaciones {
 				curso[2] = rs.getObject(3);
 				curso[3] = rs.getObject(4);
 				curso[4] = rs.getObject("tabulador"); // EL tabulador es el id
-														// de la pregunta para
-														// mirar tiempos
+				// de la pregunta para
+				// mirar tiempos
 
 				cursos.add(curso);
 			}
@@ -3783,8 +3664,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM preguntas a WHERE a.id_encuesta="
-				+ id + " ORDER BY a.id_pregunta";
+		String sentencia = "SELECT * FROM preguntas a WHERE a.id_encuesta=" + id + " ORDER BY a.id_pregunta";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3811,8 +3691,7 @@ public class AdministrarPublicaciones {
 	public Object[] getOpcion(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM opciones_respuesta a WHERE a.id_op_respuesta="
-				+ id;
+		String sentencia = "SELECT * FROM opciones_respuesta a WHERE a.id_op_respuesta=" + id;
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3839,8 +3718,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM opciones_respuesta a WHERE a.id_pregunta="
-				+ id + " ORDER BY a.id_op_respuesta";
+		String sentencia = "SELECT * FROM opciones_respuesta a WHERE a.id_pregunta=" + id + " ORDER BY a.id_op_respuesta";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3863,13 +3741,15 @@ public class AdministrarPublicaciones {
 		}
 		return cursos;
 	}
+	
+	
+
 
 	public List<Object[]> getFinanciadoresCurso(String idCurso) {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, l.nombre, l.archivo FROM curso_financiador a, financiadores l WHERE a.id_financiador = l.id AND a.id_curso="
-				+ idCurso + " ORDER BY l.nombre";
+		String sentencia = "SELECT a.*, l.nombre, l.archivo FROM curso_financiador a, financiadores l WHERE a.id_financiador = l.id AND a.id_curso=" + idCurso + " ORDER BY l.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -3893,6 +3773,69 @@ public class AdministrarPublicaciones {
 		}
 		return cursos;
 	}
+	
+	
+	
+	
+	
+	
+
+	public List<Object[]> getBarriosVeredasTodos(String idTipo) {
+
+		List<Object[]> cursos = new ArrayList<Object[]>();
+		Conexion conexion = new Conexion();
+		String sentencia = null;
+
+		if (idTipo != null && idTipo.equals("C")) {
+
+			sentencia = "SELECT id, nombre, completo as tipo FROM barrios ORDER BY nombre";
+
+		} else {
+
+			sentencia = "SELECT id, nombre, tipo FROM veredas ORDER BY nombre";
+
+		}
+		// sentencia =
+		// "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea =
+		// l.id AND a.id_curso="
+		// + idCurso + " ORDER BY l.nombre";
+
+		Object[] curso = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			while (rs.next()) {
+				curso = new Object[3];
+
+				curso[0] = rs.getObject(1);
+				curso[1] = rs.getObject(2);
+				curso[2] = rs.getObject(3);
+
+				if (idTipo != null && idTipo.equals("C")) {
+
+					if (("" + curso[2]).trim().equals("N")) {
+
+						curso[1] = curso[1] + " ** BARRIO INCOMPLETO **";
+					}
+
+				} else {
+
+					if (("" + curso[2]).trim().equals("A")) {
+
+						curso[1] = curso[1] + " ** ASENTAMIENTO **";
+					}
+
+				}
+
+				cursos.add(curso);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return cursos;
+	}
 
 	public List<Object[]> getBarriosVeredas(String idTipo, String id) {
 
@@ -3902,17 +3845,16 @@ public class AdministrarPublicaciones {
 
 		if (idTipo != null && idTipo.equals("C")) {
 
-			sentencia = "SELECT id, nombre, completo as tipo FROM barrios WHERE id_comuna="
-					+ id + "  ORDER BY nombre";
+			sentencia = "SELECT id, nombre, completo as tipo FROM barrios WHERE id_comuna=" + id + "  ORDER BY nombre";
 
 		} else {
 
-			sentencia = "SELECT id, nombre, tipo FROM veredas WHERE id_corregimiento="
-					+ id + " ORDER BY nombre";
+			sentencia = "SELECT id, nombre, tipo FROM veredas WHERE id_corregimiento=" + id + " ORDER BY nombre";
 
 		}
 		// sentencia =
-		// "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea = l.id AND a.id_curso="
+		// "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea =
+		// l.id AND a.id_curso="
 		// + idCurso + " ORDER BY l.nombre";
 
 		Object[] curso = null;
@@ -3968,7 +3910,8 @@ public class AdministrarPublicaciones {
 
 		}
 		// sentencia =
-		// "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea = l.id AND a.id_curso="
+		// "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea =
+		// l.id AND a.id_curso="
 		// + idCurso + " ORDER BY l.nombre";
 
 		Object[] curso = null;
@@ -3995,8 +3938,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea = l.id AND a.id_curso="
-				+ idCurso + " ORDER BY l.nombre";
+		String sentencia = "SELECT a.*, l.nombre FROM curso_linea a, lineas l WHERE a.id_linea = l.id AND a.id_curso=" + idCurso + " ORDER BY l.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4024,8 +3966,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, n.nombre FROM actividades_mujeres a, actividades_economicas n WHERE a.id_mujer="
-				+ id + " AND a.id_actividad = n.id ORDER BY n.nombre";
+		String sentencia = "SELECT a.*, n.nombre FROM actividades_mujeres a, actividades_economicas n WHERE a.id_mujer=" + id + " AND a.id_actividad = n.id ORDER BY n.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4054,9 +3995,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, n.nombre, c.nombre FROM participaciones_mujeres a, organizaciones n, cargos c WHERE a.id_mujer="
-				+ id
-				+ " AND a.id_cargo = c.id AND a.id_organizacion = n.id   ORDER BY a.tipo, n.nombre, c.nombre";
+		String sentencia = "SELECT a.*, n.nombre, c.nombre FROM participaciones_mujeres a, organizaciones n, cargos c WHERE a.id_mujer=" + id + " AND a.id_cargo = c.id AND a.id_organizacion = n.id   ORDER BY a.tipo, n.nombre, c.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4086,10 +4025,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = " SELECT a.*, c.nombre, l.nombre FROM capacitaciones_mujeres a"
-				+ " LEFT JOIN  capacitaciones c ON a.id_capacitacion = c.id "
-				+ " LEFT JOIN  lineas l ON a.id_linea = l.id "
-				+ " WHERE a.id_mujer=" + id + " ORDER BY c.nombre, l.nombre";
+		String sentencia = " SELECT a.*, c.nombre, l.nombre FROM capacitaciones_mujeres a" + " LEFT JOIN  capacitaciones c ON a.id_capacitacion = c.id " + " LEFT JOIN  lineas l ON a.id_linea = l.id " + " WHERE a.id_mujer=" + id + " ORDER BY c.nombre, l.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4121,8 +4057,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT a.*, n.nombre FROM niveles_mujeres a, niveles_educativos n WHERE a.id_mujer="
-				+ id + " AND a.id_nivel = n.id ORDER BY n.nombre";
+		String sentencia = "SELECT a.*, n.nombre FROM niveles_mujeres a, niveles_educativos n WHERE a.id_mujer=" + id + " AND a.id_nivel = n.id ORDER BY n.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4230,10 +4165,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = " SELECT id, nombre, justificable, 'C' FROM capacitaciones"
-				+ " UNION ALL "
-				+ " SELECT id, nombre, 'N', 'L' FROM lineas"
-				+ " ORDER BY nombre";
+		String sentencia = " SELECT id, nombre, justificable, 'C' FROM capacitaciones" + " UNION ALL " + " SELECT id, nombre, 'N', 'L' FROM lineas" + " ORDER BY nombre";
 
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
@@ -4287,22 +4219,32 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM temas a WHERE a.id_curso=" + id
-				+ " ORDER BY a.nombre";
+		String sentencia = "SELECT * FROM temas a WHERE a.id_curso=" + id + " ORDER BY a.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
-				curso = new Object[6];
+				curso = new Object[12];
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
 				curso[2] = rs.getObject(3);
-				curso[3] = rs.getObject(4);
 				
+				curso[3] = rs.getObject(4);
 				curso[4] = rs.getBytes(5);
 				curso[5] = rs.getObject(6);
 
+				//nuevos los 6 sigtes
+				curso[6] = rs.getObject(7);
+				curso[7] = rs.getBytes(8);
+				curso[8] = rs.getObject(9);
+
+				curso[9] = rs.getObject(10);
+				curso[10] = rs.getBytes(11);
+				curso[11] = rs.getObject(12);
+
+				
+				
 				cursos.add(curso);
 			}
 			rs.close();
@@ -4317,8 +4259,7 @@ public class AdministrarPublicaciones {
 	public Object[] getCursoTema(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT c.nombre, t.nombre FROM cursos c, temas t  WHERE c.id = t.id_curso AND t.id =   "
-				+ id;
+		String sentencia = "SELECT c.nombre, t.nombre FROM cursos c, temas t  WHERE c.id = t.id_curso AND t.id =   " + id;
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4341,8 +4282,7 @@ public class AdministrarPublicaciones {
 	public Object[] getNombreEncuesta(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM encuestas a WHERE a.id_encuesta =  "
-				+ id;
+		String sentencia = "SELECT * FROM encuestas a WHERE a.id_encuesta =  " + id;
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4425,8 +4365,7 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> resultados = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "  SELECT pl.id, p.nombre , l.nombre, f.nombre FROM proyecto_linea_finan pl, lineas l, proyectos p, financiadores f"
-				+ " WHERE pl.id_linea = l.id AND  pl.id_proyecto = p.id AND pl.id_financiador = f.id  ORDER BY p.nombre, l.nombre, f.nombre";
+		String sentencia = "  SELECT pl.id, p.nombre , l.nombre, f.nombre FROM proyecto_linea_finan pl, lineas l, proyectos p, financiadores f" + " WHERE pl.id_linea = l.id AND  pl.id_proyecto = p.id AND pl.id_financiador = f.id  ORDER BY p.nombre, l.nombre, f.nombre";
 		Object[] res = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4498,8 +4437,7 @@ public class AdministrarPublicaciones {
 		}
 		return proyectos;
 	}
-	
-	
+
 	public void guardarArchivoDisco(String directorio_ruta_con_nombre_archivo, byte[] array) {
 
 		if (array != null) {
@@ -4520,10 +4458,9 @@ public class AdministrarPublicaciones {
 
 	}
 	
-	
-	public Object[] getFinanciador(Integer aId) {
+	public Object[] getLogos(Integer aId) {
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT * FROM financiadores a WHERE id ="+aId;
+		String sentencia = "SELECT * FROM logo_software a WHERE id =" + aId;
 		Object[] financiador = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4533,11 +4470,56 @@ public class AdministrarPublicaciones {
 				financiador[0] = rs.getObject(1);
 				financiador[1] = rs.getObject(2);
 				financiador[2] = rs.getObject(3);
-				financiador[3] = rs.getBytes(4); //archivo
+				financiador[3] = rs.getBytes(4); // archivo
 
-				
-
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return financiador;
+	}
 	
+	public Object[] getLogo(Integer aId) {
+		Conexion conexion = new Conexion();
+		String sentencia = "SELECT * FROM logo_software a WHERE id =" + aId;
+		Object[] financiador = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			while (rs.next()) {
+				financiador = new Object[4];
+
+				financiador[0] = rs.getObject(1);
+				financiador[1] = rs.getObject(2);
+				financiador[2] = rs.getObject(3);
+				financiador[3] = rs.getBytes(4); // archivo
+
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return financiador;
+	}
+
+	public Object[] getFinanciador(Integer aId) {
+		Conexion conexion = new Conexion();
+		String sentencia = "SELECT * FROM financiadores a WHERE id =" + aId;
+		Object[] financiador = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			while (rs.next()) {
+				financiador = new Object[4];
+
+				financiador[0] = rs.getObject(1);
+				financiador[1] = rs.getObject(2);
+				financiador[2] = rs.getObject(3);
+				financiador[3] = rs.getBytes(4); // archivo
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -4549,7 +4531,33 @@ public class AdministrarPublicaciones {
 	}
 	
 	
+	public Object[] getLogosss() {
+
 	
+		Conexion conexion = new Conexion();
+		String sentencia = "SELECT * FROM logo_software a ORDER BY a.nombre";
+		Object[] financiador = null;
+		ResultSet rs = conexion.consultarBD(sentencia);
+		try {
+			if (rs.next()) {
+				financiador = new Object[4];
+
+				financiador[0] = rs.getObject(1);
+				financiador[1] = rs.getObject(2);
+				financiador[2] = rs.getObject(3);
+
+				financiador[3] = rs.getBytes(4); // archivo
+
+		
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// e.printStackTrace();
+		} finally {
+			conexion.cerrarConexion();
+		}
+		return financiador;
+	}
 
 	public List<Object[]> getFinanciadores() {
 
@@ -4565,8 +4573,8 @@ public class AdministrarPublicaciones {
 				financiador[0] = rs.getObject(1);
 				financiador[1] = rs.getObject(2);
 				financiador[2] = rs.getObject(3);
-				
-				financiador[3] = rs.getBytes(4); //archivo
+
+				financiador[3] = rs.getBytes(4); // archivo
 
 				financiadores.add(financiador);
 			}
@@ -4587,15 +4595,26 @@ public class AdministrarPublicaciones {
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			if (rs.next()) {
-				curso = new Object[6];
+				curso = new Object[12];
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
 				curso[2] = rs.getObject(3);
-				curso[3] = rs.getObject(4);
 				
+				curso[3] = rs.getObject(4);
 				curso[4] = rs.getBytes(5);
 				curso[5] = rs.getObject(6);
+
+
+				//6  nuevos
+				curso[6] = rs.getObject(7);
+				curso[7] = rs.getBytes(8);
+				curso[8] = rs.getObject(9);
+
+				
+				curso[9] = rs.getObject(10);
+				curso[10] = rs.getBytes(11);
+				curso[11] = rs.getObject(12);
 
 			}
 			rs.close();
@@ -4610,10 +4629,7 @@ public class AdministrarPublicaciones {
 	public Object[] getCursoCompleto(String id) {
 
 		Conexion conexion = new Conexion();
-		String sentencia = "   SELECT a.*, p.nombre  FROM cursos a, proyectos p"
-				+ " WHERE a.id_proyecto = p.id AND a.id="
-				+ id
-				+ " ORDER BY a.nombre";
+		String sentencia = "   SELECT a.*, p.nombre  FROM cursos a, proyectos p" + " WHERE a.id_proyecto = p.id AND a.id=" + id + " ORDER BY a.nombre";
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4642,10 +4658,9 @@ public class AdministrarPublicaciones {
 
 		List<Object[]> cursos = new ArrayList<Object[]>();
 		Conexion conexion = new Conexion();
-		String sentencia = "   SELECT a.*, p.nombre  FROM cursos a, proyectos p"
-				+ " WHERE a.id_proyecto = p.id " + " ORDER BY a.id DESC";
-		
-		//antes era por nombre order by ahora por id desc
+		String sentencia = "   SELECT a.*, p.nombre  FROM cursos a, proyectos p" + " WHERE a.id_proyecto = p.id " + " ORDER BY a.id DESC";
+
+		// antes era por nombre order by ahora por id desc
 		Object[] curso = null;
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
@@ -4725,8 +4740,7 @@ public class AdministrarPublicaciones {
 		return administradores;
 	}
 
-	public List<Certificado> getCertificados(String tipoCertificado,
-			String documento, String nombre, String fechaI, String fechaF) {
+	public List<Certificado> getCertificados(String tipoCertificado, String documento, String nombre, String fechaI, String fechaF) {
 		List<Certificado> certificados = new ArrayList<Certificado>();
 		Certificado certificado = null;
 		Conexion conexion = new Conexion();
@@ -4744,8 +4758,7 @@ public class AdministrarPublicaciones {
 
 		if (nombre != null && !nombre.trim().equals("")) {
 
-			sentencia += " AND UPPER(c.nombre_completo) LIKE '%"
-					+ nombre.trim().toUpperCase() + "%'";
+			sentencia += " AND UPPER(c.nombre_completo) LIKE '%" + nombre.trim().toUpperCase() + "%'";
 		}
 
 		if (fechaI != null && !fechaI.trim().equals("")) {
@@ -4762,19 +4775,15 @@ public class AdministrarPublicaciones {
 		try {
 			while (rs.next()) {
 				certificado = new Certificado();
-				certificado.setCiudadDepartamentoCurso(rs
-						.getString("ciudad_depto_curso"));
-				certificado
-						.setCiudadDocumento(rs.getString("ciudad_documento"));
+				certificado.setCiudadDepartamentoCurso(rs.getString("ciudad_depto_curso"));
+				certificado.setCiudadDocumento(rs.getString("ciudad_documento"));
 				certificado.setDocumento(rs.getLong("documento"));
-				certificado.setFechaDisponibilidad(rs
-						.getString("fecha_disponibilidad"));
+				certificado.setFechaDisponibilidad(rs.getString("fecha_disponibilidad"));
 				certificado.setFechaFin(rs.getString("fecha_fin"));
 				certificado.setFechaInicio(rs.getString("fecha_inicio"));
 				certificado.setId(rs.getInt("id_certificado"));
 				certificado.setNombre(rs.getString("nombre_completo"));
-				certificado.setTipoCertificado(rs
-						.getString("nombre_certificacion"));
+				certificado.setTipoCertificado(rs.getString("nombre_certificacion"));
 				certificado.setTipoDocumento(rs.getString("tipo_documento"));
 				certificado.setNumeroHoras(rs.getInt("numero_horas"));
 				certificados.add(certificado);
@@ -4792,26 +4801,21 @@ public class AdministrarPublicaciones {
 	public Certificado getCertificado(int id) {
 		Certificado certificado = null;
 		Conexion conexion = new Conexion();
-		String sentencia = "SELECT c .* , t.nombre_certificacion FROM certificados c, tipo_certificacion t WHERE c.tipo_certificado = t.id AND c.id_certificado ="
-				+ id;
+		String sentencia = "SELECT c .* , t.nombre_certificacion FROM certificados c, tipo_certificacion t WHERE c.tipo_certificado = t.id AND c.id_certificado =" + id;
 
 		ResultSet rs = conexion.consultarBD(sentencia);
 		try {
 			while (rs.next()) {
 				certificado = new Certificado();
-				certificado.setCiudadDepartamentoCurso(rs
-						.getString("ciudad_depto_curso"));
-				certificado
-						.setCiudadDocumento(rs.getString("ciudad_documento"));
+				certificado.setCiudadDepartamentoCurso(rs.getString("ciudad_depto_curso"));
+				certificado.setCiudadDocumento(rs.getString("ciudad_documento"));
 				certificado.setDocumento(rs.getLong("documento"));
-				certificado.setFechaDisponibilidad(rs
-						.getString("fecha_disponibilidad"));
+				certificado.setFechaDisponibilidad(rs.getString("fecha_disponibilidad"));
 				certificado.setFechaFin(rs.getString("fecha_fin"));
 				certificado.setFechaInicio(rs.getString("fecha_inicio"));
 				certificado.setId(rs.getInt("id_certificado"));
 				certificado.setNombre(rs.getString("nombre_completo"));
-				certificado.setTipoCertificado(rs
-						.getString("nombre_certificacion"));
+				certificado.setTipoCertificado(rs.getString("nombre_certificacion"));
 				certificado.setTipoDocumento(rs.getString("tipo_documento"));
 				certificado.setNumeroHoras(rs.getInt("numero_horas"));
 
@@ -4827,23 +4831,22 @@ public class AdministrarPublicaciones {
 
 	public static void main(String[] args) {
 
-		
-		String sarta="5-dfvp-9";
-		String [] varios = sarta.split("-dfvp-");
-		for(int i=0; i<=varios.length-1; i++){
+		String sarta = "5-dfvp-9";
+		String[] varios = sarta.split("-dfvp-");
+		for (int i = 0; i <= varios.length - 1; i++) {
 			System.out.println(varios[i]);
 		}
-		
-//		SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
-//
-//		AdministrarPublicaciones obj = new AdministrarPublicaciones();
-//
-//		try {
-//			getEdad(formato.parse("1985-01-19"));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+		// SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
+		//
+		// AdministrarPublicaciones obj = new AdministrarPublicaciones();
+		//
+		// try {
+		// getEdad(formato.parse("1985-01-19"));
+		// } catch (ParseException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 }

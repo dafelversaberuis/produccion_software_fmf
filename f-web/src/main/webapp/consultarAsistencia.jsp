@@ -12,8 +12,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>FUNDACIÓN MUJER Y FUTURO</title>
-<meta name="Description" content="Fundación Mujer y Futuro">
+<title>SOFTWARE SIMYF</title>
+<meta name="Description" content="SOFTWARE SIMYF">
 
 <script type="text/javascript" src="Scripts/noticias.js" charset="UTF-8"></script>
 <script type="text/javascript" src="Scripts/claves.js" charset="UTF-8"></script>
@@ -80,6 +80,20 @@
 	//Esta funcion asigna el calendario al campo5  del formulario
 </script>
 <link rel="stylesheet" type="text/css" href="home_files/style.css">
+<script language="javascript">
+
+   
+	function genrarTabla() {
+
+		tabla = document.getElementById("Exportar_a_Excel").innerHTML;
+	
+		document.getElementById("datos_a_enviar").value = tabla;
+		document.form1.action="imprimirExcel.jsp"
+		document.form1.submit();
+
+
+	}
+</script>
 </head>
 <!--****************************INICIO SESION************************************* -->
 <%
@@ -207,7 +221,13 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 	<form name="form1" id="form1" method="post">
 
 		<!--HEADER-->  
-	<header><img src="home_files/logo.png" alt="logo" width="220px" height="80px">
+	<header>
+	
+		<%
+	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
+	bAdministrarPublicaciones.logoDinamico(absoluta);
+	%>
+	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
 	<div class="container">
 		
 		<!--MENU-->
@@ -236,6 +256,8 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 
 							<div class="content">
 								<h4>Consultar/Eliminar asistencia</h4>
+								 <table border="1" style="width:100%"><tr><th>Criterios (cruce campos, presione consultar y será más especifico lo buscado)</th><tr><td>
+							
 								<div align="left">
 									<table width="100%" border="0" cellspacing="2" cellpadding="2">
 										<tr>
@@ -265,7 +287,7 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 
 
 											<td>Curso:</td>
-											<td><select name="curso" id="curso"
+											<td><select name="curso" id="curso" class="js-example-basic-single"
 												onchange="cargarTemasCombo()" style="width:300px">
 													<option value="" selected>Seleccione..</option>
 													<%
@@ -391,8 +413,40 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 												type="text"></td>
 											
 										</tr>
+										
+											<tr>
+										
+											<td>Tipo dirección:</td>
+										<td><select name="control14" id="control14"
+											onchange="cargarTiposDireccionesConsulta()" style="width: 250px">
+												<option value="" selected>Seleccione...</option>
+												<option value="C">COMUNA</option>
+												<option value="CO">CORREGIMIENTO</option>
+										</select></td>
+										<td></td>
+										<td></td>
+									</tr>
+									
+									<tr>
+										<td><span id="span_1"><font color="black">Comuna/Corregimiento:</font></span></td>
+										<td><span id="span_2"><select  style="width:250px; color:black" name="control15" id="control15">
+												<option value="" selected>Seleccione...</option>
+											</select></span>
+</td>
+										<td><span id="span_3"><font color="black">Barrio/Vereda/asentamiento:</font></span></td>
+										<td><span id="span_4">
+										<select  style="width:250px; color:black" name="control16" id="control16">
+												<option value="" selected>Seleccione...</option>
+											</select>
+										</span></td>
+									</tr>
+										
+										
+										
+										
 									</table>
 								</div>
+								</td></tr></table>
 								<script>
 									cargarTemasCombo();
 								</script>
@@ -404,7 +458,7 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 											value=" Consultar " onclick="validarPlanilla3();" />
 										</font>
 									</center>
-
+ 
 								</span> <input name="hdnUs" id="hdnUs" type="hidden"
 									value="<%=bUsuario.getIdUsuario()%>" /> <br /> <br /> <br />
 								<br />
@@ -428,16 +482,12 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 			<div class="container">
 				<img src="home_files/logo-sm.png" alt="">
 				<ul class="list-inline social">
-					<li><a href="https://www.facebook.com/fundacionmujeryfuturo"
-						target="_blank"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="http://www.mujeryfuturo.org" target="_blank"><i
-							class="fa fa-twitter"></i></a></li>
+				
 
 
 				</ul>
 				<p>
-					Contacto: direccion@mujeryfuturo.org<br>Teléfonos:
-					(+57-7)6341589 - (+57)3105765181<br>Diseñado por:
+				SOFTWARE SIMYF<br>Diseñado por:
 					quimerapps.com
 				</p>
 			</div>
@@ -445,12 +495,14 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 		</footer>
 		<!--END FOOTER-->
 
-		<script src="home_files/jquery-1.11.0.min.js"></script>
-		<script src="home_files/jquery-migrate-1.2.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 
 		<script src="home_files/smoothscroll.js"></script>
 		<script src="home_files/snap.svg-min.js"></script>
-		<script src="home_files/jquery.bxslider.js"></script>
+	
 		<script src="home_files/retina.min.js"></script>
 		<script src="home_files/imagesloaded.pkgd.min.js"></script>
 		<script src="home_files/masonry.pkgd.min.js"></script>
@@ -464,6 +516,15 @@ List<Object[]> financiadores = bAdministrarPublicaciones.getFinanciadores();
 		<script src="home_files/main.js"></script>
 		<input name="hdnGuardarPublicacion" id="hdnGuardarPublicacion"
 			type="hidden" value="0" />
+			
+				 <script>
+
+				// In your Javascript (external .js resource or <script> tag)
+				 $(document).ready(function() {
+				     $('.js-example-basic-single').select2();
+				 });
+
+				 </script>
 	</form>
 </body>
 </html>

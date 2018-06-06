@@ -44,6 +44,10 @@ public class ImprimirAsistencia3 extends HttpServlet {
 			String linea = request.getParameter("linea");
 			String financiador = request.getParameter("financiador");
 			String documento = request.getParameter("documento");
+			
+			String c14 = request.getParameter("c14");
+			String c15 = request.getParameter("c15");
+			String c16 = request.getParameter("c16");
 
 			// Object[] informacion = bAdministrarPublicaciones.getCursoTema(tema);
 			// Object[] cursoCompleto =
@@ -51,7 +55,7 @@ public class ImprimirAsistencia3 extends HttpServlet {
 
 			// out.println("curso fecha tema "curso+curso+" * "+fecha+" * "+tema);
 
-			List<Object[]> cursos = new AdministrarPublicaciones().getMujeresAsistencia3(curso, tema, fecha_desde, fecha_hasta, tipo, asistio_mujer, proyecto, linea, financiador, documento);
+			List<Object[]> cursos = new AdministrarPublicaciones().getMujeresAsistencia3(curso, tema, fecha_desde, fecha_hasta, tipo, asistio_mujer, proyecto, linea, financiador, documento,c14,c15,c16);
 			List<Asistencia> asistencia = new ArrayList<Asistencia>();
 
 			int cuenta_si = 0;
@@ -83,6 +87,23 @@ public class ImprimirAsistencia3 extends HttpServlet {
 				pars.put("cuenta_todas", cuenta_todas);
 				pars.put("variable", "este es el valor");
 				pars.put("logo", logo + "/logo_original.png");
+				
+				
+				
+			//*******************NUEVO LO GO DE BD
+				try {
+					logo = request.getRealPath("/imagenes/logosLogos/");
+					Object[] logoReal = new AdministrarPublicaciones().getLogo(1);
+					byte[] archivoLogoReal = (byte[]) logoReal[3];
+					if (archivoLogoReal != null) {
+						new AdministrarPublicaciones().guardarArchivoDisco(logo + "/logo_financiador_OK.jpg", archivoLogoReal);
+						pars.put("logo", logo + "/logo_financiador_OK.jpg");
+					}
+				} catch (Exception e) {
+					logo = request.getRealPath("/home_files/");
+					pars.put("logo", logo + "/logo_original.png");
+				}
+				//********************************************
 
 				//
 

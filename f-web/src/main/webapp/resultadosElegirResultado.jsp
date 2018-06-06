@@ -40,7 +40,7 @@ if(mujer!=null){
  
   <tr>
     <td><font color="red"><a href="#"  onclick="cargarOpcionesMujer2();"  style="color: blue; font-size:19px">Conocer aporte</a></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><font color="red"><a href="#" onclick="cargarEncuestasMujer();" style="color: blue; font-size:19px">Contestar encuesta</a></font></td>
+    <td><font color="red"><a href="#" onclick="cargarEncuestasMujer();" style="color: blue; font-size:19px">Contestar/actualizar encuesta</a></font></td>
   </tr>
 </table>
 

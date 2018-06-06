@@ -12,8 +12,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>FUNDACIÓN MUJER Y FUTURO</title>
-<meta name="Description" content="Fundación Mujer y Futuro">
+<title>SOFTWARE SIMYF</title>
+<meta name="Description" content="SOFTWARE SIMYF">
 
 <script type="text/javascript" src="Scripts/noticias.js" charset="UTF-8"></script>
 <script type="text/javascript" src="Scripts/claves.js" charset="UTF-8"></script>
@@ -591,13 +591,13 @@
 	<div class="container">
 		<img src="home_files/logo-sm.png" alt="">
 		<ul class="list-inline social">
-			<li><a href="https://www.facebook.com/fundacionmujeryfuturo" target="_blank"><i class="fa fa-facebook"></i></a></li>
-			<li><a href="http://www.mujeryfuturo.org" target="_blank" ><i class="fa fa-twitter"></i></a></li>
+			
+			
 			
 
 		</ul>
 		<p>
-			Contacto: direccion@mujeryfuturo.org<br>Teléfonos: (+57-7)6341589 - (+57)3105765181<br>Diseñado por: quimerapps.com
+			SOFTWARE SIMYF<br>Diseñado por: quimerapps.com
 		</p>
 	</div></center>
 	</footer>

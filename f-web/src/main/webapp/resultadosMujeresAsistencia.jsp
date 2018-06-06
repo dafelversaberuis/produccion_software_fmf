@@ -27,12 +27,40 @@ String horas=request.getParameter("horas");
 String financiador=request.getParameter("financiador");
 String linea=request.getParameter("linea");
 
+
+String c14  = request.getParameter("c14");
+String c15  = request.getParameter("c15");
+String c16  = request.getParameter("c16");
+if(c14!=null && c14.equals("null")){
+	
+	c14 = null;	
+}
+if(c15!=null && c15.equals("null")){
+	
+	c15 = null;	
+}
+if(c16!=null && c16.equals("null")){
+	
+	c16 = null;	
+}
+
+
+
+
 //out.println("curso fecha tema "+curso+" * "+fecha+" * "+tema);
 
-List<Object[]> cursos = bAdministrarPublicaciones.getMujeresAsistencia(curso, tema, fecha);
+List<Object[]> cursos = bAdministrarPublicaciones.getMujeresAsistencia(curso, tema, fecha,c14,c15,c16);
 
 	if (cursos!=null && cursos.size() > 0) {
 %>
+<center><font color="black">
+<input	type='button' value=' Guardar Asistencia ' onclick='guardarAsistencia();' /> &nbsp;
+<input	type='button' value=' Cancelar registro ' onclick='regresarAsistencia();' /> &nbsp;
+<a href="imprimirAsistencia.jsp?curso=<%=curso %>&fecha=<%=fecha %>&tema=<%=tema %>&horas=<%=horas %>&linea=<%=linea %>&financiador=<%=financiador %>&c14=<%=c14%>&c15=<%=c15%>&c16=<%=c16%>" target="_blank">(Imprimir formato asistencia)</a>
+
+
+</font>
+</center>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 	<tr>
 		<td bgcolor="#E81D8F">
@@ -131,7 +159,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getMujeresAsistencia(curso, te
 <center><font color="black">
 <input	type='button' value=' Guardar Asistencia ' onclick='guardarAsistencia();' /> &nbsp;
 <input	type='button' value=' Cancelar registro ' onclick='regresarAsistencia();' /> &nbsp;
-<a href="imprimirAsistencia.jsp?curso=<%=curso %>&fecha=<%=fecha %>&tema=<%=tema %>&horas=<%=horas %>&linea=<%=linea %>&financiador=<%=financiador %>" target="_blank">(Imprimir formato asistencia)</a>
+<a href="imprimirAsistencia.jsp?curso=<%=curso %>&fecha=<%=fecha %>&tema=<%=tema %>&horas=<%=horas %>&linea=<%=linea %>&financiador=<%=financiador %>&c14=<%=c14%>&c15=<%=c15%>&c16=<%=c16%>" target="_blank">(Imprimir formato asistencia)</a>
 
 
 </font>

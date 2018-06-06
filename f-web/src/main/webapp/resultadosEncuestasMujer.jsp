@@ -68,7 +68,7 @@ List<Object[]> cursos = bAdministrarPublicaciones.getEncuestasVigentesActivas();
 		<td align="left" bgcolor="#EEEEEE">
 		<div align="center"><font color="black"><%=i[2] + " a "+ i[3] %></font></div>
 		</td>
-		<td align="center" bgcolor="#EEEEEE"><font color="red"><a href="#" onclick="contestarEncuesta(<%=i[0]%>); return false;" style="color: blue">Contestar</a></font></td>  
+		<td align="center" bgcolor="#EEEEEE"><font color="red"><a href="#" onclick="contestarEncuesta(<%=i[0]%>); return false;" style="color: blue">Contestar/actualizar</a></font></td>  
 		
 	</tr>
 	<%
