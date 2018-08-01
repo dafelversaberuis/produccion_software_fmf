@@ -8,7 +8,9 @@
 	response.setDateHeader("Expires", 0);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <html>
 <head>
 <title>SOFTWARE SIMYF</title>

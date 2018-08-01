@@ -158,11 +158,8 @@ String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
 
 	<!--HEADER-->
 	<header>
-	<%
-	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
-	bAdministrarPublicaciones.logoDinamico(absoluta);
-	%>
-	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
+	
+	<img src="/f-web/ver_foto_logo.jsp?id=1" alt="logo" width="220px" height="80px">
 	<div class="container">
 
 		<!--MENU-->

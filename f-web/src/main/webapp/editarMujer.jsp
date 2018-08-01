@@ -9,6 +9,9 @@
 <jsp:useBean id="bAdministrarPublicaciones"
 	class="beans.AdministrarPublicaciones" scope="page" />
 <%@page import="beans.Publicacion"%>
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">

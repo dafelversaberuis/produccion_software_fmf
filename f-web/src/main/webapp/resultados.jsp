@@ -2,6 +2,9 @@
 	import="java.sql.*,java.util.*,java.text.SimpleDateFormat"
 	session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <jsp:useBean id="bSeguridad" class="beans.Seguridad" scope="page" />
 <jsp:useBean id="bUsuario" class="beans.Usuario" scope="session" />
 <jsp:useBean id="bAdministrarPublicaciones"
@@ -181,11 +184,8 @@ List<Object[]> encuestas = bAdministrarPublicaciones.getEncuestas();
 
 	<!--HEADER-->
 	<header>
-		<%
-	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
-	bAdministrarPublicaciones.logoDinamico(absoluta);
-	%>
-	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
+		
+	<img src="/f-web/ver_foto_logo.jsp?id=1" alt="logo" width="220px" height="80px">
 	<div class="container">
 
 		<!--MENU-->

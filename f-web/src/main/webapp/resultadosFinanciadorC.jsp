@@ -8,6 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=iso-8859-1" import="java.sql.*,java.util.*,java.text.SimpleDateFormat"
      session="false" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <%@page import="beans.Administrador"%>
 <jsp:useBean
 	id="bAdministrarPublicaciones" class="beans.AdministrarPublicaciones"

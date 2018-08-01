@@ -6,7 +6,10 @@
 <%@page import="beans.Publicacion"%>
 <%@page import="beans.Parametro"%>
 <%@page import="beans.Seccion"%>
-<%@page import="beans.RepositorioFotos"%>	
+<%@page import="beans.RepositorioFotos"%>
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>	
 <html>
 <head>
         <title>SOFTWARE SIMYF</title>
@@ -199,7 +202,7 @@ alert('Información enviada con éxito');
 <div class="container"><div class="row">
 				<div class="header-table col-md-12 header-menu">
         			<!--  Logo section -->
-                	<a href="#home" class="nav-link"><h1><font color="red">Fundación</font><br/> Mujer y Futuro</h1> </a>
+                	<a href="#home" class="nav-link"><h1><font color="red">SIMYF</font><br/> Software</h1> </a>
                 
                 	
                     <!--  // Logo section -->
@@ -270,11 +273,8 @@ un valor al trabajo no remunerado de las mujeres,<br/>cuando trabajan en accione
         <!--  Logo section --> 
         <div class="brand" style="bgcolor:#000000; height: 90px" ><a href="#home" class="nav-link" style="font-size:23px; line-height:1.2">
 			
-				<%
-	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
-	bAdministrarPublicaciones.logoDinamico(absoluta);
-	%>
-	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="230px" height="100px">
+			
+	<img src="/f-web/ver_foto_logo.jsp?id=1" alt="logo" width="230px" height="100px">
 			
 			
 			</a></div>

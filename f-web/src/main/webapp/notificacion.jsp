@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*,java.util.*,java.text.SimpleDateFormat"
      session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-     <title>FUNDACION MUJER Y FUTURO</title>
-    <meta name="Description" content="FUNDACION MUJER Y FUTURO ">
+     <title>SOFTWARE SIMYF</title>
+    <meta name="Description" content="SOFTWARE SIMYF ">
         <meta name="viewport" content="initial-scale=1.0,width=device-width">
 <link rel="stylesheet" type="text/css" href="home_files/bootstrap.css">
 <link rel="stylesheet" type="text/css"

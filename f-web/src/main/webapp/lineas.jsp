@@ -5,7 +5,10 @@
 <jsp:useBean id="bUsuario" class="beans.Usuario" scope="session" />
 <jsp:useBean id="bAdministrarPublicaciones"
 	class="beans.AdministrarPublicaciones" scope="page" />
-<%@page import="beans.Publicacion"%>	<html>
+<%@page import="beans.Publicacion"%>
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -134,11 +137,8 @@
 
 <!--HEADER-->  
 	<header>
-		<%
-	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
-	bAdministrarPublicaciones.logoDinamico(absoluta);
-	%>
-	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
+		
+	<img src="/f-web/ver_foto_logo.jsp?id=1" alt="logo" width="220px" height="80px">
 	<div class="container">
 		
 		<!--MENU-->

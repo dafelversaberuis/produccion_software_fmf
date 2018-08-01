@@ -4,6 +4,9 @@
 <%@page import="beans.Parametro"%>  
 <jsp:useBean id="bAdministrarPublicaciones"
 	class="beans.AdministrarPublicaciones" scope="page" />
+	<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <%
 	Parametro parametro = new Parametro();
 	String[] parametros2 = parametro.getarametros();

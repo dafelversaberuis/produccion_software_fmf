@@ -2,6 +2,9 @@
      session="true" pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <jsp:useBean id="bSeguridad" class="beans.Seguridad" scope="page" />
 <jsp:useBean id="bUsuario" class="beans.Usuario" scope="session" />
 <jsp:useBean id="bAdministrarPublicaciones"
@@ -141,11 +144,8 @@
 
 <!--HEADER-->  
 	<header>
-		<%
-	String absoluta  = request.getRealPath("/imagenes/logosLogos/");
-	bAdministrarPublicaciones.logoDinamico(absoluta);
-	%>
-	<img src="imagenes/logosLogos/logo_financiador_OK.jpg" alt="logo" width="220px" height="80px">
+		
+	<img src="/f-web/ver_foto_logo.jsp?id=1" alt="logo" width="220px" height="80px">
 	<div class="container">
 		
 		<!--MENU-->

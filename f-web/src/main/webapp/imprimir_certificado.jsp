@@ -11,6 +11,10 @@
 <%@ page import="com.lowagie.text.Image"%>
 <jsp:useBean id="bAdministrarPublicaciones"
 	class="beans.AdministrarPublicaciones" scope="page" />
+	
+	<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <%
 	try {
 

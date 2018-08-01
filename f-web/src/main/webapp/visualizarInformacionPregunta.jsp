@@ -8,7 +8,9 @@
 	<%@page import="beans.Seccion"%>
 <%@page import="beans.Publicacion"%>
 <%@page import="beans.Parametro"%>
-
+<%
+String idiomaSoftware = new beans.AdministrarPublicaciones().getIdioma();
+%>
 <html lang="es">
 
 <head>
