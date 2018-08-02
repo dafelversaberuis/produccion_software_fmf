@@ -3865,7 +3865,7 @@ public void logoDinamico(String abosulta){
 
 				curso[0] = rs.getObject(1);
 				curso[1] = rs.getObject(2);
-				curso[2] = rs.getObject(3);
+				curso[2] = rs.getObject(3);      
 
 				if (idTipo != null && idTipo.equals("C")) {
 
@@ -3876,7 +3876,7 @@ public void logoDinamico(String abosulta){
 
 				} else {
 
-					if (("" + curso[2]).trim().equals("A")) {
+					if (("" + curso[2]).trim().equals("A")) {      
 
 						curso[1] = curso[1] + " ** ASENTAMIENTO **";
 					}
